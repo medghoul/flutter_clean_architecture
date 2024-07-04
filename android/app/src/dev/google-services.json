@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "749711652084",
+    "project_id": "codebaker-boilerplate",
+    "storage_bucket": "codebaker-boilerplate.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:749711652084:android:bf5f80d15a4d97cb215aa1",
+        "android_client_info": {
+          "package_name": "it.codebaker.codebaker_boilerplate"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNAA1wqQiTFfRDzmpwa_JeP3UseOK-rkg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
