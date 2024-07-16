@@ -10,11 +10,11 @@ class LoginPageCubit extends Cubit<LoginPageState> {
   ));
 
   void setEmail(String email) {
-    state.email?.text = email;
+    state.email.text = email;
   }
 
   void setPassword(String password) {
-    state.password?.text = password;
+    state.password.text = password;
   }
 
   void toggleLoader() {
