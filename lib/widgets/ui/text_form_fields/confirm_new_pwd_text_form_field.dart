@@ -1,4 +1,5 @@
 import 'package:clean_architecture/i18n/translations.dart';
+import 'package:clean_architecture/resources/utils/validators.dart';
 import 'package:flutter/material.dart';
 
 class ConfirmNewPwdTextFormField extends StatefulWidget {
@@ -21,14 +22,6 @@ class ConfirmNewPwdTextFormField extends StatefulWidget {
 }
 
 class _ConfirmNewPwdTextFormFieldState extends State<ConfirmNewPwdTextFormField> {
-  String? validateConfirmNewPwd() {
-    if (widget.confirmNewPasswordController!.text.isEmpty) {
-      return translation.textFieldValidations.textFormFieldEmpty;
-    } else if (widget.confirmNewPasswordController!.text != widget.passwordController!.text) {
-      return translation.textFieldValidations.passwordsDontMatch;
-    }
-    return null;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +33,7 @@ class _ConfirmNewPwdTextFormFieldState extends State<ConfirmNewPwdTextFormField>
         hintText: translation.textFormFieldHints.confirmNewPassword,
         suffixIcon: widget.suffixIcon,
       ),
-      validator: (_) => validateConfirmNewPwd(),
+      validator: (_) => Validators.validateConfirmPassword(widget.confirmNewPasswordController!.text, widget.passwordController!.text),
       textCapitalization: TextCapitalization.sentences,
       autovalidateMode: AutovalidateMode.onUserInteraction,
     );

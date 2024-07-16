@@ -1,4 +1,4 @@
-import 'package:clean_architecture/i18n/translations.dart';
+import 'package:clean_architecture/resources/utils/validators.dart';
 import 'package:clean_architecture/widgets/ui/base_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -22,16 +22,6 @@ class ConfirmEmailTextFormField extends StatefulWidget {
 }
 
 class _ConfirmEmailTextFormFieldState extends State<ConfirmEmailTextFormField> {
-  String? validateConfirmEmail() {
-    if (widget.confirmEmailController!.text.isEmpty) {
-      //emailFocus.requestFocus();
-      return translation.textFieldValidations.textFormFieldEmpty;
-    } else if (widget.confirmEmailController!.text != widget.emailController!.text) {
-      //emailFocus.requestFocus();
-      return translation.textFieldValidations.emailsDontMatch;
-    }
-    return null;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +31,7 @@ class _ConfirmEmailTextFormFieldState extends State<ConfirmEmailTextFormField> {
       obscureText: widget.obscureText ?? false,
       decoration:
           MyAppTheme.secondaryInputFieldStyle.copyWith(hintText: 'Conferma email', suffixIcon: widget.suffixIcon),
-      validator: (_) => validateConfirmEmail(),
+      validator: (_) => Validators.validateConfirmEmail(widget.confirmEmailController!.text, widget.emailController!.text),
       textCapitalization: TextCapitalization.sentences,
       autovalidateMode: AutovalidateMode.onUserInteraction,
     );

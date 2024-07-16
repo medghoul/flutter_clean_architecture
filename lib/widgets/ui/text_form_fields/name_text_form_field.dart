@@ -1,5 +1,6 @@
 import 'package:clean_architecture/i18n/translations.dart';
 import 'package:clean_architecture/resources/res.dart';
+import 'package:clean_architecture/resources/utils/validators.dart';
 import 'package:clean_architecture/widgets/ui/base_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -21,19 +22,6 @@ class NameTextFormField extends StatefulWidget {
 class _NameTextFormFieldState extends State<NameTextFormField> {
   FocusNode nameFocus = FocusNode();
 
-  String? validateName() {
-    if (widget.nameController!.text.isEmpty) {
-      nameFocus.requestFocus();
-      return translation.textFieldValidations.textFormFieldEmpty;
-    } else if (widget.nameController!.text.length > ProjectConst.NORMAL_TEXTFORMFIELD_MAX_LENGTH) {
-      nameFocus.requestFocus();
-      return translation.textFieldValidations.maxLenght.replaceAll(
-        RegExp(ProjectConst.PLACEHOLDER),
-        ProjectConst.NORMAL_TEXTFORMFIELD_MAX_LENGTH.toString(),
-      );
-    }
-    return null;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +31,7 @@ class _NameTextFormFieldState extends State<NameTextFormField> {
         nameFocus.unfocus();
       },
       controller: widget.nameController,
-      validator: (_) => validateName(),
+      validator: (_) => Validators.validateName(widget.nameController!.text),
       textCapitalization: TextCapitalization.words,
       focusNode: nameFocus,
       autovalidateMode: AutovalidateMode.onUserInteraction,

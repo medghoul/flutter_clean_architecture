@@ -1,5 +1,6 @@
 import 'package:clean_architecture/i18n/translations.dart';
 import 'package:clean_architecture/resources/res.dart';
+import 'package:clean_architecture/resources/utils/validators.dart';
 import 'package:flutter/material.dart';
 
 class OldPwdTextFormField extends StatefulWidget {
@@ -22,17 +23,6 @@ class OldPwdTextFormField extends StatefulWidget {
 class _OldPwdTextFormFieldState extends State<OldPwdTextFormField> {
   FocusNode oldPasswordFocus = FocusNode();
 
-  String? validateOldPwd() {
-    if (widget.oldPasswordController!.text.isEmpty) {
-      return translation.textFieldValidations.textFormFieldEmpty;
-    } else if (widget.oldPasswordController!.text.length > ProjectConst.NORMAL_TEXTFORMFIELD_MAX_LENGTH) {
-      return translation.textFieldValidations.maxLenght.replaceAll(
-        RegExp(ProjectConst.PLACEHOLDER),
-        ProjectConst.NORMAL_TEXTFORMFIELD_MAX_LENGTH.toString(),
-      );
-    }
-    return null;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +34,7 @@ class _OldPwdTextFormFieldState extends State<OldPwdTextFormField> {
         hintText: translation.textFormFieldHints.insertOldPassword,
         suffixIcon: widget.suffixIcon,
       ),
-      validator: (_) => validateOldPwd(),
+      validator: (_) => Validators.validateOldPassword(widget.oldPasswordController!.text),
       textCapitalization: TextCapitalization.sentences,
       autovalidateMode: AutovalidateMode.onUserInteraction,
     );

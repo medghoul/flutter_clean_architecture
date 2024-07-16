@@ -1,5 +1,6 @@
 import 'package:clean_architecture/i18n/translations.dart';
 import 'package:clean_architecture/resources/constants/constants.dart';
+import 'package:clean_architecture/resources/utils/validators.dart';
 import 'package:clean_architecture/widgets/ui/base_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:validators/validators.dart';
@@ -38,23 +39,6 @@ class EmailTextFormField extends StatefulWidget {
 class _EmailTextFormFieldState extends State<EmailTextFormField> {
   FocusNode emailFocus = FocusNode();
 
-  String? validateEmail() {
-    if (widget.controller!.text.isEmpty) {
-      emailFocus.requestFocus();
-      return translation.textFieldValidations.textFormFieldEmpty;
-    } else if (widget.controller!.text.length > ProjectConst.EMAIL_TEXTFORMFIELD_MAX_LENGTH) {
-      emailFocus.requestFocus();
-      return translation.textFieldValidations.maxLenght.replaceAll(
-        RegExp(ProjectConst.PLACEHOLDER),
-        ProjectConst.EMAIL_TEXTFORMFIELD_MAX_LENGTH.toString(),
-      );
-    } else if (!isEmail(widget.controller!.text) && widget.controller!.text.isNotEmpty) {
-      emailFocus.requestFocus();
-      return translation.textFieldValidations.wrongCharacters;
-    }
-    return null;
-  }
-
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -72,7 +56,7 @@ class _EmailTextFormFieldState extends State<EmailTextFormField> {
       },
       readOnly: widget.readOnly,
       controller: widget.controller,
-      validator: (_) => validateEmail(),
+      validator: (_) => Validators.validateEmail(widget.controller!.text),
       keyboardType: TextInputType.emailAddress,
       focusNode: emailFocus,
       autovalidateMode: AutovalidateMode.onUserInteraction,
