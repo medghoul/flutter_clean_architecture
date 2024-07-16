@@ -4,7 +4,7 @@ import 'package:clean_architecture/features/start/presentation/pages/onboarding_
 import 'package:clean_architecture/widgets/layout/custom_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:clean_architecture/features/home_page/presentation/pages/home_page_page.dart';
+import 'package:clean_architecture/features/home_page/presentation/pages/home_page.dart';
 import 'package:clean_architecture/features/start/presentation/pages/start_page.dart';
 import 'package:clean_architecture/routing/app_routes.dart';
 import 'package:clean_architecture/routing/ui/not_found_screen.dart';

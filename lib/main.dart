@@ -1,3 +1,4 @@
+import 'package:clean_architecture/theme/app_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -40,11 +41,9 @@ class MyApp extends StatelessWidget {
           Locale.fromSubtags(languageCode: 'en'), // generic english
         ],
         title: 'Ideal Architecture',
-       /*
-        theme: MyAppTheme.getLightMode,
-        darkTheme: MyAppTheme.getDarkMode,
-        themeMode: viewModel.themeMode,
-        */
+        theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
+        themeMode: ThemeMode.system,
       ),
     );
   }
