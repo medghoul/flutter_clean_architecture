@@ -52,6 +52,9 @@ class AppColors {
   static const valid = Color(0xFF4E8335);
   static const error = Color(0xFFC1001F);
 
+  static const lightGrey = Color(0xFFF5F5F5);
+
+
   static MaterialColor get primaryMaterialColor => const MaterialColor(
     _primaryColorInt,
     {
