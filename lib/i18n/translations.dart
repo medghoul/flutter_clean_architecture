@@ -370,7 +370,7 @@ class _TranslationsStartPageIt {
 
   // Translations
   String get title => 'CodeBaker';
-  String get caption => 'Boilerplate!';
+  String get caption => 'Clean Architecture';
   String get start => 'Inizia';
 }
 
