@@ -1,9 +1,9 @@
 import 'package:clean_architecture/i18n/translations.dart';
 import 'package:clean_architecture/resources/res.dart';
+import 'package:clean_architecture/routing/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../routing/app_routes.dart';
 
 bool firstAnimation = false;
 
@@ -109,11 +109,11 @@ class _AccessPageState extends State<AccessPage> with TickerProviderStateMixin {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       ElevatedButton(
-                       /* style: Theme.of(context).elevatedButtonTheme.style!.copyWith(
+                       style: Theme.of(context).elevatedButtonTheme.style!.copyWith(
                               backgroundColor: const WidgetStatePropertyAll(
                                 AppColors.tertiary,
                               ),
-                            ),*/
+                            ),
                         onPressed: () {
                           GoRouter.of(context).pushNamed(AppRoute.signIn.name);
                         },
