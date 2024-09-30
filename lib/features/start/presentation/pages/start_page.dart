@@ -2,6 +2,7 @@
 import 'package:clean_architecture/i18n/translations.dart';
 import 'package:clean_architecture/resources/res.dart';
 import 'package:clean_architecture/routing/app_routes.dart';
+import 'package:clean_architecture/widgets/buttons/custom_outlined_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -114,32 +115,11 @@ class _StartPageState extends State<StartPage> with TickerProviderStateMixin {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      ElevatedButton(
-                        style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
-                          backgroundColor: const WidgetStatePropertyAll(
-                            AppColors.tertiary,
-                          ),
-                          elevation: const WidgetStatePropertyAll(2),
-                        ),
+                      CustomOutlinedButton(
                         onPressed: () {
-                          /*showModalBottomSheet(
-                            context: context,
-                            showDragHandle: false,
-                            enableDrag: false,
-                            isScrollControlled: true,
-                            builder: (context) => const RegisterSheet(),
-                          );
-                          showModalBottomSheet(
-                            context: context,
-                            showDragHandle: false,
-                            enableDrag: false,
-                            isScrollControlled: true,
-                            builder: (context) => const LoginSheet(),
-                          );
-                          */
                           context.goNamed(AppRoute.onboarding.name);
-                        }, //() => context.goNamed(AppRoute.signUp.name),
-                        child: Text(translation.startPage.start),
+                        },
+                        text: translation.startPage.start,
                       ),
                       const SizedBox(
                         height: Dimension.paddingXXL,
