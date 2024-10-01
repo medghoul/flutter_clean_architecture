@@ -1,4 +1,4 @@
-import 'package:clean_architecture/i18n/translations.dart';
+import 'package:clean_architecture/extensions/context_extension.dart';
 import 'package:clean_architecture/resources/res.dart';
 import 'package:clean_architecture/resources/utils/validators.dart';
 import 'package:clean_architecture/widgets/ui/base_theme.dart';
@@ -31,12 +31,12 @@ class _NameTextFormFieldState extends State<NameTextFormField> {
         nameFocus.unfocus();
       },
       controller: widget.nameController,
-      validator: (_) => Validators.validateName(widget.nameController!.text),
+      validator: (_) => Validators(context).validateName(widget.nameController!.text),
       textCapitalization: TextCapitalization.words,
       focusNode: nameFocus,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       decoration: MyAppTheme.secondaryInputFieldStyle.copyWith(
-        hintText: translation.textFormFieldHints.name,
+        hintText: context.translate('textFormFieldHints.name'),
         suffixIcon: widget.suffixIcon,
       ),
     );

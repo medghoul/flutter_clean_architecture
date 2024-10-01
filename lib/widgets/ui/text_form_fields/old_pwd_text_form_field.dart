@@ -1,4 +1,4 @@
-import 'package:clean_architecture/i18n/translations.dart';
+import 'package:clean_architecture/extensions/context_extension.dart';
 import 'package:clean_architecture/resources/res.dart';
 import 'package:clean_architecture/resources/utils/validators.dart';
 import 'package:flutter/material.dart';
@@ -31,10 +31,10 @@ class _OldPwdTextFormFieldState extends State<OldPwdTextFormField> {
       controller: widget.oldPasswordController,
       obscureText: widget.obscureText ?? false,
       decoration: InputDecoration(
-        hintText: translation.textFormFieldHints.insertOldPassword,
+        hintText: context.translate('textFormFieldHints.insertOldPassword'),
         suffixIcon: widget.suffixIcon,
       ),
-      validator: (_) => Validators.validateOldPassword(widget.oldPasswordController!.text),
+      validator: (_) => Validators(context).validateOldPassword(widget.oldPasswordController!.text),
       textCapitalization: TextCapitalization.sentences,
       autovalidateMode: AutovalidateMode.onUserInteraction,
     );

@@ -22,7 +22,8 @@ class AppLocalizations {
   Future<void> _loadLocalizedStringsFromFile() async {
     debugPrint("Loading language from disk");
     String jsonString = await rootBundle.loadString('assets/locales/${locale.languageCode}.json');
-    _localizedStrings = Utils.decodeJSON<String>(jsonString);
+    Map<String, dynamic> jsonMap = Utils.decodeJSON(jsonString);
+    _localizedStrings = Utils.flattenMap(jsonMap);
   }
 
   String translate(String key) {
@@ -33,10 +34,8 @@ class AppLocalizations {
 
   static Iterable<Locale> get supportedLocales => const [
         Locale('en'),
-        Locale('es'),
         Locale('it'),
-        Locale('fr'),
-        Locale('de')
+    
       ];
 }
 

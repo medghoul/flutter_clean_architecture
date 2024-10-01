@@ -1,5 +1,5 @@
+import 'package:clean_architecture/extensions/context_extension.dart';
 import 'package:clean_architecture/features/profile/presentation/cubits/change_pwd_cubit/change_pwd_cubit.dart';
-import 'package:clean_architecture/i18n/translations.dart';
 import 'package:clean_architecture/resources/res.dart';
 import 'package:clean_architecture/widgets/ui/app_bar_title.dart';
 import 'package:clean_architecture/widgets/ui/text_form_fields/confirm_new_pwd_text_form_field.dart';
@@ -35,7 +35,7 @@ class ChangePwdPage extends StatelessWidget {
             child: Scaffold(
               resizeToAvoidBottomInset: false,
               appBar: AppBar(
-                title: AppBarTitle(title: translation.profilePage.editPassword),
+                title: AppBarTitle(title: context.translate('profilePage.editPassword')),
                 leading: IconButton(
                   icon: const Icon(
                     Icons.arrow_back_ios,
@@ -70,8 +70,7 @@ class ChangePwdPage extends StatelessWidget {
                           PasswordTextFormField(
                             cubit.state.newPwd,
                             obscureText: cubit.state.showNewPassword,
-                            hintText: translation
-                                .textFormFieldHints.insertNewPassword,
+                            hintText: context.translate('textFormFieldHints.insertNewPassword'),
                             suffixIcon: IconButton(
                               icon: Icon(
                                 cubit.state.showNewPassword
@@ -100,7 +99,7 @@ class ChangePwdPage extends StatelessWidget {
                             onPressed: () async {
                               await cubit.pwdReset(context);
                             },
-                            child: Text(translation.generic.save),
+                            child: Text(context.translate('generic.save')),
                           ),
                           const SizedBox(height: Dimension.padding),
                         ],

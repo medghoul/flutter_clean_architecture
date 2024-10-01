@@ -1,6 +1,6 @@
+import 'package:clean_architecture/extensions/context_extension.dart';
 import 'package:clean_architecture/features/profile/presentation/cubits/personal_data_cubit/personal_data_cubit.dart';
 import 'package:clean_architecture/features/profile/presentation/cubits/personal_data_cubit/personal_data_state.dart';
-import 'package:clean_architecture/i18n/translations.dart';
 import 'package:clean_architecture/resources/res.dart';
 import 'package:clean_architecture/widgets/ui/app_bar_title.dart';
 import 'package:clean_architecture/widgets/ui/custom_circular_progress_indicator.dart';
@@ -32,7 +32,7 @@ class PersonalDataPage extends StatelessWidget {
             resizeToAvoidBottomInset: false,
             appBar: AppBar(
               title: AppBarTitle(
-                  title: translation.profilePage.changePersonalInfos),
+                  title: context.translate('profilePage.changePersonalInfos')),
             ),
             body: Stack(
               children: [
@@ -46,7 +46,7 @@ class PersonalDataPage extends StatelessWidget {
                           child: ListView(
                             children: [
                               Text(
-                                translation.profilePage.name,
+                                context.translate('profilePage.name'),
                                 style: Theme.of(context)
                                     .textTheme
                                     .titleSmall!
@@ -56,7 +56,7 @@ class PersonalDataPage extends StatelessWidget {
                               NameTextFormField(state.name),
                               const SizedBox(height: Dimension.padding),
                               Text(
-                                translation.profilePage.surname,
+                                context.translate('profilePage.surname'),
                                 style: Theme.of(context)
                                     .textTheme
                                     .titleSmall!
@@ -68,7 +68,7 @@ class PersonalDataPage extends StatelessWidget {
                                 height: Dimension.padding,
                               ),
                               Text(
-                                translation.profilePage.email,
+                                context.translate('profilePage.email'),
                                 style: Theme.of(context)
                                     .textTheme
                                     .titleSmall!
@@ -88,8 +88,7 @@ class PersonalDataPage extends StatelessWidget {
                                 onTap: () {
                                   _showSnackBar(
                                     context,
-                                    translation.profilePage
-                                        .atTheMomentYouCantChangeEmail,
+                                    context.translate('profilePage.atTheMomentYouCantChangeEmail'),
                                   );
                                 },
                               ),
@@ -112,7 +111,7 @@ class PersonalDataPage extends StatelessWidget {
                                       ),
                                   onPressed: () async =>
                                       cubit.onSaveClick(context),
-                                  child: Text(translation.generic.save),
+                                  child: Text(context.translate('generic.save')),
                                 ),
                               ),
                               const SizedBox(

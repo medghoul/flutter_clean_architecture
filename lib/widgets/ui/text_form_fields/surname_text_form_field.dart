@@ -1,5 +1,5 @@
 
-import 'package:clean_architecture/i18n/translations.dart';
+import 'package:clean_architecture/extensions/context_extension.dart';
 import 'package:clean_architecture/resources/utils/validators.dart';
 import 'package:clean_architecture/widgets/ui/base_theme.dart';
 import 'package:flutter/material.dart';
@@ -28,12 +28,12 @@ class _SurnameTextFormFieldState extends State<SurnameTextFormField> {
         surnameFocus.unfocus();
       },
       controller: widget.surnameController,
-      validator: (_) => Validators.validateSurname(widget.surnameController!.text),
+      validator: (_) => Validators(context).validateSurname(widget.surnameController!.text),
       textCapitalization: TextCapitalization.words,
       focusNode: surnameFocus,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       decoration: MyAppTheme.secondaryInputFieldStyle.copyWith(
-        hintText: translation.textFormFieldHints.surname,
+        hintText: context.translate('textFormFieldHints.surname'),
         suffixIcon: const Icon(Icons.person),
       ),
     );
