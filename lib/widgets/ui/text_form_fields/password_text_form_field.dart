@@ -1,4 +1,3 @@
-import 'package:clean_architecture/i18n/translations.dart';
 import 'package:clean_architecture/resources/res.dart';
 import 'package:clean_architecture/resources/utils/validators.dart';
 import 'package:clean_architecture/widgets/ui/base_theme.dart';
@@ -35,7 +34,7 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
       controller: widget.passwordController,
       obscureText: widget.obscureText ?? false,
       decoration: MyAppTheme.secondaryInputFieldStyle.copyWith(hintText: 'Password', suffixIcon: widget.suffixIcon),
-      validator: (_) => Validators.validatePassword(widget.passwordController!.text),
+      validator: (_) => Validators(context).validatePassword(widget.passwordController!.text),
       textCapitalization: TextCapitalization.sentences,
       autovalidateMode: AutovalidateMode.onUserInteraction,
     );

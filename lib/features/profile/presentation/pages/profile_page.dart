@@ -1,6 +1,6 @@
+import 'package:clean_architecture/extensions/context_extension.dart';
 import 'package:clean_architecture/features/profile/presentation/cubits/profile_page_cubit/profile_page_cubit.dart';
 import 'package:clean_architecture/features/profile/presentation/cubits/profile_page_cubit/profile_page_state.dart';
-import 'package:clean_architecture/i18n/translations.dart';
 import 'package:clean_architecture/resources/res.dart';
 import 'package:clean_architecture/routing/app_routes.dart';
 import 'package:clean_architecture/widgets/layout/custom_scaffold.dart';
@@ -32,7 +32,7 @@ class ProfilePage extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                translation.profilePage.nameAndSurname,
+                context.translate('profilePage.nameAndSurname'),
                 style: Theme.of(context).textTheme.bodySmall!.copyWith(
                   fontWeight: FontWeight.w400,
                   color: Colors.white,
@@ -83,12 +83,12 @@ class ProfilePage extends StatelessWidget {
           Column(
             children: <Widget>[
               ListTile(
-                title: Text(translation.profilePage.editPersonalData),
+                title: Text(context.translate('profilePage.editPersonalData')),
                 onTap: () => GoRouter.of(context).pushNamed(AppRoute.editProfile.path),
               ),
               const Divider(),
               ListTile(
-                title: Text(translation.profilePage.privacyPolicy),
+                title: Text(context.translate('profilePage.privacyPolicy')),
                 onTap: (){
                   //TODO: implement privacy policy
                 },
@@ -101,7 +101,7 @@ class ProfilePage extends StatelessWidget {
               alignment: Alignment.bottomLeft,
               child: ListTile(
                 leading: const Icon(Icons.exit_to_app),
-                title: Text(translation.generic.logout),
+                title: Text(context.translate('generic.logout')),
                 onTap: () async {
                   await cubit.logout(context);
                 },
@@ -125,7 +125,7 @@ class ProfilePage extends StatelessWidget {
             appBarBody: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                AppBarTitle(title: translation.profilePage.myDatas),
+                AppBarTitle(title: context.translate('profilePage.myDatas')),
                 const SizedBox(
                   height: Dimension.padding,
                 ),
@@ -152,7 +152,7 @@ class ProfilePage extends StatelessWidget {
                                 Icons.settings_rounded,
                                 color: AppColors.primaryColor650,
                               ),
-                              title: Text(translation.profilePage.settings),
+                              title: Text(context.translate('profilePage.settings')),
                             ),
                             const SizedBox(height: Dimension.padding),
                             ListTile(
@@ -165,7 +165,7 @@ class ProfilePage extends StatelessWidget {
                                 Icons.help_outline,
                                 color: AppColors.primaryColor650,
                               ),
-                              title: Text(translation.profilePage.support),
+                              title: Text(context.translate('profilePage.support')),
                             ),
                             const Spacer(),
                             ListTile(
@@ -178,7 +178,7 @@ class ProfilePage extends StatelessWidget {
                                 Icons.logout_rounded,
                                 color: AppColors.primaryColor650,
                               ),
-                              title: Text(translation.profilePage.logout),
+                              title: Text(context.translate('profilePage.logout')),
                             ),
                           ],
                         ),

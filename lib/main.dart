@@ -1,4 +1,6 @@
-import 'package:clean_architecture/theme/app_theme.dart';
+import 'package:clean_architecture/core/theme/app_theme.dart';
+import 'package:clean_architecture/i18n/app_localization.dart';
+import 'package:clean_architecture/i18n/app_localizations_delegate.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,6 +9,7 @@ import 'package:clean_architecture/features/home_page/domain/usecases/home_page_
 import 'package:clean_architecture/features/home_page/presentation/cubits/home_page_cubit.dart';
 import 'package:clean_architecture/features/user/presentation/cubit/user_cubit.dart';
 import 'package:clean_architecture/routing/app_router.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,13 +36,12 @@ class MyApp extends StatelessWidget {
       child: MaterialApp.router(
         routerConfig: appRouter.router,
         localizationsDelegates: const [
-          DefaultWidgetsLocalizations.delegate,
-          DefaultMaterialLocalizations.delegate,
+          AppLocalizationsDelegate(),
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
         ],
-        supportedLocales: const [
-          Locale.fromSubtags(languageCode: 'it'), // generic italian
-          Locale.fromSubtags(languageCode: 'en'), // generic english
-        ],
+        supportedLocales: AppLocalizations.supportedLocales,
         title: 'Ideal Architecture',
         theme: AppTheme.lightTheme,
         darkTheme: AppTheme.darkTheme,

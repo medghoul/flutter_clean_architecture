@@ -1,4 +1,4 @@
-import 'package:clean_architecture/i18n/translations.dart';
+import 'package:clean_architecture/extensions/context_extension.dart';
 import 'package:clean_architecture/resources/utils/validators.dart';
 import 'package:flutter/material.dart';
 
@@ -30,10 +30,10 @@ class _ConfirmNewPwdTextFormFieldState extends State<ConfirmNewPwdTextFormField>
       controller: widget.confirmNewPasswordController,
       obscureText: widget.obscureText ?? false,
       decoration: InputDecoration(
-        hintText: translation.textFormFieldHints.confirmNewPassword,
+        hintText: context.translate('textFormFieldHints.confirmNewPassword'),
         suffixIcon: widget.suffixIcon,
       ),
-      validator: (_) => Validators.validateConfirmPassword(widget.confirmNewPasswordController!.text, widget.passwordController!.text),
+      validator: (_) => Validators(context).validateConfirmPassword(widget.confirmNewPasswordController!.text, widget.passwordController!.text),
       textCapitalization: TextCapitalization.sentences,
       autovalidateMode: AutovalidateMode.onUserInteraction,
     );

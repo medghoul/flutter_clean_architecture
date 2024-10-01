@@ -8,10 +8,8 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   bool isSupported(Locale locale) {
     return [
       'en',
-      'es',
       'it',
-      'fr',
-      'de',
+
     ].contains(locale.languageCode);
   }
 

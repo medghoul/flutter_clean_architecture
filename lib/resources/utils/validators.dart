@@ -1,22 +1,27 @@
-import 'package:clean_architecture/i18n/translations.dart';
 import 'package:clean_architecture/resources/constants/constants.dart';
+import 'package:flutter/material.dart';
 import 'package:validators/validators.dart';
+import 'package:clean_architecture/extensions/context_extension.dart';
 
 class Validators {
-  static String? validateEmail(String email) {
+  late final BuildContext context;
+
+  Validators(this.context);
+
+  String? validateEmail(String email) {
     if (email.isEmpty) {
-      return translation.textFieldValidations.textFormFieldEmpty;
+      return context.translate('textFieldValidations.textFormFieldEmpty');
     } else if (!isEmail(email)) {
-      return translation.textFieldValidations.wrongCharacters;
+      return context.translate('textFieldValidations.wrongCharacters');
     }
     return null;
   }
 
-  static String? validatePassword(String password) {
+  String? validatePassword(String password) {
     if (password.isEmpty) {
-      return translation.textFieldValidations.textFormFieldEmpty;
+      return context.translate('textFieldValidations.textFormFieldEmpty');
     } else if (password.length > ProjectConst.NORMAL_TEXTFORMFIELD_MAX_LENGTH) {
-      return translation.textFieldValidations.maxLenght.replaceAll(
+      return context.translate('textFieldValidations.maxLenght').replaceAll(
         RegExp(ProjectConst.PLACEHOLDER),
         ProjectConst.NORMAL_TEXTFORMFIELD_MAX_LENGTH.toString(),
       );
@@ -26,11 +31,11 @@ class Validators {
     return null;
   }
 
-  static String? validateOldPassword(String password) {
+  String? validateOldPassword(String password) {
     if (password.isEmpty) {
-      return translation.textFieldValidations.textFormFieldEmpty;
+      return context.translate('textFieldValidations.textFormFieldEmpty');
     } else if (password.length > ProjectConst.NORMAL_TEXTFORMFIELD_MAX_LENGTH) {
-      return translation.textFieldValidations.maxLenght.replaceAll(
+      return context.translate('textFieldValidations.maxLenght').replaceAll(
         RegExp(ProjectConst.PLACEHOLDER),
         ProjectConst.NORMAL_TEXTFORMFIELD_MAX_LENGTH.toString(),
       );
@@ -38,30 +43,30 @@ class Validators {
     return null;
   }
 
-  static String? validateConfirmPassword(
+  String? validateConfirmPassword(
       String password, String confirmPassword) {
     if (confirmPassword.isEmpty) {
-      return translation.textFieldValidations.textFormFieldEmpty;
+      return context.translate('textFieldValidations.textFormFieldEmpty');
     } else if (confirmPassword != password) {
-      return translation.textFieldValidations.passwordsDontMatch;
+      return context.translate('textFieldValidations.passwordsDontMatch');
     }
     return null;
   }
 
-  static String? validateConfirmEmail(String email, String confirmEmail) {
+  String? validateConfirmEmail(String email, String confirmEmail) {
     if (confirmEmail.isEmpty) {
-      return translation.textFieldValidations.textFormFieldEmpty;
+      return context.translate('textFieldValidations.textFormFieldEmpty');
     } else if (confirmEmail != email) {
-      return translation.textFieldValidations.emailsDontMatch;
+      return context.translate('textFieldValidations.emailsDontMatch');
     }
     return null;
   }
 
-  static String? validateSurname(String surname) {
+  String? validateSurname(String surname) {
     if (surname.isEmpty) {
-      return translation.textFieldValidations.textFormFieldEmpty;
+      return context.translate('textFieldValidations.textFormFieldEmpty');
     } else if (surname.length > ProjectConst.NORMAL_TEXTFORMFIELD_MAX_LENGTH) {
-      return translation.textFieldValidations.maxLenght.replaceAll(
+      return context.translate('textFieldValidations.maxLenght').replaceAll(
         RegExp(ProjectConst.PLACEHOLDER),
         ProjectConst.NORMAL_TEXTFORMFIELD_MAX_LENGTH.toString(),
       );
@@ -69,11 +74,11 @@ class Validators {
     return null;
   }
 
-  static String? validateName(String name) {
+  String? validateName(String name) {
     if (name.isEmpty) {
-      return translation.textFieldValidations.textFormFieldEmpty;
+      return context.translate('textFieldValidations.textFormFieldEmpty');
     } else if (name.length > ProjectConst.NORMAL_TEXTFORMFIELD_MAX_LENGTH) {
-      return translation.textFieldValidations.maxLenght.replaceAll(
+      return context.translate('textFieldValidations.maxLenght').replaceAll(
         RegExp(ProjectConst.PLACEHOLDER),
         ProjectConst.NORMAL_TEXTFORMFIELD_MAX_LENGTH.toString(),
       );
@@ -81,11 +86,11 @@ class Validators {
     return null;
   }
 
-  static String? validatePhoneNumber(String phoneNumber) {
+  String? validatePhoneNumber(String phoneNumber) {
     if (phoneNumber.isEmpty) {
-      return translation.textFieldValidations.textFormFieldEmpty;
+      return context.translate('textFieldValidations.textFormFieldEmpty');
     } else if (phoneNumber.length > ProjectConst.PHONE_NUMBER_TEXTFORMFIELD_MAX_LENGTH) {
-      return translation.textFieldValidations.maxLenght.replaceAll(
+      return context.translate('textFieldValidations.maxLenght').replaceAll(
         RegExp(ProjectConst.PLACEHOLDER),
         ProjectConst.PHONE_NUMBER_TEXTFORMFIELD_MAX_LENGTH.toString(),
       );
@@ -93,11 +98,11 @@ class Validators {
     return null;
   }
 
-  static String? validateVatNumber(String vatNumber) {
+  String? validateVatNumber(String vatNumber) {
     if (vatNumber.isEmpty) {
-      return translation.textFieldValidations.textFormFieldEmpty;
+      return context.translate('textFieldValidations.textFormFieldEmpty');
     } else if (vatNumber.length > ProjectConst.NORMAL_TEXTFORMFIELD_MAX_LENGTH) {
-      return translation.textFieldValidations.maxLenght.replaceAll(
+      return context.translate('textFieldValidations.maxLenght').replaceAll(
         RegExp(ProjectConst.PLACEHOLDER),
         ProjectConst.NORMAL_TEXTFORMFIELD_MAX_LENGTH.toString(),
       );
@@ -105,17 +110,15 @@ class Validators {
     return null;
   }
 
-  static String? validateFiscalCode(String fiscalCode) {
+  String? validateFiscalCode(String fiscalCode) {
     if (fiscalCode.isEmpty) {
-      return translation.textFieldValidations.textFormFieldEmpty;
+      return context.translate('textFieldValidations.textFormFieldEmpty');
     } else if (fiscalCode.length > ProjectConst.FISCAL_CODE_TEXTFORMFIELD_MAX_LENGTH) {
-      return translation.textFieldValidations.maxLenght.replaceAll(
+      return context.translate('textFieldValidations.maxLenght').replaceAll(
         RegExp(ProjectConst.PLACEHOLDER),
         ProjectConst.FISCAL_CODE_TEXTFORMFIELD_MAX_LENGTH.toString(),
       );
     }
     return null;
   }
-
-
 }

@@ -1,6 +1,6 @@
+import 'package:clean_architecture/extensions/context_extension.dart';
 import 'package:clean_architecture/features/login/presentation/cubits/login_cubit.dart';
 import 'package:clean_architecture/features/login/presentation/cubits/login_state.dart';
-import 'package:clean_architecture/i18n/translations.dart';
 import 'package:clean_architecture/resources/res.dart';
 import 'package:clean_architecture/routing/app_routes.dart';
 import 'package:clean_architecture/widgets/ui/custom_circular_progress_indicator.dart';
@@ -50,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
         return AlertDialog(
           //backgroundColor: Colors.grey,
           title: Text(
-            translation.loginPage.recoverPassword,
+            context.translate('loginPage.recoverPassword'),
             textAlign: TextAlign.center,
             style: const TextStyle(color: Colors.black),
           ),
@@ -58,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
             child: ListBody(
               children: <Widget>[
                 Text(
-                  translation.loginPage.insertEmailToRecoverPwd,
+                  context.translate('loginPage.insertEmailToRecoverPwd'),
                   textAlign: TextAlign.center,
                   style: const TextStyle(color: Colors.black),
                 ),
@@ -76,12 +76,12 @@ class _LoginPageState extends State<LoginPage> {
                     Navigator.of(context).pop();
                     await cubit.onForgotPwdUserClick();
                   },
-                  child: Text(translation.loginPage.recover),
+                  child: Text(context.translate('loginPage.recover')),
                 ),
                 const SizedBox(height: Dimension.paddingS),
                 TextButton(
                   child: Text(
-                    translation.generic.cancel,
+                    context.translate('generic.cancel'),
                     style: const TextStyle(
                       color: Colors.black,
                       decoration: TextDecoration.none,
@@ -121,13 +121,13 @@ class _LoginPageState extends State<LoginPage> {
                       child: ListView(
                         children: [
                           Text(
-                            translation.generic.welcome,
+                            context.translate('generic.welcome'),
                             textAlign: TextAlign.start,
                             style: Theme.of(context).textTheme.headlineLarge,
                           ),
                           const SizedBox(height: Dimension.padding),
                           Text(
-                            translation.loginPage.email,
+                            context.translate('loginPage.email'),
                             textAlign: TextAlign.start,
                             style: Theme.of(context).textTheme.bodyMedium,
                           ),
@@ -136,14 +136,14 @@ class _LoginPageState extends State<LoginPage> {
                             onChanged: cubit.setEmail),
                           const SizedBox(height: Dimension.paddingM),
                           Text(
-                            translation.loginPage.password,
+                            context.translate('loginPage.password'),
                             textAlign: TextAlign.start,
                             style: Theme.of(context).textTheme.bodyMedium,
                           ),
                           const SizedBox(height: Dimension.paddingS),
                           PasswordTextFormField(
                             state.password,
-                            hintText: translation.textFormFieldHints.password,
+                            hintText: context.translate('textFormFieldHints.password'),
                             obscureText: state.showPassword,
                             suffixIcon: IconButton(
                               icon: Icon(
@@ -209,7 +209,7 @@ class _LoginPageState extends State<LoginPage> {
                                 width: MediaQuery.of(context).size.width,
                                 child: ElevatedButton(
                                   onPressed: cubit.onLoginClick,
-                                  child: Text(translation.generic.login),
+                                  child: Text(context.translate('generic.login')),
                                 ),
                               ),
                               const SizedBox(
@@ -228,7 +228,7 @@ class _LoginPageState extends State<LoginPage> {
                                         children: <InlineSpan>[
                                           TextSpan(
                                             text:
-                                                '${translation.loginPage.dontHaveAnAccount} ',
+                                                '${context.translate('loginPage.dontHaveAnAccount')} ',
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .bodyMedium
@@ -237,8 +237,7 @@ class _LoginPageState extends State<LoginPage> {
                                                 ),
                                           ),
                                           TextSpan(
-                                            text: translation
-                                                .loginPage.signupHere,
+                                            text: context.translate('loginPage.signupHere'),
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .bodyMedium

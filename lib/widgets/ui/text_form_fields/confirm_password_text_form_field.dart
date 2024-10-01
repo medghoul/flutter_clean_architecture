@@ -1,4 +1,3 @@
-import 'package:clean_architecture/i18n/translations.dart';
 import 'package:clean_architecture/resources/utils/validators.dart';
 import 'package:clean_architecture/widgets/ui/base_theme.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +33,7 @@ class _ConfirmPwdTextFormFieldState extends State<ConfirmPwdTextFormField> {
         hintText: 'Conferma password',
         suffixIcon: widget.suffixIcon,
       ),
-      validator: (_) => Validators.validateConfirmPassword(widget.confirmPasswordController!.text, widget.passwordController!.text),
+      validator: (_) => Validators(context).validateConfirmPassword(widget.confirmPasswordController!.text, widget.passwordController!.text),
       textCapitalization: TextCapitalization.sentences,
       autovalidateMode: AutovalidateMode.onUserInteraction,
     );

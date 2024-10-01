@@ -31,7 +31,7 @@ class _ConfirmEmailTextFormFieldState extends State<ConfirmEmailTextFormField> {
       obscureText: widget.obscureText ?? false,
       decoration:
           MyAppTheme.secondaryInputFieldStyle.copyWith(hintText: 'Conferma email', suffixIcon: widget.suffixIcon),
-      validator: (_) => Validators.validateConfirmEmail(widget.confirmEmailController!.text, widget.emailController!.text),
+      validator: (_) => Validators(context).validateConfirmEmail(widget.confirmEmailController!.text, widget.emailController!.text),
       textCapitalization: TextCapitalization.sentences,
       autovalidateMode: AutovalidateMode.onUserInteraction,
     );

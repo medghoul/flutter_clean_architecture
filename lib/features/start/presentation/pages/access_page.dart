@@ -1,4 +1,4 @@
-import 'package:clean_architecture/i18n/translations.dart';
+import 'package:clean_architecture/extensions/context_extension.dart';
 import 'package:clean_architecture/resources/res.dart';
 import 'package:clean_architecture/routing/app_routes.dart';
 import 'package:flutter/material.dart';
@@ -87,7 +87,7 @@ class _AccessPageState extends State<AccessPage> with TickerProviderStateMixin {
                 Opacity(
                   opacity: controller.value,
                   child: Text(
-                    translation.accessPage.letsStart,
+                    context.translate('accessPage.letsStart'),
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.headlineLarge!.copyWith(
                           fontWeight: FontWeight.w600,
@@ -117,7 +117,7 @@ class _AccessPageState extends State<AccessPage> with TickerProviderStateMixin {
                         onPressed: () {
                           GoRouter.of(context).pushNamed(AppRoute.signIn.name);
                         },
-                        child: Text(translation.accessPage.access),
+                        child: Text(context.translate('accessPage.access')),
                       ),
                       const SizedBox(
                         height: Dimension.padding,
@@ -126,7 +126,7 @@ class _AccessPageState extends State<AccessPage> with TickerProviderStateMixin {
                         onPressed: () {
                           GoRouter.of(context).pushNamed(AppRoute.signUp.name);
                         },
-                        child: Text(translation.accessPage.signup),
+                      child: Text(context.translate('generic.access')),
                       ),
                       const SizedBox(
                         height: Dimension.paddingXXL,

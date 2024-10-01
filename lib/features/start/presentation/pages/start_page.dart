@@ -1,5 +1,5 @@
 
-import 'package:clean_architecture/i18n/translations.dart';
+import 'package:clean_architecture/extensions/context_extension.dart';
 import 'package:clean_architecture/resources/res.dart';
 import 'package:clean_architecture/routing/app_routes.dart';
 import 'package:clean_architecture/widgets/buttons/custom_outlined_button.dart';
@@ -79,7 +79,7 @@ class _StartPageState extends State<StartPage> with TickerProviderStateMixin {
                 Opacity(
                   opacity: controller.value,
                   child: Text(
-                    translation.startPage.title,
+                    context.translate('startPage.title'),
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                       fontWeight: FontWeight.w600,
@@ -93,7 +93,7 @@ class _StartPageState extends State<StartPage> with TickerProviderStateMixin {
                 Opacity(
                   opacity: controller.value,
                   child: Text(
-                    translation.startPage.caption,
+                    context.translate('startPage.caption'),
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.titleLarge!.copyWith(
                       fontWeight: FontWeight.w400,
@@ -119,7 +119,7 @@ class _StartPageState extends State<StartPage> with TickerProviderStateMixin {
                         onPressed: () {
                           context.goNamed(AppRoute.onboarding.name);
                         },
-                        text: translation.startPage.start,
+                        text: context.translate('startPage.start'),
                       ),
                       const SizedBox(
                         height: Dimension.paddingXXL,

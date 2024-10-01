@@ -1,4 +1,3 @@
-import 'package:clean_architecture/i18n/translations.dart';
 import 'package:clean_architecture/resources/constants/constants.dart';
 import 'package:clean_architecture/resources/utils/validators.dart';
 import 'package:clean_architecture/widgets/ui/base_theme.dart';
@@ -56,7 +55,7 @@ class _EmailTextFormFieldState extends State<EmailTextFormField> {
       },
       readOnly: widget.readOnly,
       controller: widget.controller,
-      validator: (_) => Validators.validateEmail(widget.controller!.text),
+      validator: (_) => Validators(context).validateEmail(widget.controller!.text),
       keyboardType: TextInputType.emailAddress,
       focusNode: emailFocus,
       autovalidateMode: AutovalidateMode.onUserInteraction,
