@@ -8,15 +8,20 @@ class AppLocalizations {
   AppLocalizations(this.locale);
   final Locale locale;
 
+  // Static method to retrieve the AppLocalizations instance
+  // from the nearest BuildContext.
   static AppLocalizations? of(BuildContext context) {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  // Change this line
-  static const LocalizationsDelegate<AppLocalizations> delegate = AppLocalizationsDelegate();
+  // Static constant that holds the delegate for this localization.
+  static const AppLocalizationsDelegate delegate =
+      AppLocalizationsDelegate();
 
+  // Map to store the localized strings.
   late Map<String, String> _localizedStrings;
 
+  // Method to load the localized strings from JSON files.
   Future<void> load() async {
     final jsonString =
         await rootBundle.loadString('locales/${locale.languageCode}.json');
@@ -28,7 +33,9 @@ class AppLocalizations {
     });
   }
 
+  // Method to translate a given key into the corresponding localized string.
   String? translate(String key) => _localizedStrings[key];
 
+  // Getter method to check if the current locale is English.
   bool get isEnLocale => locale.languageCode == 'en';
 }
