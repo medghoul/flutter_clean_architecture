@@ -1,5 +1,5 @@
-import 'package:clean_architecture/resources/res.dart';
-import 'package:clean_architecture/resources/utils/validators.dart';
+import 'package:clean_architecture/core/resources/res.dart';
+import 'package:clean_architecture/core/resources/utils/validators.dart';
 import 'package:clean_architecture/widgets/ui/base_theme.dart';
 import 'package:flutter/material.dart';
 

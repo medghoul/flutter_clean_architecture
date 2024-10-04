@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:clean_architecture/resources/res.dart';
+import 'package:clean_architecture/core/resources/res.dart';
 
 class CustomTextFormField extends StatelessWidget {
   final TextEditingController? controller;

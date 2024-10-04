@@ -1,5 +1,5 @@
 import 'package:clean_architecture/extensions/context_extension.dart';
-import 'package:clean_architecture/resources/utils/validators.dart';
+import 'package:clean_architecture/core/resources/utils/validators.dart';
 import 'package:flutter/material.dart';
 
 class ConfirmNewPwdTextFormField extends StatefulWidget {

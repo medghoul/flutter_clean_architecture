@@ -1,5 +1,5 @@
 import 'package:clean_architecture/core/theme/text_theme.dart';
-import 'package:clean_architecture/resources/constants/colors.dart';
+import 'package:clean_architecture/core/resources/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class AppTheme {

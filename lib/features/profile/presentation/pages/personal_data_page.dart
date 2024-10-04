@@ -1,7 +1,7 @@
 import 'package:clean_architecture/extensions/context_extension.dart';
 import 'package:clean_architecture/features/profile/presentation/cubits/personal_data_cubit/personal_data_cubit.dart';
 import 'package:clean_architecture/features/profile/presentation/cubits/personal_data_cubit/personal_data_state.dart';
-import 'package:clean_architecture/resources/res.dart';
+import 'package:clean_architecture/core/resources/res.dart';
 import 'package:clean_architecture/widgets/ui/app_bar_title.dart';
 import 'package:clean_architecture/widgets/ui/custom_circular_progress_indicator.dart';
 import 'package:clean_architecture/widgets/ui/text_form_fields/email_text_form_field.dart';

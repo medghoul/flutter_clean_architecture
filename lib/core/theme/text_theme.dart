@@ -1,4 +1,4 @@
-import 'package:clean_architecture/resources/constants/colors.dart';
+import 'package:clean_architecture/core/resources/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class AppTextTheme {

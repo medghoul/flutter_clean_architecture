@@ -1,7 +1,7 @@
 import 'package:clean_architecture/extensions/context_extension.dart';
 import 'package:clean_architecture/features/profile/presentation/cubits/profile_page_cubit/profile_page_cubit.dart';
 import 'package:clean_architecture/features/profile/presentation/cubits/profile_page_cubit/profile_page_state.dart';
-import 'package:clean_architecture/resources/res.dart';
+import 'package:clean_architecture/core/resources/res.dart';
 import 'package:clean_architecture/routing/app_routes.dart';
 import 'package:clean_architecture/widgets/layout/custom_scaffold.dart';
 import 'package:clean_architecture/widgets/ui/custom_circular_progress_indicator.dart';

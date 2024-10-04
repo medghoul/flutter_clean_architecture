@@ -1,6 +1,6 @@
 import 'package:clean_architecture/extensions/context_extension.dart';
 import 'package:clean_architecture/features/profile/presentation/cubits/change_pwd_cubit/change_pwd_cubit.dart';
-import 'package:clean_architecture/resources/res.dart';
+import 'package:clean_architecture/core/resources/res.dart';
 import 'package:clean_architecture/widgets/ui/app_bar_title.dart';
 import 'package:clean_architecture/widgets/ui/text_form_fields/confirm_new_pwd_text_form_field.dart';
 import 'package:clean_architecture/widgets/ui/text_form_fields/old_pwd_text_form_field.dart';

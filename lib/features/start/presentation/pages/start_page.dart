@@ -1,6 +1,7 @@
 
 import 'package:clean_architecture/extensions/context_extension.dart';
-import 'package:clean_architecture/resources/res.dart';
+import 'package:clean_architecture/i18n/lang_keys.dart';
+import 'package:clean_architecture/core/resources/res.dart';
 import 'package:clean_architecture/routing/app_routes.dart';
 import 'package:clean_architecture/widgets/buttons/custom_outlined_button.dart';
 import 'package:flutter/material.dart';
@@ -119,7 +120,7 @@ class _StartPageState extends State<StartPage> with TickerProviderStateMixin {
                         onPressed: () {
                           context.goNamed(AppRoute.onboarding.name);
                         },
-                        text: context.translate('startPage.start'),
+                        text: context.translate(LangKeys.start),
                       ),
                       const SizedBox(
                         height: Dimension.paddingXXL,

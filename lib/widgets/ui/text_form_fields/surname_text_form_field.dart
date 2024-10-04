@@ -1,6 +1,7 @@
 
 import 'package:clean_architecture/extensions/context_extension.dart';
-import 'package:clean_architecture/resources/utils/validators.dart';
+import 'package:clean_architecture/i18n/lang_keys.dart';
+import 'package:clean_architecture/core/resources/utils/validators.dart';
 import 'package:clean_architecture/widgets/ui/base_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -33,7 +34,7 @@ class _SurnameTextFormFieldState extends State<SurnameTextFormField> {
       focusNode: surnameFocus,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       decoration: MyAppTheme.secondaryInputFieldStyle.copyWith(
-        hintText: context.translate('textFormFieldHints.surname'),
+        hintText: context.translate(LangKeys.surname),
         suffixIcon: const Icon(Icons.person),
       ),
     );
