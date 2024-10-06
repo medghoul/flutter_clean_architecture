@@ -80,7 +80,7 @@ class _StartPageState extends State<StartPage> with TickerProviderStateMixin {
                 Opacity(
                   opacity: controller.value,
                   child: Text(
-                    context.translate('startPage.title'),
+                    context.translate(LangKeys.title),
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                       fontWeight: FontWeight.w600,
@@ -94,7 +94,7 @@ class _StartPageState extends State<StartPage> with TickerProviderStateMixin {
                 Opacity(
                   opacity: controller.value,
                   child: Text(
-                    context.translate('startPage.caption'),
+                    context.translate(LangKeys.caption),
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.titleLarge!.copyWith(
                       fontWeight: FontWeight.w400,
@@ -117,6 +117,7 @@ class _StartPageState extends State<StartPage> with TickerProviderStateMixin {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       CustomOutlinedButton(
+                        backgroundColor: AppColors.tertiary,
                         onPressed: () {
                           context.goNamed(AppRoute.onboarding.name);
                         },

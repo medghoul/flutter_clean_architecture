@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:clean_architecture/core/config/firebase_config.dart';
 import 'package:clean_architecture/core/shared_preferences/shared_pref.dart';
 import 'package:clean_architecture/core/theme/app_theme.dart';
 import 'package:clean_architecture/i18n/app_localizations_setup.dart';
@@ -11,7 +14,9 @@ import 'package:clean_architecture/routing/app_router.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SharedPref().instantiatePreferences();
-  await Firebase.initializeApp();
+
+  await FirebaseConfig.initialize();
+
   runApp(const MyApp());
 }
 
@@ -30,7 +35,8 @@ class MyApp extends StatelessWidget {
         routerConfig: appRouter.router,
         localizationsDelegates: AppLocalizationsSetup.localizationsDelegates,
         supportedLocales: AppLocalizationsSetup.supportedLocales,
-        localeResolutionCallback: AppLocalizationsSetup.localeResolutionCallback,
+        localeResolutionCallback:
+            AppLocalizationsSetup.localeResolutionCallback,
         title: 'Ideal Architecture',
         theme: AppTheme.lightTheme,
         darkTheme: AppTheme.darkTheme,

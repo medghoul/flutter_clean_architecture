@@ -54,6 +54,8 @@ class AppColors {
 
   static const lightGrey = Color(0xFFF5F5F5);
 
+  static const black = Color(0xFF000000);
+
 
   static MaterialColor get primaryMaterialColor => const MaterialColor(
     _primaryColorInt,

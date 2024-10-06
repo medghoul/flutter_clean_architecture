@@ -1,6 +1,8 @@
 import 'package:clean_architecture/extensions/context_extension.dart';
 import 'package:clean_architecture/core/resources/res.dart';
+import 'package:clean_architecture/i18n/lang_keys.dart';
 import 'package:clean_architecture/routing/app_routes.dart';
+import 'package:clean_architecture/widgets/buttons/custom_outlined_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -87,7 +89,7 @@ class _AccessPageState extends State<AccessPage> with TickerProviderStateMixin {
                 Opacity(
                   opacity: controller.value,
                   child: Text(
-                    context.translate('accessPage.letsStart'),
+                    context.translate(LangKeys.letsStart),
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.headlineLarge!.copyWith(
                           fontWeight: FontWeight.w600,
@@ -108,25 +110,22 @@ class _AccessPageState extends State<AccessPage> with TickerProviderStateMixin {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      ElevatedButton(
-                       style: Theme.of(context).elevatedButtonTheme.style!.copyWith(
-                              backgroundColor: const WidgetStatePropertyAll(
-                                AppColors.tertiary,
-                              ),
-                            ),
+                      CustomOutlinedButton(
+                       backgroundColor: AppColors.tertiary,
                         onPressed: () {
                           GoRouter.of(context).pushNamed(AppRoute.signIn.name);
                         },
-                        child: Text(context.translate('accessPage.access')),
+                        text: context.translate(LangKeys.signup),
                       ),
                       const SizedBox(
                         height: Dimension.padding,
                       ),
-                      OutlinedButton(
+                      CustomOutlinedButton(
                         onPressed: () {
                           GoRouter.of(context).pushNamed(AppRoute.signUp.name);
                         },
-                      child: Text(context.translate('generic.access')),
+                        textColor: AppColors.black,
+                        text: context.translate(LangKeys.access),
                       ),
                       const SizedBox(
                         height: Dimension.paddingXXL,

@@ -1,6 +1,8 @@
 import 'package:clean_architecture/extensions/context_extension.dart';
 import 'package:clean_architecture/core/resources/res.dart';
+import 'package:clean_architecture/i18n/lang_keys.dart';
 import 'package:clean_architecture/routing/app_routes.dart';
+import 'package:clean_architecture/widgets/buttons/custom_outlined_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -66,16 +68,14 @@ class _OnboardingPageState extends State<OnboardingPage> {
             const Spacer(),
             _buildPageIndicator(),
             const SizedBox(height: Dimension.paddingM),
-            ElevatedButton(
-              style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
-                backgroundColor: const MaterialStatePropertyAll(AppColors.tertiary),
-              ),
+            CustomOutlinedButton(
+              backgroundColor: AppColors.tertiary,
               onPressed: _handleContinue,
-              child: Text(context.translate('generic.continueTxt')),
+              text: context.translate(LangKeys.continueTxt),
             ),
             TextButton(
               onPressed: _navigateToAccess,
-              child: Text(context.translate('generic.skip')),
+              child: Text(context.translate(LangKeys.skip)),
             ),
           ],
         ),

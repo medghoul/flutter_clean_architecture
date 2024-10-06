@@ -7,6 +7,7 @@ class CustomOutlinedButton extends StatefulWidget {
   final VoidCallback? onPressed;
   final Color? backgroundColor;
   final Color? textColor;
+  final Color? borderColor;
   final bool expand;
   final bool isLoading;
 
@@ -16,6 +17,7 @@ class CustomOutlinedButton extends StatefulWidget {
     required this.onPressed,
     this.backgroundColor,
     this.textColor,
+    this.borderColor,
     this.expand = false,
     this.isLoading = false,
   });
@@ -33,13 +35,17 @@ class _CustomOutlinedButtonState extends State<CustomOutlinedButton> {
       child: OutlinedButton(
         onPressed: widget.isLoading ? null : widget.onPressed,
         style: OutlinedButton.styleFrom(
-            disabledBackgroundColor: AppColors.lightGrey,
-            foregroundColor: widget.textColor ?? AppColors.white,
-            backgroundColor: widget.backgroundColor ?? AppColors.tertiary,
-            side: const BorderSide(style: BorderStyle.none),
-            elevation: 0),
+          disabledBackgroundColor: AppColors.lightGrey,
+          foregroundColor: widget.textColor ?? Colors.black,
+          backgroundColor: widget.backgroundColor ?? Colors.transparent,
+          side: BorderSide(
+            color: widget.borderColor ?? Colors.grey,
+            width: 1.0,
+          ),
+          elevation: 0,
+        ),
         child: SizedBox(
-          height: 35.0, // Fixed height to accommodate CircularProgressIndicator
+          height: 35.0,
           child: Center(
             child: widget.isLoading
                 ? const SizedBox(
@@ -56,7 +62,7 @@ class _CustomOutlinedButtonState extends State<CustomOutlinedButton> {
                     style: Theme.of(context)
                         .textTheme
                         .labelLarge
-                        ?.copyWith(color: AppColors.white),
+                        ?.copyWith(color: widget.textColor ?? AppColors.white),
                   ),
           ),
         ),
