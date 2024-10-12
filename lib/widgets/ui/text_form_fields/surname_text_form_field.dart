@@ -1,5 +1,5 @@
 
-import 'package:clean_architecture/extensions/context_extension.dart';
+import 'package:clean_architecture/core/extensions/context_extension.dart';
 import 'package:clean_architecture/i18n/lang_keys.dart';
 import 'package:clean_architecture/core/resources/utils/validators.dart';
 import 'package:clean_architecture/widgets/ui/base_theme.dart';

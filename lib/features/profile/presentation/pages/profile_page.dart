@@ -1,4 +1,4 @@
-import 'package:clean_architecture/extensions/context_extension.dart';
+import 'package:clean_architecture/core/extensions/context_extension.dart';
 import 'package:clean_architecture/features/profile/presentation/cubits/profile_page_cubit/profile_page_cubit.dart';
 import 'package:clean_architecture/features/profile/presentation/cubits/profile_page_cubit/profile_page_state.dart';
 import 'package:clean_architecture/core/resources/res.dart';
@@ -22,7 +22,7 @@ class ProfilePage extends StatelessWidget {
   Widget _aboutMeSection(ProfilePageCubit cubit, ProfilePageState state, BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        bottom: Dimension.paddingXS,
+        bottom: AppDimensions.paddingXS,
       ),
       child: Stack(
         alignment: Alignment.topRight,
@@ -45,7 +45,7 @@ class ProfilePage extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              const SizedBox(height: Dimension.paddingS),
+              const SizedBox(height: AppDimensions.paddingS),
               Text(
                 'Email',
                 style: Theme.of(context).textTheme.bodySmall!.copyWith(
@@ -60,7 +60,7 @@ class ProfilePage extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              const SizedBox(height: Dimension.paddingS),
+              const SizedBox(height: AppDimensions.paddingS),
             ],
           ),
           IconButton(
@@ -96,7 +96,7 @@ class ProfilePage extends StatelessWidget {
             ],
           ),
           Padding(
-            padding: const EdgeInsets.only(bottom: Dimension.padding),
+            padding: const EdgeInsets.only(bottom: AppDimensions.paddingM),
             child: Align(
               alignment: Alignment.bottomLeft,
               child: ListTile(
@@ -127,7 +127,7 @@ class ProfilePage extends StatelessWidget {
               children: [
                 AppBarTitle(title: context.translate('profilePage.myDatas')),
                 const SizedBox(
-                  height: Dimension.padding,
+                  height: AppDimensions.paddingM,
                 ),
                 _aboutMeSection(cubit, state, context),
               ],
@@ -139,31 +139,31 @@ class ProfilePage extends StatelessWidget {
                   child: Stack(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(Dimension.padding24),
+                        padding: const EdgeInsets.all(AppDimensions.padding21),
                         child: Column(
                           children: [
                             ListTile(
                               onTap: () => GoRouter.of(context).pushNamed(AppRoute.settings.name),
                               trailing: const Icon(
                                 Icons.chevron_right_rounded,
-                                color: AppColors.primaryColor650,
+                                color: AppColors.primary,
                               ),
                               leading: const Icon(
                                 Icons.settings_rounded,
-                                color: AppColors.primaryColor650,
+                                color: AppColors.primary,
                               ),
                               title: Text(context.translate('profilePage.settings')),
                             ),
-                            const SizedBox(height: Dimension.padding),
+                            const SizedBox(height: AppDimensions.paddingM),
                             ListTile(
                               onTap: () => GoRouter.of(context).pushNamed(AppRoute.support.name),
                               trailing: const Icon(
                                 Icons.chevron_right_rounded,
-                                color: AppColors.primaryColor650,
+                                color: AppColors.primary,
                               ),
                               leading: const Icon(
                                 Icons.help_outline,
-                                color: AppColors.primaryColor650,
+                                color: AppColors.primary,
                               ),
                               title: Text(context.translate('profilePage.support')),
                             ),
@@ -172,11 +172,11 @@ class ProfilePage extends StatelessWidget {
                               onTap: () async => await cubit.logout(context),
                               trailing: const Icon(
                                 Icons.chevron_right_rounded,
-                                color: AppColors.primaryColor650,
+                                color: AppColors.primary,
                               ),
                               leading: const Icon(
                                 Icons.logout_rounded,
-                                color: AppColors.primaryColor650,
+                                color: AppColors.primary,
                               ),
                               title: Text(context.translate('profilePage.logout')),
                             ),

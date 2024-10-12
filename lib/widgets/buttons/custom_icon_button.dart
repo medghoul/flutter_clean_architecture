@@ -28,7 +28,7 @@ class CustomIconButton extends StatelessWidget {
               ),
             )
           : Icon(icon),
-      color: color ?? AppColors.blue,
+      color: color ?? AppColors.info,
     );
   }
 }

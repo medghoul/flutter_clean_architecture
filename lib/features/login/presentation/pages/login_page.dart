@@ -1,4 +1,4 @@
-import 'package:clean_architecture/extensions/context_extension.dart';
+import 'package:clean_architecture/core/extensions/context_extension.dart';
 import 'package:clean_architecture/features/login/presentation/cubits/login_cubit.dart';
 import 'package:clean_architecture/features/login/presentation/cubits/login_state.dart';
 import 'package:clean_architecture/core/resources/res.dart';
@@ -6,7 +6,6 @@ import 'package:clean_architecture/routing/app_routes.dart';
 import 'package:clean_architecture/widgets/ui/custom_circular_progress_indicator.dart';
 import 'package:clean_architecture/widgets/ui/text_form_fields/email_text_form_field.dart';
 import 'package:clean_architecture/widgets/ui/text_form_fields/password_text_form_field.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -19,7 +18,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  bool _keyboardVisible = false;
+  final bool _keyboardVisible = false;
 
   @override
   @protected
@@ -62,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                   textAlign: TextAlign.center,
                   style: const TextStyle(color: Colors.black),
                 ),
-                const SizedBox(height: Dimension.padding),
+                const SizedBox(height: AppDimensions.paddingM),
                 Form(
                   key: cubit.state.forgotPwdFormKey,
                   child: EmailTextFormField(
@@ -70,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
                     controller: cubit.state.email,
                   ),
                 ),
-                const SizedBox(height: Dimension.paddingM),
+                const SizedBox(height: AppDimensions.paddingM),
                 ElevatedButton(
                   onPressed: () async {
                     Navigator.of(context).pop();
@@ -78,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                   },
                   child: Text(context.translate('loginPage.recover')),
                 ),
-                const SizedBox(height: Dimension.paddingS),
+                const SizedBox(height: AppDimensions.paddingS),
                 TextButton(
                   child: Text(
                     context.translate('generic.cancel'),
@@ -117,7 +116,7 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: Dimension.padding),
+                          horizontal: AppDimensions.paddingM),
                       child: ListView(
                         children: [
                           Text(
@@ -125,22 +124,22 @@ class _LoginPageState extends State<LoginPage> {
                             textAlign: TextAlign.start,
                             style: Theme.of(context).textTheme.headlineLarge,
                           ),
-                          const SizedBox(height: Dimension.padding),
+                          const SizedBox(height: AppDimensions.paddingM),
                           Text(
                             context.translate('loginPage.email'),
                             textAlign: TextAlign.start,
                             style: Theme.of(context).textTheme.bodyMedium,
                           ),
-                          const SizedBox(height: Dimension.paddingS),
+                          const SizedBox(height: AppDimensions.paddingS),
                           EmailTextFormField(controller:state.email,
                             onChanged: cubit.setEmail),
-                          const SizedBox(height: Dimension.paddingM),
+                          const SizedBox(height: AppDimensions.paddingM),
                           Text(
                             context.translate('loginPage.password'),
                             textAlign: TextAlign.start,
                             style: Theme.of(context).textTheme.bodyMedium,
                           ),
-                          const SizedBox(height: Dimension.paddingS),
+                          const SizedBox(height: AppDimensions.paddingS),
                           PasswordTextFormField(
                             state.password,
                             hintText: context.translate('textFormFieldHints.password'),
@@ -154,7 +153,7 @@ class _LoginPageState extends State<LoginPage> {
                               onPressed: cubit.toggleShowPassword,
                             ),
                           ),
-                          const SizedBox(height: Dimension.paddingXS),
+                          const SizedBox(height: AppDimensions.paddingXS),
                           Align(
                             alignment: Alignment.centerRight,
                             child: TextButton(
@@ -178,7 +177,7 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                           ),
-                          const SizedBox(height: Dimension.paddingM),
+                          const SizedBox(height: AppDimensions.paddingM),
                         ],
                       ),
                     ),
@@ -189,7 +188,7 @@ class _LoginPageState extends State<LoginPage> {
                             ? CrossFadeState.showSecond
                             : CrossFadeState.showFirst,
                         duration: const Duration(
-                          milliseconds: Dimension.standardAnimationDuration,
+                          milliseconds: AppDimensions.standardAnimationDuration,
                         ),
                         secondChild: const SizedBox(
                           width: double.infinity,
@@ -197,13 +196,13 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         firstChild: Padding(
                           padding: const EdgeInsets.symmetric(
-                            horizontal: Dimension.padding,
+                            horizontal: AppDimensions.paddingM,
                           ),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               const SizedBox(
-                                height: Dimension.padding,
+                                height: AppDimensions.paddingM,
                               ),
                               SizedBox(
                                 width: MediaQuery.of(context).size.width,
@@ -213,12 +212,12 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                               ),
                               const SizedBox(
-                                height: Dimension.padding,
+                                height: AppDimensions.paddingM,
                               ),
                               Column(
                                 children: [
                                   const SizedBox(
-                                    height: Dimension.paddingM,
+                                    height: AppDimensions.paddingM,
                                   ),
                                   TextButton(
                                     onPressed: () =>
@@ -253,7 +252,7 @@ class _LoginPageState extends State<LoginPage> {
                                     ),
                                   ),
                                   const SizedBox(
-                                    height: Dimension.padding,
+                                    height: AppDimensions.paddingM,
                                   ),
                                 ],
                               ),

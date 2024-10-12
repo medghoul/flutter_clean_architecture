@@ -1,4 +1,4 @@
-import 'package:clean_architecture/extensions/context_extension.dart';
+import 'package:clean_architecture/core/extensions/context_extension.dart';
 import 'package:clean_architecture/core/resources/res.dart';
 import 'package:clean_architecture/i18n/lang_keys.dart';
 import 'package:clean_architecture/routing/app_routes.dart';
@@ -41,7 +41,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
         leading: const SizedBox(),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(Dimension.padding24),
+        padding: const EdgeInsets.all(AppDimensions.padding21),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -57,7 +57,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 fontWeight: FontWeight.w600,
               ),
             ),
-            const SizedBox(height: Dimension.paddingS),
+            const SizedBox(height: AppDimensions.paddingS),
             Text(
               context.translate(tutorialModels[index].descriptionKey),
               textAlign: TextAlign.center,
@@ -67,7 +67,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
             ),
             const Spacer(),
             _buildPageIndicator(),
-            const SizedBox(height: Dimension.paddingM),
+            const SizedBox(height: AppDimensions.paddingM),
             CustomOutlinedButton(
               backgroundColor: AppColors.tertiary,
               onPressed: _handleContinue,
@@ -91,7 +91,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
           itemCount: tutorialModels.length,
-          separatorBuilder: (context, _) => const SizedBox(width: Dimension.padding),
+          separatorBuilder: (context, _) => const SizedBox(width: AppDimensions.paddingM),
           itemBuilder: (context, i) => _buildIndicatorDot(i),
         ),
       ),
@@ -111,8 +111,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
           width: index == i ? 19 : 17,
           decoration: BoxDecoration(
             color: index == i
-                ? AppColors.primaryColor650
-                : AppColors.primaryColor650.withOpacity(0.4),
+                ? AppColors.primary
+                : AppColors.primary.withOpacity(0.4),
             borderRadius: BorderRadius.circular(19),
           ),
         ),

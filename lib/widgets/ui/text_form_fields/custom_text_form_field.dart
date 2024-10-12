@@ -45,7 +45,7 @@ class CustomTextFormField extends StatelessWidget {
         hintText: hintText,
         suffixIcon: suffixIcon,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(Dimension.textFormFieldRadius),
+          borderRadius: BorderRadius.circular(AppDimensions.borderRadiusM),
         ),
       ),
     );

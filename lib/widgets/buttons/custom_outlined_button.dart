@@ -1,4 +1,4 @@
-import 'package:clean_architecture/extensions/string_extensions.dart';
+import 'package:clean_architecture/core/extensions/string_extensions.dart';
 import 'package:clean_architecture/core/resources/constants/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -35,7 +35,7 @@ class _CustomOutlinedButtonState extends State<CustomOutlinedButton> {
       child: OutlinedButton(
         onPressed: widget.isLoading ? null : widget.onPressed,
         style: OutlinedButton.styleFrom(
-          disabledBackgroundColor: AppColors.lightGrey,
+          disabledBackgroundColor: AppColors.lightGray,
           foregroundColor: widget.textColor ?? Colors.black,
           backgroundColor: widget.backgroundColor ?? Colors.transparent,
           side: BorderSide(
@@ -53,7 +53,7 @@ class _CustomOutlinedButtonState extends State<CustomOutlinedButton> {
                     height: 25.0, 
                     child: CircularProgressIndicator(
                       valueColor: AlwaysStoppedAnimation<Color>(
-                        AppColors.darkGrey,
+                        AppColors.darkGray,
                       ),
                     ),
                   )

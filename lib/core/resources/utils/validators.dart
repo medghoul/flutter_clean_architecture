@@ -1,7 +1,7 @@
 import 'package:clean_architecture/core/resources/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:validators/validators.dart';
-import 'package:clean_architecture/extensions/context_extension.dart';
+import 'package:clean_architecture/core/extensions/context_extension.dart';
 
 class Validators {
   late final BuildContext context;

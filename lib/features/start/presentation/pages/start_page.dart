@@ -1,5 +1,5 @@
 
-import 'package:clean_architecture/extensions/context_extension.dart';
+import 'package:clean_architecture/core/extensions/context_extension.dart';
 import 'package:clean_architecture/i18n/lang_keys.dart';
 import 'package:clean_architecture/core/resources/res.dart';
 import 'package:clean_architecture/routing/app_routes.dart';
@@ -57,11 +57,11 @@ class _StartPageState extends State<StartPage> with TickerProviderStateMixin {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       extendBodyBehindAppBar: true,
-      backgroundColor: AppColors.primaryColor,
+      backgroundColor: AppColors.primary,
       body: Stack(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: Dimension.paddingM),
+            padding: const EdgeInsets.symmetric(horizontal: AppDimensions.paddingM),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -75,7 +75,7 @@ class _StartPageState extends State<StartPage> with TickerProviderStateMixin {
                   ),
                 ),
                 const SizedBox(
-                  height: Dimension.padding,
+                  height: AppDimensions.paddingM,
                 ),
                 Opacity(
                   opacity: controller.value,
@@ -84,12 +84,12 @@ class _StartPageState extends State<StartPage> with TickerProviderStateMixin {
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                       fontWeight: FontWeight.w600,
-                      color: AppColors.primaryColor50,
+                      color: AppColors.primary,
                     ),
                   ),
                 ),
                 const SizedBox(
-                  height: Dimension.paddingS,
+                  height: AppDimensions.paddingS,
                 ),
                 Opacity(
                   opacity: controller.value,
@@ -98,7 +98,7 @@ class _StartPageState extends State<StartPage> with TickerProviderStateMixin {
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.titleLarge!.copyWith(
                       fontWeight: FontWeight.w400,
-                      color: AppColors.primaryColor50,
+                      color: AppColors.primary,
                     ),
                   ),
                 ),
@@ -106,7 +106,7 @@ class _StartPageState extends State<StartPage> with TickerProviderStateMixin {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: Dimension.paddingM),
+            padding: const EdgeInsets.symmetric(horizontal: AppDimensions.paddingM),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -124,7 +124,7 @@ class _StartPageState extends State<StartPage> with TickerProviderStateMixin {
                         text: context.translate(LangKeys.start),
                       ),
                       const SizedBox(
-                        height: Dimension.paddingXXL,
+                        height: AppDimensions.paddingXXL,
                       ),
                     ],
                   ),

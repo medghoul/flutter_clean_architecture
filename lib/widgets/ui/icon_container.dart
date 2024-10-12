@@ -15,20 +15,20 @@ class IconContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(Dimension.paddingS),
+      padding: const EdgeInsets.all(AppDimensions.paddingS),
       decoration: BoxDecoration(
         color: Theme.of(context).primaryColor,
         borderRadius: BorderRadius.circular(
-          Dimension.borderRadiusS,
+          AppDimensions.borderRadiusS,
         ),
         boxShadow: showShadow
             ? [
                 const BoxShadow(
                   color: Colors.black26,
-                  blurRadius: Dimension.containerShadowBlurRadius,
+                  blurRadius: AppDimensions.containerShadowBlurRadius,
                   offset: Offset(
-                    Dimension.containerShadowOffsetX,
-                    Dimension.containerShadowOffsetY,
+                    AppDimensions.containerShadowOffsetX,
+                    AppDimensions.containerShadowOffsetY,
                   ),
                 ),
               ]

@@ -1,4 +1,4 @@
-import 'package:clean_architecture/extensions/context_extension.dart';
+import 'package:clean_architecture/core/extensions/context_extension.dart';
 import 'package:clean_architecture/core/resources/res.dart';
 import 'package:clean_architecture/i18n/lang_keys.dart';
 import 'package:clean_architecture/routing/app_routes.dart';
@@ -70,7 +70,7 @@ class _AccessPageState extends State<AccessPage> with TickerProviderStateMixin {
       body: Stack(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: Dimension.paddingM),
+            padding: const EdgeInsets.symmetric(horizontal: AppDimensions.paddingM),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -84,7 +84,7 @@ class _AccessPageState extends State<AccessPage> with TickerProviderStateMixin {
                   ),
                 ),
                 const SizedBox(
-                  height: Dimension.padding,
+                  height: AppDimensions.paddingM,
                 ),
                 Opacity(
                   opacity: controller.value,
@@ -100,7 +100,7 @@ class _AccessPageState extends State<AccessPage> with TickerProviderStateMixin {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: Dimension.paddingM),
+            padding: const EdgeInsets.symmetric(horizontal: AppDimensions.paddingM),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -118,7 +118,7 @@ class _AccessPageState extends State<AccessPage> with TickerProviderStateMixin {
                         text: context.translate(LangKeys.signup),
                       ),
                       const SizedBox(
-                        height: Dimension.padding,
+                        height: AppDimensions.paddingM,
                       ),
                       CustomOutlinedButton(
                         onPressed: () {
@@ -128,7 +128,7 @@ class _AccessPageState extends State<AccessPage> with TickerProviderStateMixin {
                         text: context.translate(LangKeys.access),
                       ),
                       const SizedBox(
-                        height: Dimension.paddingXXL,
+                        height: AppDimensions.paddingXXL,
                       ),
                     ],
                   ),
