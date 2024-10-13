@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:clean_architecture/core/resources/res.dart';
+import 'package:clean_architecture/widgets/ui/base_theme.dart';
 
-class CustomTextFormField extends StatelessWidget {
+class CustomTextField extends StatelessWidget {
   final TextEditingController? controller;
-  final String labelText;
-  final String hintText;
+  final String? hintText;
+  final String? labelText;
   final bool obscureText;
   final bool enabled;
   final bool readOnly;
@@ -13,12 +14,15 @@ class CustomTextFormField extends StatelessWidget {
   final String? Function(String?)? validator;
   final void Function()? onTap;
   final void Function(String)? onChanged;
+  final TextCapitalization textCapitalization;
+  final AutovalidateMode autovalidateMode;
+  final FocusNode? focusNode;
 
-  const CustomTextFormField({
+  const CustomTextField({
     super.key,
     this.controller,
-    required this.labelText,
-    required this.hintText,
+    this.hintText,
+    this.labelText,
     this.obscureText = false,
     this.enabled = true,
     this.readOnly = false,
@@ -27,6 +31,9 @@ class CustomTextFormField extends StatelessWidget {
     this.validator,
     this.onTap,
     this.onChanged,
+    this.textCapitalization = TextCapitalization.none,
+    this.autovalidateMode = AutovalidateMode.onUserInteraction,
+    this.focusNode,
   });
 
   @override
@@ -40,13 +47,13 @@ class CustomTextFormField extends StatelessWidget {
       validator: validator,
       onTap: onTap,
       onChanged: onChanged,
-      decoration: InputDecoration(
-        labelText: labelText,
+      textCapitalization: textCapitalization,
+      autovalidateMode: autovalidateMode,
+      focusNode: focusNode,
+      decoration: MyAppTheme.secondaryInputFieldStyle.copyWith(
         hintText: hintText,
+        labelText: labelText,
         suffixIcon: suffixIcon,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppDimensions.borderRadiusM),
-        ),
       ),
     );
   }
