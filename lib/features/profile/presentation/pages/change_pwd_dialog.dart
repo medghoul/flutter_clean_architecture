@@ -1,6 +1,6 @@
-import 'package:clean_architecture/extensions/context_extension.dart';
+import 'package:clean_architecture/core/extensions/context_extension.dart';
 import 'package:clean_architecture/features/profile/presentation/cubits/change_pwd_cubit/change_pwd_cubit.dart';
-import 'package:clean_architecture/resources/res.dart';
+import 'package:clean_architecture/core/resources/res.dart';
 import 'package:clean_architecture/widgets/ui/app_bar_title.dart';
 import 'package:clean_architecture/widgets/ui/text_form_fields/confirm_new_pwd_text_form_field.dart';
 import 'package:clean_architecture/widgets/ui/text_form_fields/old_pwd_text_form_field.dart';
@@ -48,12 +48,12 @@ class ChangePwdPage extends StatelessWidget {
               body: Stack(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(Dimension.padding),
+                    padding: const EdgeInsets.all(AppDimensions.paddingM),
                     child: Form(
                       key: cubit.state.formKey,
                       child: ListView(
                         children: [
-                          const SizedBox(height: Dimension.padding),
+                          const SizedBox(height: AppDimensions.paddingM),
                           OldPwdTextFormField(
                             cubit.state.oldPwd,
                             obscureText: cubit.state.showOldPassword,
@@ -66,7 +66,7 @@ class ChangePwdPage extends StatelessWidget {
                               onPressed: cubit.onShowOldPasswordPressed,
                             ),
                           ),
-                          const SizedBox(height: Dimension.padding),
+                          const SizedBox(height: AppDimensions.paddingM),
                           PasswordTextFormField(
                             cubit.state.newPwd,
                             obscureText: cubit.state.showNewPassword,
@@ -80,7 +80,7 @@ class ChangePwdPage extends StatelessWidget {
                               onPressed: cubit.onShowNewPasswordPressed,
                             ),
                           ),
-                          const SizedBox(height: Dimension.padding),
+                          const SizedBox(height: AppDimensions.paddingM),
                           ConfirmNewPwdTextFormField(
                             cubit.state.confirmNewPwd,
                             cubit.state.newPwd,
@@ -94,14 +94,14 @@ class ChangePwdPage extends StatelessWidget {
                               onPressed: cubit.onShowConfirmNewPasswordPressed,
                             ),
                           ),
-                          const SizedBox(height: Dimension.paddingM),
+                          const SizedBox(height: AppDimensions.paddingM),
                           ElevatedButton(
                             onPressed: () async {
                               await cubit.pwdReset(context);
                             },
                             child: Text(context.translate('generic.save')),
                           ),
-                          const SizedBox(height: Dimension.padding),
+                          const SizedBox(height: AppDimensions.paddingM),
                         ],
                       ),
                     ),

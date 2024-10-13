@@ -1,4 +1,4 @@
-import 'package:clean_architecture/resources/res.dart';
+import 'package:clean_architecture/core/resources/res.dart';
 import 'package:flutter/material.dart';
 
 // Super useful for handle paginated lists!
@@ -66,7 +66,7 @@ class _PaginatedListState extends State<PaginatedList> {
       shrinkWrap: true,
       physics: widget.physics,
       children: [
-        const SizedBox(height: Dimension.padding),
+        const SizedBox(height: AppDimensions.paddingM),
         ListView.builder(
           shrinkWrap: true,
           //scrollDirection: Axis.vertical,
@@ -76,7 +76,7 @@ class _PaginatedListState extends State<PaginatedList> {
         ),
         if (widget.cardsLength < widget.maxCardsLenght)
           const Padding(
-            padding: EdgeInsets.only(bottom: Dimension.padding),
+            padding: EdgeInsets.only(bottom: AppDimensions.paddingM),
             child: Center(child: CircularProgressIndicator()),
           ),
       ],
