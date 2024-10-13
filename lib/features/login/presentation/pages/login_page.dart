@@ -4,8 +4,7 @@ import 'package:clean_architecture/features/login/presentation/cubits/login_stat
 import 'package:clean_architecture/core/resources/res.dart';
 import 'package:clean_architecture/routing/app_routes.dart';
 import 'package:clean_architecture/widgets/ui/custom_circular_progress_indicator.dart';
-import 'package:clean_architecture/widgets/ui/text_form_fields/email_text_form_field.dart';
-import 'package:clean_architecture/widgets/ui/text_form_fields/password_text_form_field.dart';
+import 'package:clean_architecture/widgets/ui/text_form_fields/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -64,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(height: AppDimensions.paddingM),
                 Form(
                   key: cubit.state.forgotPwdFormKey,
-                  child: EmailTextFormField(
+                  child: CustomTextField(
                     onChanged: cubit.setEmail,
                     controller: cubit.state.email,
                   ),
@@ -131,8 +130,10 @@ class _LoginPageState extends State<LoginPage> {
                             style: Theme.of(context).textTheme.bodyMedium,
                           ),
                           const SizedBox(height: AppDimensions.paddingS),
-                          EmailTextFormField(controller:state.email,
-                            onChanged: cubit.setEmail),
+                          CustomTextField(
+                            controller: state.email,
+                            onChanged: cubit.setEmail,
+                          ),
                           const SizedBox(height: AppDimensions.paddingM),
                           Text(
                             context.translate('loginPage.password'),
@@ -140,8 +141,8 @@ class _LoginPageState extends State<LoginPage> {
                             style: Theme.of(context).textTheme.bodyMedium,
                           ),
                           const SizedBox(height: AppDimensions.paddingS),
-                          PasswordTextFormField(
-                            state.password,
+                          CustomTextField(
+                            controller: state.password,
                             hintText: context.translate('textFormFieldHints.password'),
                             obscureText: state.showPassword,
                             suffixIcon: IconButton(
