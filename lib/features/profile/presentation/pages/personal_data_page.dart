@@ -1,12 +1,10 @@
-import 'package:clean_architecture/extensions/context_extension.dart';
+import 'package:clean_architecture/core/extensions/context_extension.dart';
 import 'package:clean_architecture/features/profile/presentation/cubits/personal_data_cubit/personal_data_cubit.dart';
 import 'package:clean_architecture/features/profile/presentation/cubits/personal_data_cubit/personal_data_state.dart';
-import 'package:clean_architecture/resources/res.dart';
+import 'package:clean_architecture/core/resources/res.dart';
 import 'package:clean_architecture/widgets/ui/app_bar_title.dart';
 import 'package:clean_architecture/widgets/ui/custom_circular_progress_indicator.dart';
-import 'package:clean_architecture/widgets/ui/text_form_fields/email_text_form_field.dart';
-import 'package:clean_architecture/widgets/ui/text_form_fields/name_text_form_field.dart';
-import 'package:clean_architecture/widgets/ui/text_form_fields/surname_text_form_field.dart';
+import 'package:clean_architecture/widgets/ui/text_form_fields/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -37,7 +35,7 @@ class PersonalDataPage extends StatelessWidget {
             body: Stack(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(Dimension.padding),
+                  padding: const EdgeInsets.all(AppDimensions.paddingM),
                   child: Column(
                     children: [
                       Expanded(
@@ -52,9 +50,14 @@ class PersonalDataPage extends StatelessWidget {
                                     .titleSmall!
                                     .copyWith(fontWeight: FontWeight.w500),
                               ),
-                              const SizedBox(height: Dimension.paddingS),
-                              NameTextFormField(state.name),
-                              const SizedBox(height: Dimension.padding),
+                              const SizedBox(height: AppDimensions.paddingS),
+                              CustomTextField(
+                                controller: state.name,
+                                obscureText: false,
+                                textCapitalization: TextCapitalization.words,
+                                validator: (value) => value?.isEmpty ?? true ? context.translate('profilePage.nameIsRequired') : null,
+                              ),
+                              const SizedBox(height: AppDimensions.paddingM),
                               Text(
                                 context.translate('profilePage.surname'),
                                 style: Theme.of(context)
@@ -62,10 +65,15 @@ class PersonalDataPage extends StatelessWidget {
                                     .titleSmall!
                                     .copyWith(fontWeight: FontWeight.w500),
                               ),
-                              const SizedBox(height: Dimension.paddingS),
-                              SurnameTextFormField(state.surname),
+                              const SizedBox(height: AppDimensions.paddingS),
+                              CustomTextField(
+                                controller: state.surname,
+                                obscureText: false,
+                                textCapitalization: TextCapitalization.words,
+                                validator: (value) => value?.isEmpty ?? true ? context.translate('profilePage.surnameIsRequired') : null,
+                              ),
                               const SizedBox(
-                                height: Dimension.padding,
+                                height: AppDimensions.paddingM,
                               ),
                               Text(
                                 context.translate('profilePage.email'),
@@ -75,9 +83,9 @@ class PersonalDataPage extends StatelessWidget {
                                     .copyWith(fontWeight: FontWeight.w500),
                               ),
                               const SizedBox(
-                                height: Dimension.paddingS,
+                                height: AppDimensions.paddingS,
                               ),
-                              EmailTextFormField(
+                              CustomTextField(
                                 controller:state.email,
                                 enabled: false,
                                 readOnly: true,
@@ -93,11 +101,11 @@ class PersonalDataPage extends StatelessWidget {
                                 },
                               ),
                               const SizedBox(
-                                height: Dimension.paddingM,
+                                height: AppDimensions.paddingM,
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(
-                                  bottom: Dimension.padding * 2,
+                                  bottom: AppDimensions.paddingM  * 2,
                                 ),
                                 child: ElevatedButton(
                                   style: Theme.of(context)
@@ -115,7 +123,7 @@ class PersonalDataPage extends StatelessWidget {
                                 ),
                               ),
                               const SizedBox(
-                                height: Dimension.padding,
+                                height: AppDimensions.paddingM,
                               ),
                             ],
                           ),

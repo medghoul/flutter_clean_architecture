@@ -1,4 +1,4 @@
-import 'package:clean_architecture/extensions/string_extensions.dart';
+import 'package:clean_architecture/core/extensions/string_extensions.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextButton extends StatelessWidget {

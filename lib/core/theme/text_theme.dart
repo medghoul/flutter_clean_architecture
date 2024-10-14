@@ -1,4 +1,4 @@
-import 'package:clean_architecture/resources/constants/colors.dart';
+import 'package:clean_architecture/core/resources/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class AppTextTheme {
@@ -7,91 +7,91 @@ class AppTextTheme {
       fontFamily: 'WorkSans',
       fontSize: 18,
       fontWeight: FontWeight.bold,
-      color: AppColors.darkGrey,
+      color: AppColors.darkGray,
     ),
     titleMedium: TextStyle(
       fontFamily: 'WorkSans',
       fontSize: 23,
       fontWeight: FontWeight.bold,
-      color: AppColors.darkGrey,
+      color: AppColors.darkGray,
     ),
     titleLarge: TextStyle(
       fontFamily: 'WorkSans',
       fontSize: 28,
       fontWeight: FontWeight.bold,
-      color: AppColors.darkGrey,
+      color: AppColors.darkGray,
     ),
     bodySmall: TextStyle(
       fontFamily: 'WorkSans',
       fontSize: 12,
       fontWeight: FontWeight.normal,
-      color: AppColors.darkGrey,
+      color: AppColors.darkGray,
     ),
     bodyMedium: TextStyle(
       fontFamily: 'WorkSans',
       fontSize: 16,
       fontWeight: FontWeight.normal,
-      color: AppColors.darkGrey,
+      color: AppColors.darkGray,
     ),
     bodyLarge: TextStyle(
       fontFamily: 'WorkSans',
       fontSize: 20,
       fontWeight: FontWeight.normal,
-      color: AppColors.darkGrey,
+      color: AppColors.darkGray,
     ),
     displayLarge: TextStyle(
       fontFamily: 'WorkSans',
       fontSize: 24,
       fontWeight: FontWeight.bold,
-      color: AppColors.darkGrey,
+      color: AppColors.darkGray,
     ),
     displayMedium: TextStyle(
       fontFamily: 'WorkSans',
       fontSize: 20,
       fontWeight: FontWeight.bold,
-      color: AppColors.darkGrey,
+      color: AppColors.darkGray,
     ),
     displaySmall: TextStyle(
       fontFamily: 'WorkSans',
       fontSize: 16,
       fontWeight: FontWeight.bold,
-      color: AppColors.darkGrey,
+      color: AppColors.darkGray,
     ),
     headlineLarge: TextStyle(
       fontFamily: 'WorkSans',
       fontSize: 20,
       fontWeight: FontWeight.bold,
-      color: AppColors.darkGrey,
+      color: AppColors.darkGray,
     ),
     headlineMedium: TextStyle(
       fontFamily: 'WorkSans',
       fontSize: 16,
       fontWeight: FontWeight.bold,
-      color: AppColors.darkGrey,
+      color: AppColors.darkGray,
     ),
     headlineSmall: TextStyle(
       fontFamily: 'WorkSans',
       fontSize: 12,
       fontWeight: FontWeight.bold,
-      color: AppColors.darkGrey,
+      color: AppColors.darkGray,
     ),
     labelLarge: TextStyle(
       fontFamily: 'WorkSans',
       fontSize: 20,
       fontWeight: FontWeight.normal ,
-      color: AppColors.darkGrey,
+      color: AppColors.darkGray,
     ),
     labelMedium: TextStyle(
       fontFamily: 'WorkSans',
       fontSize: 16,
       fontWeight: FontWeight.normal,
-      color: AppColors.darkGrey,
+      color: AppColors.darkGray,
     ),
     labelSmall: TextStyle(
       fontFamily: 'WorkSans',
       fontSize: 12,
       fontWeight: FontWeight.normal,
-      color: AppColors.darkGrey,
+      color: AppColors.darkGray,
     ),
   );
 

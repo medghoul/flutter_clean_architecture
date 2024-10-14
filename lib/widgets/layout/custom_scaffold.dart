@@ -1,4 +1,4 @@
-import 'package:clean_architecture/resources/res.dart';
+import 'package:clean_architecture/core/resources/res.dart';
 import 'package:flutter/material.dart';
 
 class CustomScaffold extends StatelessWidget {
@@ -13,7 +13,7 @@ class CustomScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ColoredScaffold(
-      backgroundColor: AppColors.primaryColor,
+      backgroundColor: AppColors.primary,
       body: SafeArea(
         bottom: false,
         child: Column(
@@ -59,7 +59,7 @@ class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
     required this.body,
     super.key,
-    this.padding = const EdgeInsets.all(Dimension.padding24),
+    this.padding = const EdgeInsets.all(AppDimensions.padding21),
   });
   final Widget body;
 
@@ -69,7 +69,7 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-        color: AppColors.primaryColor,
+        color: AppColors.primary,
         borderRadius: BorderRadius.vertical(
           bottom: Radius.circular(20),
         ),

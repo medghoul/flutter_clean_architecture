@@ -1,12 +1,12 @@
-import 'package:clean_architecture/extensions/context_extension.dart';
+import 'package:clean_architecture/core/extensions/context_extension.dart';
+import 'package:clean_architecture/core/resources/utils/validators.dart';
 import 'package:clean_architecture/features/login/presentation/cubits/login_cubit.dart';
 import 'package:clean_architecture/features/login/presentation/cubits/login_state.dart';
-import 'package:clean_architecture/resources/res.dart';
+import 'package:clean_architecture/core/resources/res.dart';
+import 'package:clean_architecture/i18n/lang_keys.dart';
 import 'package:clean_architecture/routing/app_routes.dart';
 import 'package:clean_architecture/widgets/ui/custom_circular_progress_indicator.dart';
-import 'package:clean_architecture/widgets/ui/text_form_fields/email_text_form_field.dart';
-import 'package:clean_architecture/widgets/ui/text_form_fields/password_text_form_field.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:clean_architecture/widgets/ui/text_form_fields/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -19,7 +19,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  bool _keyboardVisible = false;
+  final bool _keyboardVisible = false;
 
   @override
   @protected
@@ -50,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
         return AlertDialog(
           //backgroundColor: Colors.grey,
           title: Text(
-            context.translate('loginPage.recoverPassword'),
+            context.translate(LangKeys.recoverPassword),
             textAlign: TextAlign.center,
             style: const TextStyle(color: Colors.black),
           ),
@@ -58,30 +58,30 @@ class _LoginPageState extends State<LoginPage> {
             child: ListBody(
               children: <Widget>[
                 Text(
-                  context.translate('loginPage.insertEmailToRecoverPwd'),
+                  context.translate(LangKeys.insertEmailToRecoverPwd),
                   textAlign: TextAlign.center,
                   style: const TextStyle(color: Colors.black),
                 ),
-                const SizedBox(height: Dimension.padding),
+                const SizedBox(height: AppDimensions.paddingM),
                 Form(
                   key: cubit.state.forgotPwdFormKey,
-                  child: EmailTextFormField(
+                  child: CustomTextField(
                     onChanged: cubit.setEmail,
                     controller: cubit.state.email,
                   ),
                 ),
-                const SizedBox(height: Dimension.paddingM),
+                const SizedBox(height: AppDimensions.paddingM),
                 ElevatedButton(
                   onPressed: () async {
                     Navigator.of(context).pop();
                     await cubit.onForgotPwdUserClick();
                   },
-                  child: Text(context.translate('loginPage.recover')),
+                  child: Text(context.translate(LangKeys.recover)),
                 ),
-                const SizedBox(height: Dimension.paddingS),
+                const SizedBox(height: AppDimensions.paddingS),
                 TextButton(
                   child: Text(
-                    context.translate('generic.cancel'),
+                    context.translate(LangKeys.cancel),
                     style: const TextStyle(
                       color: Colors.black,
                       decoration: TextDecoration.none,
@@ -117,33 +117,37 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: Dimension.padding),
+                          horizontal: AppDimensions.paddingM),
                       child: ListView(
                         children: [
                           Text(
-                            context.translate('generic.welcome'),
+                            context.translate(LangKeys.welcome),
                             textAlign: TextAlign.start,
                             style: Theme.of(context).textTheme.headlineLarge,
                           ),
-                          const SizedBox(height: Dimension.padding),
+                          const SizedBox(height: AppDimensions.paddingM),
                           Text(
-                            context.translate('loginPage.email'),
+                            context.translate(LangKeys.email),
                             textAlign: TextAlign.start,
                             style: Theme.of(context).textTheme.bodyMedium,
                           ),
-                          const SizedBox(height: Dimension.paddingS),
-                          EmailTextFormField(controller:state.email,
-                            onChanged: cubit.setEmail),
-                          const SizedBox(height: Dimension.paddingM),
+                          const SizedBox(height: AppDimensions.paddingS),
+                          CustomTextField(
+                            controller: state.email,
+                            onChanged: cubit.setEmail,
+                            hintText: context.translate(LangKeys.email),
+                            validator: (value) => Validators(context).validateEmail(value ?? ''),
+                          ),
+                          const SizedBox(height: AppDimensions.paddingM),
                           Text(
-                            context.translate('loginPage.password'),
+                            context.translate(LangKeys.password),
                             textAlign: TextAlign.start,
                             style: Theme.of(context).textTheme.bodyMedium,
                           ),
-                          const SizedBox(height: Dimension.paddingS),
-                          PasswordTextFormField(
-                            state.password,
-                            hintText: context.translate('textFormFieldHints.password'),
+                          const SizedBox(height: AppDimensions.paddingS),
+                          CustomTextField(
+                            controller: state.password,
+                            hintText: context.translate(LangKeys.password),
                             obscureText: state.showPassword,
                             suffixIcon: IconButton(
                               icon: Icon(
@@ -153,8 +157,9 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                               onPressed: cubit.toggleShowPassword,
                             ),
+                            validator: (value) => Validators(context).validatePassword(value ?? ''),
                           ),
-                          const SizedBox(height: Dimension.paddingXS),
+                          const SizedBox(height: AppDimensions.paddingXS),
                           Align(
                             alignment: Alignment.centerRight,
                             child: TextButton(
@@ -178,7 +183,7 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                           ),
-                          const SizedBox(height: Dimension.paddingM),
+                          const SizedBox(height: AppDimensions.paddingM),
                         ],
                       ),
                     ),
@@ -189,7 +194,7 @@ class _LoginPageState extends State<LoginPage> {
                             ? CrossFadeState.showSecond
                             : CrossFadeState.showFirst,
                         duration: const Duration(
-                          milliseconds: Dimension.standardAnimationDuration,
+                          milliseconds: AppDimensions.standardAnimationDuration,
                         ),
                         secondChild: const SizedBox(
                           width: double.infinity,
@@ -197,28 +202,28 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         firstChild: Padding(
                           padding: const EdgeInsets.symmetric(
-                            horizontal: Dimension.padding,
+                            horizontal: AppDimensions.paddingM,
                           ),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               const SizedBox(
-                                height: Dimension.padding,
+                                height: AppDimensions.paddingM,
                               ),
                               SizedBox(
                                 width: MediaQuery.of(context).size.width,
                                 child: ElevatedButton(
                                   onPressed: cubit.onLoginClick,
-                                  child: Text(context.translate('generic.login')),
+                                  child: Text(context.translate(LangKeys.login)),
                                 ),
                               ),
                               const SizedBox(
-                                height: Dimension.padding,
+                                height: AppDimensions.paddingM,
                               ),
                               Column(
                                 children: [
                                   const SizedBox(
-                                    height: Dimension.paddingM,
+                                    height: AppDimensions.paddingM,
                                   ),
                                   TextButton(
                                     onPressed: () =>
@@ -228,7 +233,7 @@ class _LoginPageState extends State<LoginPage> {
                                         children: <InlineSpan>[
                                           TextSpan(
                                             text:
-                                                '${context.translate('loginPage.dontHaveAnAccount')} ',
+                                                '${context.translate(LangKeys.dontHaveAnAccount)} ',
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .bodyMedium
@@ -237,7 +242,7 @@ class _LoginPageState extends State<LoginPage> {
                                                 ),
                                           ),
                                           TextSpan(
-                                            text: context.translate('loginPage.signupHere'),
+                                            text: context.translate(LangKeys.signupHere),
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .bodyMedium
@@ -253,7 +258,7 @@ class _LoginPageState extends State<LoginPage> {
                                     ),
                                   ),
                                   const SizedBox(
-                                    height: Dimension.padding,
+                                    height: AppDimensions.paddingM,
                                   ),
                                 ],
                               ),

@@ -1,16 +1,16 @@
 import 'package:clean_architecture/core/theme/text_theme.dart';
-import 'package:clean_architecture/resources/constants/colors.dart';
+import 'package:clean_architecture/core/resources/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class AppTheme {
   static ThemeData get lightTheme {
     return ThemeData(
       textTheme: AppTextTheme.lightTextTheme,
-      dividerColor: AppColors.grey,
+      dividerColor: AppColors.darkGray,
       primarySwatch: Colors.blue,
       scaffoldBackgroundColor: AppColors.white,
       textSelectionTheme: const TextSelectionThemeData(
-        cursorColor: AppColors.darkGrey,
+        cursorColor: AppColors.darkGray,
       ),
       cardTheme: CardTheme(
         color: AppColors.white,
@@ -24,10 +24,10 @@ class AppTheme {
         surfaceTintColor: AppColors.white,
         backgroundColor: AppColors.white,
         elevation: 4,
-        shadowColor: AppColors.grey.withOpacity(0.5),
+        shadowColor: AppColors.gray.withOpacity(0.5),
         iconTheme: const IconThemeData(color: Colors.black),
         titleTextStyle: const TextStyle(
-          color: AppColors.primaryTextColor,
+          color: AppColors.gray,
           fontFamily: 'WorkSans',
           fontSize: 20,
           fontWeight: FontWeight.normal,
@@ -36,29 +36,29 @@ class AppTheme {
       listTileTheme: const ListTileThemeData(
         contentPadding: EdgeInsets.symmetric(horizontal: 16.0),
         tileColor: AppColors.white,
-        textColor: AppColors.darkGrey,
-        iconColor: AppColors.darkGrey,
+        textColor: AppColors.darkGray,
+        iconColor: AppColors.darkGray,
         titleTextStyle: TextStyle(
           fontFamily: 'WorkSans',
           fontSize: 16,
           fontWeight: FontWeight.bold,
-          color: AppColors.darkGrey,
+          color: AppColors.darkGray,
         ),
         subtitleTextStyle: TextStyle(
           fontFamily: 'WorkSans',
           fontSize: 14,
           fontWeight: FontWeight.normal,
-          color: AppColors.grey,
+          color: AppColors.gray,
         ),
       ),
       dividerTheme: const DividerThemeData(
-        color: AppColors.grey,
+        color: AppColors.gray,
         thickness: 0.5,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           foregroundColor: AppColors.white,
-          backgroundColor: AppColors.blue,
+          backgroundColor: AppColors.info,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),
           ),
@@ -72,27 +72,27 @@ class AppTheme {
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: AppColors.white,
-        prefixStyle: const TextStyle(color: AppColors.grey, fontSize: 20),
-        suffixStyle: const TextStyle(color: AppColors.grey, fontSize: 20),
-        labelStyle: const TextStyle(color: AppColors.darkGrey, fontSize: 20),
-        hintStyle: const TextStyle(color: AppColors.darkGrey, fontSize: 20),
-        errorStyle: const TextStyle(color: AppColors.red, fontSize: 15),
+        prefixStyle: const TextStyle(color: AppColors.gray, fontSize: 20),
+        suffixStyle: const TextStyle(color: AppColors.gray, fontSize: 20),
+        labelStyle: const TextStyle(color: AppColors.darkGray, fontSize: 20),
+        hintStyle: const TextStyle(color: AppColors.darkGray, fontSize: 20),
+        errorStyle: const TextStyle(color: AppColors.error, fontSize: 15),
         floatingLabelBehavior: FloatingLabelBehavior.auto,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: AppColors.darkGrey),
+          borderSide: const BorderSide(color: AppColors.darkGray),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: AppColors.darkGrey, width: 1.0),
+          borderSide: const BorderSide(color: AppColors.darkGray, width: 1.0),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: AppColors.red, width: 1.0),
+          borderSide: const BorderSide(color: AppColors.error, width: 1.0),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: AppColors.red, width: 1.0),
+          borderSide: const BorderSide(color: AppColors.error, width: 1.0),
         ),
         errorMaxLines: 2,
         contentPadding:
@@ -100,8 +100,8 @@ class AppTheme {
       ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
-          overlayColor: AppColors.grey,
-          foregroundColor: AppColors.blue,
+          overlayColor: AppColors.gray,
+          foregroundColor: AppColors.info,
           textStyle: const TextStyle(
             fontSize: 15,
             fontWeight: FontWeight.normal,
@@ -126,7 +126,7 @@ class AppTheme {
         elevation: 16,
         surfaceTintColor: AppColors.white,
       ),
-      iconTheme: const IconThemeData(color: AppColors.darkGrey),
+      iconTheme: const IconThemeData(color: AppColors.darkGray),
       dialogTheme: const DialogTheme(
         backgroundColor: AppColors.white,
         elevation: 16,
@@ -135,10 +135,10 @@ class AppTheme {
         ),
       ),
       expansionTileTheme: const ExpansionTileThemeData(
-        iconColor: AppColors.darkGrey,
-        textColor: AppColors.darkGrey,
-        collapsedIconColor: AppColors.darkGrey,
-        collapsedTextColor: AppColors.darkGrey,
+        iconColor: AppColors.darkGray,
+        textColor: AppColors.darkGray,
+        collapsedIconColor: AppColors.darkGray,
+        collapsedTextColor: AppColors.darkGray,
         backgroundColor: AppColors.white,
         collapsedBackgroundColor: AppColors.white,
       ),
@@ -150,9 +150,9 @@ class AppTheme {
       primarySwatch: Colors.blue,
       textTheme: AppTextTheme.darkTextTheme,
       dividerColor: AppColors.white,
-      scaffoldBackgroundColor: AppColors.darkGrey,
+      scaffoldBackgroundColor: AppColors.darkGray,
       cardTheme: CardTheme(
-        color: AppColors.grey,
+        color: AppColors.gray,
         elevation: 4,
         margin: const EdgeInsets.all(8.0),
         shape: RoundedRectangleBorder(
@@ -160,10 +160,10 @@ class AppTheme {
         ),
       ),
       appBarTheme: AppBarTheme(
-        surfaceTintColor: AppColors.darkGrey,
-        backgroundColor: AppColors.darkGrey,
+        surfaceTintColor: AppColors.darkGray,
+        backgroundColor: AppColors.darkGray,
         elevation: 4,
-        shadowColor: AppColors.grey.withOpacity(0.5),
+        shadowColor: AppColors.gray.withOpacity(0.5),
         iconTheme: const IconThemeData(color: AppColors.white),
         titleTextStyle: const TextStyle(
           color: AppColors.white,
@@ -174,7 +174,7 @@ class AppTheme {
       ),
       listTileTheme: const ListTileThemeData(
         contentPadding: EdgeInsets.symmetric(horizontal: 16.0),
-        tileColor: AppColors.darkGrey,
+        tileColor: AppColors.darkGray,
         textColor: AppColors.white,
         iconColor: AppColors.white,
         titleTextStyle: TextStyle(
@@ -187,17 +187,17 @@ class AppTheme {
           fontFamily: 'WorkSans',
           fontSize: 14,
           fontWeight: FontWeight.normal,
-          color: AppColors.grey,
+          color: AppColors.gray,
         ),
       ),
       dividerTheme: const DividerThemeData(
-        color: AppColors.grey,
+        color: AppColors.gray,
         thickness: 0.5,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           foregroundColor: AppColors.white,
-          backgroundColor: AppColors.blue,
+          backgroundColor: AppColors.info,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),
           ),
@@ -210,17 +210,17 @@ class AppTheme {
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: AppColors.darkGrey,
+        fillColor: AppColors.darkGray,
         enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: AppColors.grey, width: 1.5),
+          borderSide: const BorderSide(color: AppColors.gray, width: 1.5),
           borderRadius: BorderRadius.circular(10),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: AppColors.grey),
+          borderSide: const BorderSide(color: AppColors.gray),
           borderRadius: BorderRadius.circular(10),
         ),
         errorBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: AppColors.red),
+          borderSide: const BorderSide(color: AppColors.error),
           borderRadius: BorderRadius.circular(10),
         ),
         contentPadding: const EdgeInsets.only(left: 25),
@@ -234,8 +234,8 @@ class AppTheme {
         textStyle:
             const TextStyle(fontSize: 14.0, fontWeight: FontWeight.normal),
         menuStyle: MenuStyle(
-          surfaceTintColor: WidgetStateProperty.all(AppColors.darkGrey),
-          backgroundColor: WidgetStateProperty.all(AppColors.darkGrey),
+          surfaceTintColor: WidgetStateProperty.all(AppColors.darkGray),
+          backgroundColor: WidgetStateProperty.all(AppColors.darkGray),
           shape: WidgetStateProperty.all(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
@@ -244,9 +244,9 @@ class AppTheme {
         ),
       ),
       drawerTheme: const DrawerThemeData(
-        backgroundColor: AppColors.darkGrey,
+        backgroundColor: AppColors.darkGray,
         elevation: 16,
-        surfaceTintColor: AppColors.darkGrey,
+        surfaceTintColor: AppColors.darkGray,
       ),
       textSelectionTheme: const TextSelectionThemeData(
         cursorColor: AppColors.white,
@@ -256,8 +256,8 @@ class AppTheme {
       iconTheme: const IconThemeData(color: AppColors.white),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
-          overlayColor: AppColors.grey,
-          foregroundColor: AppColors.blue,
+          overlayColor: AppColors.gray,
+          foregroundColor: AppColors.info,
           textStyle: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.normal,
@@ -265,7 +265,7 @@ class AppTheme {
         ),
       ),
       dialogTheme: const DialogTheme(
-        backgroundColor: AppColors.darkGrey,
+        backgroundColor: AppColors.darkGray,
         elevation: 16,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -276,8 +276,8 @@ class AppTheme {
         textColor: AppColors.white,
         collapsedIconColor: AppColors.white,
         collapsedTextColor: AppColors.white,
-        backgroundColor: AppColors.darkGrey,
-        collapsedBackgroundColor: AppColors.darkGrey,
+        backgroundColor: AppColors.darkGray,
+        collapsedBackgroundColor: AppColors.darkGray,
       ),
     );
   }

@@ -1,44 +1,34 @@
-import 'dart:async';
-import 'package:clean_architecture/core/helpers/utils.dart';
+import 'dart:convert' show json;
+
+import 'package:clean_architecture/i18n/app_localizations_delegate.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class AppLocalizations {
-  final Locale locale;
-  Map<String, String> _localizedStrings = {};
-
   AppLocalizations(this.locale);
+  final Locale locale;
 
-  static AppLocalizations of(BuildContext context) {
-    return Localizations.of<AppLocalizations>(context, AppLocalizations) ??
-        AppLocalizations(const Locale('en'));
+  static AppLocalizations? of(BuildContext context) {
+    return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  Future<bool> load() async {
-    await _loadLocalizedStringsFromFile();
-    return true;
+  // Change this line
+  static const LocalizationsDelegate<AppLocalizations> delegate = AppLocalizationsDelegate();
+
+  late Map<String, String> _localizedStrings;
+
+  Future<void> load() async {
+    final jsonString =
+        await rootBundle.loadString('assets/locales/${locale.languageCode}.json');
+
+    final jsonMap = json.decode(jsonString) as Map<String, dynamic>;
+
+    _localizedStrings = jsonMap.map<String, String>((key, value) {
+      return MapEntry(key, value.toString());
+    });
   }
 
-  Future<void> _loadLocalizedStringsFromFile() async {
-    debugPrint("Loading language from disk");
-    String jsonString = await rootBundle.loadString('assets/locales/${locale.languageCode}.json');
-    Map<String, dynamic> jsonMap = Utils.decodeJSON(jsonString);
-    _localizedStrings = Utils.flattenMap(jsonMap);
-  }
+  String? translate(String key) => _localizedStrings[key];
 
-  String translate(String key) {
-    return _localizedStrings[key] ?? '#';
-  }
-
-  Map<String, String> get dictionary => _localizedStrings;
-
-  static Iterable<Locale> get supportedLocales => const [
-        Locale('en'),
-        Locale('it'),
-    
-      ];
-}
-
-extension ContextExtensions on BuildContext {
-  AppLocalizations get locale => AppLocalizations.of(this);
+  bool get isEnLocale => locale.languageCode == 'en';
 }

@@ -1,6 +1,11 @@
 
-import 'package:clean_architecture/extensions/context_extension.dart';
-import 'package:clean_architecture/resources/res.dart';
+import 'package:clean_architecture/core/animations/fade_animations.dart';
+import 'package:clean_architecture/core/animations/image_animations.dart';
+import 'package:clean_architecture/core/animations/text_animation.dart';
+import 'package:clean_architecture/core/enums/text_animation_type.dart';
+import 'package:clean_architecture/core/extensions/context_extension.dart';
+import 'package:clean_architecture/i18n/lang_keys.dart';
+import 'package:clean_architecture/core/resources/res.dart';
 import 'package:clean_architecture/routing/app_routes.dart';
 import 'package:clean_architecture/widgets/buttons/custom_outlined_button.dart';
 import 'package:flutter/material.dart';
@@ -56,56 +61,65 @@ class _StartPageState extends State<StartPage> with TickerProviderStateMixin {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       extendBodyBehindAppBar: true,
-      backgroundColor: AppColors.primaryColor,
+      backgroundColor: AppColors.primary,
       body: Stack(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: Dimension.paddingM),
+            padding: const EdgeInsets.symmetric(horizontal: AppDimensions.paddingM),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Opacity(
                   opacity: controller.value,
-                  child: Image.asset(
+                  child: ImageZoomIn(child:Image.asset(
                     ImageSrc.logo,
                     height: 200,
                     width: 200,
                   ),
                 ),
+                ),
                 const SizedBox(
-                  height: Dimension.padding,
+                  height: AppDimensions.paddingM,
                 ),
                 Opacity(
                   opacity: controller.value,
-                  child: Text(
-                    context.translate('startPage.title'),
+                  child: TextAnimation(
+                    animationType: TextAnimationType.fadeIn,
+                    duration: 400,
+                    text: Text(
+                    context.translate(LangKeys.title),
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                       fontWeight: FontWeight.w600,
-                      color: AppColors.primaryColor50,
+                      color: AppColors.white,
+                      ),
                     ),
                   ),
                 ),
                 const SizedBox(
-                  height: Dimension.paddingS,
+                  height: AppDimensions.paddingS,
                 ),
                 Opacity(
                   opacity: controller.value,
-                  child: Text(
-                    context.translate('startPage.caption'),
-                    textAlign: TextAlign.center,
+                  child: TextAnimation(
+                    duration: 400,
+                    animationType: TextAnimationType.wave,
+                    text: Text(context.translate(LangKeys.caption),
+                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.titleLarge!.copyWith(
                       fontWeight: FontWeight.w400,
-                      color: AppColors.primaryColor50,
+                      color: AppColors.white,
                     ),
+                    ),
+                   
                   ),
                 ),
               ],
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: Dimension.paddingM),
+            padding: const EdgeInsets.symmetric(horizontal: AppDimensions.paddingM),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -115,14 +129,18 @@ class _StartPageState extends State<StartPage> with TickerProviderStateMixin {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      CustomOutlinedButton(
+                      FadeInUp(
+                        duration: 400,
+                        child: CustomOutlinedButton(
+                          backgroundColor: AppColors.tertiary,
                         onPressed: () {
                           context.goNamed(AppRoute.onboarding.name);
                         },
-                        text: context.translate('startPage.start'),
+                        text: context.translate(LangKeys.start),
+                      ),
                       ),
                       const SizedBox(
-                        height: Dimension.paddingXXL,
+                        height: AppDimensions.paddingXXL,
                       ),
                     ],
                   ),

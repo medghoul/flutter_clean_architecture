@@ -1,5 +1,5 @@
 import 'package:flutter/services.dart';
-import 'package:clean_architecture/core/utlis/logger_ext.dart';
+import 'package:clean_architecture/core/resources/utils/logger_ext.dart';
 import 'package:logger/logger.dart';
 import '../../domain/repositories/logger_repository.dart';
 

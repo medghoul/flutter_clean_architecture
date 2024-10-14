@@ -1,4 +1,4 @@
-import 'package:clean_architecture/resources/res.dart';
+import 'package:clean_architecture/core/resources/res.dart';
 import 'package:flutter/material.dart';
 
 const _fontFamily = 'Jost';
@@ -9,8 +9,8 @@ class MyAppTheme {
       fontFamily: _fontFamily,
       useMaterial3: true,
       colorScheme: ColorScheme.fromSeed(
-        seedColor: AppColors.primaryColor,
-        primary: AppColors.primaryColor,
+        seedColor: AppColors.primary,
+        primary: AppColors.primary,
         secondary: AppColors.secondary,
         tertiary: AppColors.tertiary,
       ),
@@ -90,53 +90,53 @@ class MyAppTheme {
         fillColor: Colors.white,
         border: OutlineInputBorder(
           borderSide: BorderSide.none,
-          borderRadius: BorderRadius.circular(Dimension.textFormFieldRadius),
+          borderRadius: BorderRadius.circular(AppDimensions.borderRadiusM),
         ),
-        suffixIconColor: AppColors.primaryColor650,
+        suffixIconColor: AppColors.primary,
         hintStyle: const TextStyle(
-          color: AppColors.primaryColor650,
+          color: AppColors.primary,
           fontFamily: _fontFamily,
           height: 0,
           fontWeight: FontWeight.w500,
           fontSize: 20,
         ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: Dimension.padding, vertical: Dimension.padding12),
+        contentPadding: const EdgeInsets.symmetric(horizontal: AppDimensions.paddingM, vertical: AppDimensions.padding12),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
-          elevation: MaterialStateProperty.all(0),
-          minimumSize: MaterialStateProperty.all(
+          elevation: WidgetStateProperty.all(0),
+          minimumSize: WidgetStateProperty.all(
             const Size(56, 56),
           ),
-          shape: MaterialStateProperty.all(
+          shape: WidgetStateProperty.all(
             RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(Dimension.buttonBorderRadius),
+              borderRadius: BorderRadius.circular(AppDimensions.borderRadiusM),
             ),
           ),
-          backgroundColor: MaterialStateProperty.all(AppColors.primaryColor),
-          foregroundColor: MaterialStateProperty.all(Colors.white),
-          textStyle: MaterialStateProperty.all(
+          backgroundColor: WidgetStateProperty.all(AppColors.primary),
+          foregroundColor: WidgetStateProperty.all(Colors.white),
+          textStyle: WidgetStateProperty.all(
             const TextStyle(fontFamily: _fontFamily, fontSize: 20, fontWeight: FontWeight.w500),
           ),
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: ButtonStyle(
-          elevation: MaterialStateProperty.all(0),
-          minimumSize: MaterialStateProperty.all(
+          elevation: WidgetStateProperty.all(0),
+          minimumSize: WidgetStateProperty.all(
             const Size(56, 56),
           ),
-          shape: MaterialStateProperty.all(
+          shape: WidgetStateProperty.all(
             RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(Dimension.buttonBorderRadius),
+              borderRadius: BorderRadius.circular(AppDimensions.borderRadiusM),
             ),
           ),
-          side: const MaterialStatePropertyAll(
-            BorderSide(width: 2, color: AppColors.primaryColor650),
+          side: const WidgetStatePropertyAll(
+            BorderSide(width: 2, color: AppColors.primary),
           ),
-          backgroundColor: MaterialStateProperty.all(Colors.white),
-          foregroundColor: MaterialStateProperty.all(AppColors.primaryColor650),
-          textStyle: MaterialStateProperty.all(
+          backgroundColor: WidgetStateProperty.all(Colors.white),
+          foregroundColor: WidgetStateProperty.all(AppColors.primary),
+          textStyle: WidgetStateProperty.all(
             const TextStyle(fontFamily: _fontFamily, fontSize: 20, fontWeight: FontWeight.w500),
           ),
         ),
@@ -148,34 +148,34 @@ class MyAppTheme {
         filled: true,
         fillColor: Colors.white,
         focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(width: 1.5, color: AppColors.primaryColor650),
-          borderRadius: BorderRadius.circular(Dimension.textFormFieldRadius),
+          borderSide: const BorderSide(width: 1.5, color: AppColors.primary),
+          borderRadius: BorderRadius.circular(AppDimensions.borderRadiusM),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderSide: const BorderSide(width: 1.5, color: AppColors.red),
-          borderRadius: BorderRadius.circular(Dimension.textFormFieldRadius),
+          borderSide: const BorderSide(width: 1.5, color: AppColors.error),
+          borderRadius: BorderRadius.circular(AppDimensions.borderRadiusM),
         ),
         errorBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: AppColors.red),
-          borderRadius: BorderRadius.circular(Dimension.textFormFieldRadius),
+          borderSide: const BorderSide(color: AppColors.error),
+          borderRadius: BorderRadius.circular(AppDimensions.borderRadiusM),
         ),
         border: OutlineInputBorder(
-          borderSide: const BorderSide(color: AppColors.primaryColor650),
-          borderRadius: BorderRadius.circular(Dimension.textFormFieldRadius),
+          borderSide: const BorderSide(color: AppColors.primary),
+          borderRadius: BorderRadius.circular(AppDimensions.borderRadiusM),
         ),
         enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: AppColors.primaryColor650),
-          borderRadius: BorderRadius.circular(Dimension.textFormFieldRadius),
+          borderSide: const BorderSide(color: AppColors.primary),
+          borderRadius: BorderRadius.circular(AppDimensions.borderRadiusM),
         ),
-        suffixIconColor: AppColors.primaryColor650,
+        suffixIconColor: AppColors.primary,
         hintStyle: const TextStyle(
-          color: AppColors.primaryColor650,
+          color: AppColors.primary,
           fontFamily: _fontFamily,
           height: 0,
           fontWeight: FontWeight.w500,
           fontSize: 20,
         ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: Dimension.padding, vertical: Dimension.padding12),
+        contentPadding: const EdgeInsets.symmetric(horizontal: AppDimensions.paddingM, vertical: AppDimensions.padding12),
       );
 
   static ThemeData get getDarkMode {
@@ -183,8 +183,8 @@ class MyAppTheme {
       fontFamily: _fontFamily,
       useMaterial3: true,
       colorScheme: ColorScheme.fromSeed(
-        seedColor: AppColors.primaryColor,
-        primary: AppColors.primaryColor,
+        seedColor: AppColors.primary,
+        primary: AppColors.primary,
         secondary: AppColors.secondary,
         tertiary: AppColors.tertiary,
         brightness: Brightness.dark,

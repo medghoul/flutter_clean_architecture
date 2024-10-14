@@ -1,4 +1,4 @@
-import 'package:clean_architecture/resources/constants/colors.dart';
+import 'package:clean_architecture/core/resources/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomIconButton extends StatelessWidget {
@@ -28,7 +28,7 @@ class CustomIconButton extends StatelessWidget {
               ),
             )
           : Icon(icon),
-      color: color ?? AppColors.blue,
+      color: color ?? AppColors.info,
     );
   }
 }

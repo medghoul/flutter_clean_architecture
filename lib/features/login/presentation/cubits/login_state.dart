@@ -12,7 +12,7 @@ class LoginPageState {
     required this.loginFormKey,
     required this.forgotPwdFormKey,
     this.showPageLoader = false,
-    this.showPassword = false,
+    this.showPassword = true,
     TextEditingController? email,
     TextEditingController? password,
   })  : email = email ?? TextEditingController(),
