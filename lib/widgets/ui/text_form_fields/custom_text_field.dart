@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:clean_architecture/core/resources/res.dart';
 import 'package:clean_architecture/widgets/ui/base_theme.dart';
 
 class CustomTextField extends StatelessWidget {

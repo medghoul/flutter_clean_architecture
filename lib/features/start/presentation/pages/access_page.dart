@@ -1,3 +1,4 @@
+import 'package:clean_architecture/core/animations/fade_animations.dart';
 import 'package:clean_architecture/core/extensions/context_extension.dart';
 import 'package:clean_architecture/core/resources/res.dart';
 import 'package:clean_architecture/i18n/lang_keys.dart';
@@ -110,22 +111,28 @@ class _AccessPageState extends State<AccessPage> with TickerProviderStateMixin {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      CustomOutlinedButton(
-                       backgroundColor: AppColors.tertiary,
-                        onPressed: () {
+                      FadeInLeft(
+                        duration: 500,
+                        child: CustomOutlinedButton(
+                          backgroundColor: AppColors.tertiary,
+                          onPressed: () {
                           GoRouter.of(context).pushNamed(AppRoute.signIn.name);
                         },
-                        text: context.translate(LangKeys.signup),
+                          text: context.translate(LangKeys.signup),
+                        ),
                       ),
                       const SizedBox(
                         height: AppDimensions.paddingM,
                       ),
-                      CustomOutlinedButton(
-                        onPressed: () {
-                          GoRouter.of(context).pushNamed(AppRoute.signUp.name);
+                      FadeInRight(
+                        duration: 500,
+                        child: CustomOutlinedButton(
+                          onPressed: () {
+                            GoRouter.of(context).pushNamed(AppRoute.signUp.name);
                         },
                         textColor: AppColors.black,
                         text: context.translate(LangKeys.access),
+                      ),
                       ),
                       const SizedBox(
                         height: AppDimensions.paddingXXL,

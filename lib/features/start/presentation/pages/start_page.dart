@@ -1,4 +1,8 @@
 
+import 'package:clean_architecture/core/animations/fade_animations.dart';
+import 'package:clean_architecture/core/animations/image_animations.dart';
+import 'package:clean_architecture/core/animations/text_animation.dart';
+import 'package:clean_architecture/core/enums/text_animation_type.dart';
 import 'package:clean_architecture/core/extensions/context_extension.dart';
 import 'package:clean_architecture/i18n/lang_keys.dart';
 import 'package:clean_architecture/core/resources/res.dart';
@@ -68,23 +72,28 @@ class _StartPageState extends State<StartPage> with TickerProviderStateMixin {
               children: [
                 Opacity(
                   opacity: controller.value,
-                  child: Image.asset(
+                  child: ImageZoomIn(child:Image.asset(
                     ImageSrc.logo,
                     height: 200,
                     width: 200,
                   ),
+                ),
                 ),
                 const SizedBox(
                   height: AppDimensions.paddingM,
                 ),
                 Opacity(
                   opacity: controller.value,
-                  child: Text(
+                  child: TextAnimation(
+                    animationType: TextAnimationType.fadeIn,
+                    duration: 400,
+                    text: Text(
                     context.translate(LangKeys.title),
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                       fontWeight: FontWeight.w600,
-                      color: AppColors.primary,
+                      color: AppColors.white,
+                      ),
                     ),
                   ),
                 ),
@@ -93,13 +102,17 @@ class _StartPageState extends State<StartPage> with TickerProviderStateMixin {
                 ),
                 Opacity(
                   opacity: controller.value,
-                  child: Text(
-                    context.translate(LangKeys.caption),
-                    textAlign: TextAlign.center,
+                  child: TextAnimation(
+                    duration: 400,
+                    animationType: TextAnimationType.wave,
+                    text: Text(context.translate(LangKeys.caption),
+                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.titleLarge!.copyWith(
                       fontWeight: FontWeight.w400,
-                      color: AppColors.primary,
+                      color: AppColors.white,
                     ),
+                    ),
+                   
                   ),
                 ),
               ],
@@ -116,12 +129,15 @@ class _StartPageState extends State<StartPage> with TickerProviderStateMixin {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      CustomOutlinedButton(
-                        backgroundColor: AppColors.tertiary,
+                      FadeInUp(
+                        duration: 400,
+                        child: CustomOutlinedButton(
+                          backgroundColor: AppColors.tertiary,
                         onPressed: () {
                           context.goNamed(AppRoute.onboarding.name);
                         },
                         text: context.translate(LangKeys.start),
+                      ),
                       ),
                       const SizedBox(
                         height: AppDimensions.paddingXXL,
