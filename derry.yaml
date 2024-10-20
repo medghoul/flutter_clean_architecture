@@ -1,0 +1,29 @@
+generate: dart run build_runner build --delete-conflicting-outputs
+watch: dart run build_runner watch --delete-conflicting-outputs
+
+run:
+  android: flutter run -d android
+  ios: flutter run -d ios
+
+build:
+  android:
+    debug: flutter build apk --debug
+    release: flutter build apk --release
+  ios:
+    debug: flutter build ios --debug --no-codesign
+    release: flutter build ios --release --no-codesign
+
+env:
+  dev: flutter run --dart-define=ENVIRONMENT=dev
+  staging: flutter run --dart-define=ENVIRONMENT=staging
+  prod: flutter run --dart-define=ENVIRONMENT=prod
+
+build_env:
+  android:
+    dev: flutter build apk --dart-define=ENVIRONMENT=dev
+    staging: flutter build apk --dart-define=ENVIRONMENT=staging
+    prod: flutter build apk --dart-define=ENVIRONMENT=prod
+  ios:
+    dev: flutter build ios --dart-define=ENVIRONMENT=dev --no-codesign
+    staging: flutter build ios --dart-define=ENVIRONMENT=staging --no-codesign
+    prod: flutter build ios --dart-define=ENVIRONMENT=prod --no-codesign
