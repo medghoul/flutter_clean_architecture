@@ -1,0 +1,4 @@
+{
+    "environment": "staging",
+    "BASE_URL": "https://api-staging.cleanarchitecture.com"
+}
