@@ -1,0 +1,4 @@
+{
+    "environment": "dev",
+    "BASE_URL": "https://dev-app.cleanarchitecture.com"
+}

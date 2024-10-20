@@ -1,0 +1,4 @@
+{
+    "environment": "production",
+    "BASE_URL": "https://api-pro.cleanarchitecture.com"
+}
