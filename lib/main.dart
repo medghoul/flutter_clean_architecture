@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:clean_architecture/core/config/app_config.dart';
 import 'package:clean_architecture/core/config/firebase_config.dart';
 import 'package:clean_architecture/core/enums/log_level.dart';
 import 'package:clean_architecture/core/logger/logging.dart';
@@ -16,8 +17,12 @@ import 'package:clean_architecture/routing/app_router.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SharedPref().instantiatePreferences();
-
+   
+  // Initialize Firebase
   await FirebaseConfig.initialize();
+
+  // Initialize AppConfig
+  AppConfig.initialize();
 
   // Inizializza il logger
   LoggingFactory.configure(

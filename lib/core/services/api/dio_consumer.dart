@@ -1,13 +1,18 @@
+import 'package:clean_architecture/core/services/shared_pref/pref_keys.dart';
 import 'package:dio/dio.dart';
 import 'package:clean_architecture/core/services/api/api_consumer.dart';
-import 'package:clean_architecture/core/services/api/end_points.dart';
 import 'package:clean_architecture/core/errors/exceptions.dart';
+import 'package:clean_architecture/core/config/app_config.dart';
 
 class DioConsumer extends ApiConsumer {
   final Dio dio;
 
   DioConsumer({required this.dio}) {
-    dio.options.baseUrl = EndPoints.baserUrl;
+    dio.options.baseUrl = AppConfig.apiBaseUrl;
+    dio.options.headers = {
+      'Authorization': 'Bearer ${PrefKeys.accessToken}',
+      'Content-Type': 'application/json',
+    };
   }
 
 //!POST
