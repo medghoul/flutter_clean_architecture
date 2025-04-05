@@ -1,7 +1,7 @@
 import 'package:clean_architecture/features/login/presentation/pages/login_page.dart';
 import 'package:clean_architecture/features/start/presentation/pages/access_page.dart';
 import 'package:clean_architecture/features/start/presentation/pages/onboarding_page.dart';
-import 'package:clean_architecture/widgets/layout/custom_scaffold.dart';
+import 'package:clean_architecture/presentation/widgets/scaffold/caa_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:clean_architecture/features/home_page/presentation/pages/home_page.dart';
@@ -65,7 +65,7 @@ class AppRouter {
                     );
                   },
                 ),
-               /* GoRoute(
+                /* GoRoute(
                   path: AppRoute.signUp.path,
                   name: AppRoute.signUp.name,
                   pageBuilder: (BuildContext context, GoRouterState state) {
@@ -106,10 +106,9 @@ class AppRouter {
         ShellRoute(
           navigatorKey: shellNavigatorKey,
           builder: (BuildContext context, GoRouterState state, Widget child) {
-            return CustomScaffold(
+            return CAAScaffold(
               body: child,
               //TODO to create a custom app bar
-              appBarBody: Container(),
             );
           },
           routes: <RouteBase>[
