@@ -1,33 +1,41 @@
-import 'package:clean_architecture/core/theme/text_theme.dart';
 import 'package:clean_architecture/core/constants/app_colors.dart';
+import 'package:clean_architecture/core/constants/global_constants.dart';
+import 'package:clean_architecture/core/theme/text_theme.dart';
 import 'package:flutter/material.dart';
 
 class AppTheme {
   static ThemeData get lightTheme {
     return ThemeData(
       textTheme: AppTextTheme.lightTextTheme,
-      dividerColor: AppColors.darkGray,
-      primarySwatch: Colors.blue,
+      dividerColor: AppColors.grey300,
       scaffoldBackgroundColor: AppColors.white,
+      iconTheme: const IconThemeData(color: AppColors.black),
+      canvasColor: AppColors.grey200,
       textSelectionTheme: const TextSelectionThemeData(
-        cursorColor: AppColors.darkGray,
+        cursorColor: AppColors.grey700,
+        selectionColor: AppColors.primary,
+        selectionHandleColor: AppColors.primary,
       ),
       cardTheme: CardTheme(
-        color: AppColors.white,
-        elevation: 4,
-        margin: const EdgeInsets.all(8.0),
+        elevation: 0,
+        color: AppColors.grey200,
+        margin: const EdgeInsets.all(0),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(GlobalConstants.radiusM),
         ),
       ),
-      appBarTheme: AppBarTheme(
+      progressIndicatorTheme: const ProgressIndicatorThemeData(
+        color: AppColors.primary,
+      ),
+      appBarTheme: const AppBarTheme(
         surfaceTintColor: AppColors.white,
         backgroundColor: AppColors.white,
-        elevation: 4,
-        shadowColor: AppColors.gray.withOpacity(0.5),
-        iconTheme: const IconThemeData(color: Colors.black),
-        titleTextStyle: const TextStyle(
-          color: AppColors.gray,
+        elevation: 0,
+        shadowColor: Colors.transparent,
+        iconTheme: IconThemeData(color: AppColors.black),
+        scrolledUnderElevation: 0,
+        titleTextStyle: TextStyle(
+          color: AppColors.black,
           fontFamily: 'WorkSans',
           fontSize: 20,
           fontWeight: FontWeight.normal,
@@ -36,62 +44,51 @@ class AppTheme {
       listTileTheme: const ListTileThemeData(
         contentPadding: EdgeInsets.symmetric(horizontal: 16.0),
         tileColor: AppColors.white,
-        textColor: AppColors.darkGray,
-        iconColor: AppColors.darkGray,
-        titleTextStyle: TextStyle(
-          fontFamily: 'WorkSans',
-          fontSize: 16,
-          fontWeight: FontWeight.bold,
-          color: AppColors.darkGray,
-        ),
-        subtitleTextStyle: TextStyle(
-          fontFamily: 'WorkSans',
-          fontSize: 14,
-          fontWeight: FontWeight.normal,
-          color: AppColors.gray,
-        ),
+        textColor: AppColors.black,
+        iconColor: AppColors.black,
       ),
       dividerTheme: const DividerThemeData(
-        color: AppColors.gray,
+        color: AppColors.grey300,
         thickness: 0.5,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           foregroundColor: AppColors.white,
-          backgroundColor: AppColors.info,
+          backgroundColor: AppColors.primary,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          textStyle: const TextStyle(
-            fontSize: 18.0,
-            fontWeight: FontWeight.w500,
-          ),
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: AppColors.white,
-        prefixStyle: const TextStyle(color: AppColors.gray, fontSize: 20),
-        suffixStyle: const TextStyle(color: AppColors.gray, fontSize: 20),
-        labelStyle: const TextStyle(color: AppColors.darkGray, fontSize: 20),
-        hintStyle: const TextStyle(color: AppColors.darkGray, fontSize: 20),
-        errorStyle: const TextStyle(color: AppColors.error, fontSize: 15),
+        prefixStyle: AppTextTheme.lightTextTheme.bodyLarge
+            ?.copyWith(color: AppColors.grey300),
+        suffixStyle: AppTextTheme.lightTextTheme.bodyLarge
+            ?.copyWith(color: AppColors.grey300),
+        labelStyle: AppTextTheme.lightTextTheme.bodyLarge
+            ?.copyWith(color: AppColors.black),
+        hintStyle: AppTextTheme.lightTextTheme.bodyLarge
+            ?.copyWith(color: AppColors.black),
+        errorStyle: AppTextTheme.lightTextTheme.bodySmall
+            ?.copyWith(color: AppColors.error),
         floatingLabelBehavior: FloatingLabelBehavior.auto,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: AppColors.darkGray),
+          borderRadius: BorderRadius.circular(GlobalConstants.radiusM),
+          borderSide: const BorderSide(color: AppColors.black),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: AppColors.darkGray, width: 1.0),
+          borderRadius: BorderRadius.circular(GlobalConstants.radiusM),
+          borderSide: const BorderSide(color: AppColors.black, width: 1.0),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: AppColors.error, width: 1.0),
+          borderRadius: BorderRadius.circular(GlobalConstants.radiusM),
+          borderSide: const BorderSide(color: AppColors.error, width: 1.5),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(GlobalConstants.radiusM),
           borderSide: const BorderSide(color: AppColors.error, width: 1.0),
         ),
         errorMaxLines: 2,
@@ -100,8 +97,8 @@ class AppTheme {
       ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
-          overlayColor: AppColors.gray,
-          foregroundColor: AppColors.info,
+          overlayColor: AppColors.grey300,
+          foregroundColor: AppColors.primary,
           textStyle: const TextStyle(
             fontSize: 15,
             fontWeight: FontWeight.normal,
@@ -109,14 +106,13 @@ class AppTheme {
         ),
       ),
       dropdownMenuTheme: DropdownMenuThemeData(
-        textStyle:
-            const TextStyle(fontSize: 14.0, fontWeight: FontWeight.normal),
         menuStyle: MenuStyle(
           surfaceTintColor: WidgetStateProperty.all(AppColors.white),
           backgroundColor: WidgetStateProperty.all(AppColors.white),
+          elevation: WidgetStateProperty.all(4),
           shape: WidgetStateProperty.all(
             RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(GlobalConstants.radiusM),
             ),
           ),
         ),
@@ -126,46 +122,109 @@ class AppTheme {
         elevation: 16,
         surfaceTintColor: AppColors.white,
       ),
-      iconTheme: const IconThemeData(color: AppColors.darkGray),
       dialogTheme: const DialogTheme(
         backgroundColor: AppColors.white,
         elevation: 16,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
+          borderRadius:
+              BorderRadius.all(Radius.circular(GlobalConstants.radiusM)),
         ),
       ),
       expansionTileTheme: const ExpansionTileThemeData(
-        iconColor: AppColors.darkGray,
-        textColor: AppColors.darkGray,
-        collapsedIconColor: AppColors.darkGray,
-        collapsedTextColor: AppColors.darkGray,
+        iconColor: AppColors.grey700,
+        textColor: AppColors.grey700,
+        collapsedIconColor: AppColors.grey700,
+        collapsedTextColor: AppColors.grey700,
         backgroundColor: AppColors.white,
         collapsedBackgroundColor: AppColors.white,
+      ),
+      datePickerTheme: DatePickerThemeData(
+        backgroundColor: AppColors.white,
+        surfaceTintColor: AppColors.white,
+        headerBackgroundColor: AppColors.primary,
+        headerForegroundColor: AppColors.white,
+        dayBackgroundColor:
+            WidgetStateProperty.resolveWith((Set<WidgetState> states) {
+          if (states.contains(WidgetState.selected)) {
+            return AppColors.primary;
+          }
+          return AppColors.white;
+        }),
+        dayForegroundColor:
+            WidgetStateProperty.resolveWith((Set<WidgetState> states) {
+          if (states.contains(WidgetState.selected)) {
+            return AppColors.white;
+          }
+          return AppColors.black;
+        }),
+        yearForegroundColor:
+            WidgetStateProperty.resolveWith((Set<WidgetState> states) {
+          if (states.contains(WidgetState.selected)) {
+            return AppColors.white;
+          }
+          return AppColors.black;
+        }),
+        todayForegroundColor: const WidgetStatePropertyAll(AppColors.primary),
+        todayBackgroundColor:
+            WidgetStatePropertyAll(AppColors.primary.withAlpha(10)),
+      ),
+      timePickerTheme: const TimePickerThemeData(
+        backgroundColor: AppColors.white,
+        hourMinuteColor: AppColors.white,
+        hourMinuteTextColor: AppColors.black,
+        dialHandColor: AppColors.primary,
+        dialBackgroundColor: AppColors.grey200,
+        dialTextColor: AppColors.black,
+      ),
+      searchViewTheme: SearchViewThemeData(
+        backgroundColor: AppColors.white,
+        surfaceTintColor: AppColors.white,
+        dividerColor: AppColors.grey300,
+        headerTextStyle: AppTextTheme.lightTextTheme.labelMedium,
+        headerHintStyle: AppTextTheme.lightTextTheme.labelMedium
+            ?.copyWith(color: AppColors.grey300),
+      ),
+      colorScheme: ColorScheme.light(
+        surface: AppColors.white,
+        surfaceTint: AppColors.white,
+        surfaceBright: AppColors.white,
+        surfaceContainer: AppColors.grey200,
+        onSurface: AppColors.black,
       ),
     );
   }
 
   static ThemeData get darkTheme {
     return ThemeData(
-      primarySwatch: Colors.blue,
       textTheme: AppTextTheme.darkTextTheme,
       dividerColor: AppColors.white,
-      scaffoldBackgroundColor: AppColors.darkGray,
+      canvasColor: AppColors.black,
+      iconTheme: const IconThemeData(color: AppColors.white),
+      scaffoldBackgroundColor: AppColors.black,
+      textSelectionTheme: const TextSelectionThemeData(
+        cursorColor: AppColors.grey200,
+        selectionColor: AppColors.white,
+        selectionHandleColor: AppColors.white,
+      ),
       cardTheme: CardTheme(
-        color: AppColors.gray,
-        elevation: 4,
-        margin: const EdgeInsets.all(8.0),
+        color: AppColors.grey800,
+        elevation: 0,
+        margin: const EdgeInsets.all(0),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(GlobalConstants.radiusM),
         ),
       ),
-      appBarTheme: AppBarTheme(
-        surfaceTintColor: AppColors.darkGray,
-        backgroundColor: AppColors.darkGray,
-        elevation: 4,
-        shadowColor: AppColors.gray.withOpacity(0.5),
-        iconTheme: const IconThemeData(color: AppColors.white),
-        titleTextStyle: const TextStyle(
+      progressIndicatorTheme: const ProgressIndicatorThemeData(
+        color: AppColors.primary,
+      ),
+      appBarTheme: const AppBarTheme(
+        surfaceTintColor: AppColors.black,
+        backgroundColor: AppColors.black,
+        elevation: 0,
+        shadowColor: Colors.transparent,
+        iconTheme: IconThemeData(color: AppColors.white),
+        scrolledUnderElevation: 0,
+        titleTextStyle: TextStyle(
           color: AppColors.white,
           fontFamily: 'WorkSans',
           fontSize: 20,
@@ -174,7 +233,7 @@ class AppTheme {
       ),
       listTileTheme: const ListTileThemeData(
         contentPadding: EdgeInsets.symmetric(horizontal: 16.0),
-        tileColor: AppColors.darkGray,
+        tileColor: AppColors.grey800,
         textColor: AppColors.white,
         iconColor: AppColors.white,
         titleTextStyle: TextStyle(
@@ -187,17 +246,17 @@ class AppTheme {
           fontFamily: 'WorkSans',
           fontSize: 14,
           fontWeight: FontWeight.normal,
-          color: AppColors.gray,
+          color: AppColors.grey300,
         ),
       ),
       dividerTheme: const DividerThemeData(
-        color: AppColors.gray,
+        color: AppColors.grey300,
         thickness: 0.5,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           foregroundColor: AppColors.white,
-          backgroundColor: AppColors.info,
+          backgroundColor: AppColors.primary,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),
           ),
@@ -210,54 +269,61 @@ class AppTheme {
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: AppColors.darkGray,
-        enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: AppColors.gray, width: 1.5),
-          borderRadius: BorderRadius.circular(10),
+        fillColor: AppColors.grey800,
+        counterStyle: AppTextTheme.lightTextTheme.bodySmall
+            ?.copyWith(color: AppColors.white),
+        prefixStyle: AppTextTheme.darkTextTheme.bodyLarge
+            ?.copyWith(color: AppColors.grey300),
+        suffixStyle: AppTextTheme.darkTextTheme.bodyLarge
+            ?.copyWith(color: AppColors.grey300),
+        labelStyle: AppTextTheme.darkTextTheme.bodyLarge
+            ?.copyWith(color: AppColors.white),
+        hintStyle: AppTextTheme.darkTextTheme.bodyLarge
+            ?.copyWith(color: AppColors.white),
+        errorStyle: AppTextTheme.darkTextTheme.bodySmall
+            ?.copyWith(color: AppColors.error),
+        floatingLabelBehavior: FloatingLabelBehavior.auto,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(GlobalConstants.radiusM),
+          borderSide: const BorderSide(color: AppColors.grey300),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: AppColors.gray),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(GlobalConstants.radiusM),
+          borderSide: const BorderSide(color: AppColors.grey300, width: 1.0),
         ),
         errorBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: AppColors.error),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(GlobalConstants.radiusM),
+          borderSide: const BorderSide(color: AppColors.error, width: 1.5),
         ),
-        contentPadding: const EdgeInsets.only(left: 25),
-        labelStyle: const TextStyle(
-          color: AppColors.white,
-          fontWeight: FontWeight.normal,
-          fontSize: 18,
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(GlobalConstants.radiusM),
+          borderSide: const BorderSide(color: AppColors.error, width: 1.0),
         ),
+        errorMaxLines: 2,
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
       ),
       dropdownMenuTheme: DropdownMenuThemeData(
-        textStyle:
-            const TextStyle(fontSize: 14.0, fontWeight: FontWeight.normal),
         menuStyle: MenuStyle(
-          surfaceTintColor: WidgetStateProperty.all(AppColors.darkGray),
-          backgroundColor: WidgetStateProperty.all(AppColors.darkGray),
+          surfaceTintColor: WidgetStateProperty.all(AppColors.grey800),
+          backgroundColor: WidgetStateProperty.all(AppColors.grey800),
+          elevation: WidgetStateProperty.all(4),
           shape: WidgetStateProperty.all(
             RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(GlobalConstants.radiusM),
             ),
           ),
         ),
       ),
-      drawerTheme: const DrawerThemeData(
-        backgroundColor: AppColors.darkGray,
+      drawerTheme: DrawerThemeData(
+        backgroundColor: AppColors.grey800,
         elevation: 16,
-        surfaceTintColor: AppColors.darkGray,
+        surfaceTintColor: AppColors.grey800,
       ),
-      textSelectionTheme: const TextSelectionThemeData(
-        cursorColor: AppColors.white,
-        selectionColor: AppColors.white,
-        selectionHandleColor: AppColors.white,
-      ),
-      iconTheme: const IconThemeData(color: AppColors.white),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
-          overlayColor: AppColors.gray,
-          foregroundColor: AppColors.info,
+          overlayColor: AppColors.grey300,
+          foregroundColor: AppColors.primary,
           textStyle: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.normal,
@@ -265,10 +331,11 @@ class AppTheme {
         ),
       ),
       dialogTheme: const DialogTheme(
-        backgroundColor: AppColors.darkGray,
+        backgroundColor: AppColors.grey800,
         elevation: 16,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
+          borderRadius:
+              BorderRadius.all(Radius.circular(GlobalConstants.radiusM)),
         ),
       ),
       expansionTileTheme: const ExpansionTileThemeData(
@@ -276,8 +343,61 @@ class AppTheme {
         textColor: AppColors.white,
         collapsedIconColor: AppColors.white,
         collapsedTextColor: AppColors.white,
-        backgroundColor: AppColors.darkGray,
-        collapsedBackgroundColor: AppColors.darkGray,
+        backgroundColor: AppColors.grey800,
+        collapsedBackgroundColor: AppColors.grey800,
+      ),
+      datePickerTheme: DatePickerThemeData(
+        backgroundColor: AppColors.grey800,
+        surfaceTintColor: AppColors.grey800,
+        headerBackgroundColor: AppColors.primary,
+        headerForegroundColor: AppColors.white,
+        dayBackgroundColor:
+            WidgetStateProperty.resolveWith((Set<WidgetState> states) {
+          if (states.contains(WidgetState.selected)) {
+            return AppColors.primary;
+          }
+          return AppColors.grey800; // Modificato per il tema scuro
+        }),
+        dayForegroundColor:
+            WidgetStateProperty.resolveWith((Set<WidgetState> states) {
+          if (states.contains(WidgetState.selected)) {
+            return AppColors.white;
+          }
+          return AppColors.grey800; // Modificato per il tema scuro
+        }),
+        yearForegroundColor:
+            WidgetStateProperty.resolveWith((Set<WidgetState> states) {
+          if (states.contains(WidgetState.selected)) {
+            return AppColors.white;
+          }
+          return AppColors.grey800; // Modificato per il tema scuro
+        }),
+        todayForegroundColor: const WidgetStatePropertyAll(AppColors.primary),
+        todayBackgroundColor:
+            WidgetStatePropertyAll(AppColors.primary.withAlpha(10)),
+      ),
+      timePickerTheme: TimePickerThemeData(
+        backgroundColor: AppColors.grey800,
+        hourMinuteColor: AppColors.primary,
+        hourMinuteTextColor: AppColors.white,
+        dialHandColor: AppColors.primary,
+        dialBackgroundColor: AppColors.grey800,
+        dialTextColor: AppColors.white,
+      ),
+      searchViewTheme: SearchViewThemeData(
+        backgroundColor: AppColors.grey800,
+        surfaceTintColor: AppColors.grey800,
+        dividerColor: AppColors.grey300,
+        headerTextStyle: AppTextTheme.darkTextTheme.labelMedium,
+        headerHintStyle: AppTextTheme.darkTextTheme.labelMedium
+            ?.copyWith(color: AppColors.grey300),
+      ),
+      colorScheme: ColorScheme.dark(
+        surface: AppColors.black,
+        surfaceTint: AppColors.black,
+        surfaceBright: AppColors.grey800,
+        surfaceContainer: AppColors.grey800,
+        onSurface: AppColors.white,
       ),
     );
   }
