@@ -132,4 +132,35 @@ class GlobalConstants {
   static const double fabSize = 56.0;
   static const double fabMiniSize = 40.0;
   static const double fabElevation = 6.0;
+  
+  /// Stepper
+  static const double stepperIconSize = 30.0;
+  static const double stepperLineThickness = 1.0;
+  static const double stepperLineThicknessActive = 2.0;
+  static const double stepperIconSmallSize = 16.0;
+  static const double stepperLineIndent = 10.0;
+  static const double stepperMinHeight = 60.0;
+  
+  /// Buttons
+  static const double buttonMinWidth = 120.0;
+  static const double buttonHeight = 45.0;
+  static const double buttonMaxWidth = 150.0;
+  static const double buttonBorderRadius = 12.0;
+  
+  /// Button specific sizes
+  static const double buttonNormalHeight = 55.0;
+  static const double buttonSmallHeight = 41.25;
+  static const double buttonNormalMinWidth = 170.0;
+  static const double buttonSmallMinWidth = 100.0;
+  static const double buttonProgressIndicatorRatio = 0.7;
+  static const double buttonTextSizeRatio = 0.7;
+  
+  /// Opacity values
+  static const double opacityLow = 0.2;
+  static const double opacityMedium = 0.5;
+  static const double opacityHigh = 0.7;
+  
+  /// Shadows and Blurs
+  static const double shadowBlurRadius = 4.0;
+  static const double shadowSpreadRadius = 1.0;
 }
