@@ -1,10 +1,10 @@
+import 'package:clean_architecture/core/constants/app_colors.dart';
+import 'package:clean_architecture/core/constants/global_constants.dart';
+import 'package:clean_architecture/core/extensions/color_extension.dart';
+import 'package:clean_architecture/core/responsive/index.dart';
 import 'package:flutter/material.dart';
-import 'package:simeprofessional_mobileapp_flutter/cdbkr_lib/core/constants/app_colors.dart';
-import 'package:simeprofessional_mobileapp_flutter/cdbkr_lib/core/constants/global_constants.dart';
-import 'package:simeprofessional_mobileapp_flutter/cdbkr_lib/core/extensions/color_extension.dart';
-import 'package:simeprofessional_mobileapp_flutter/core/responsive/index.dart';
 
-class SimeDropdownField<T> extends StatelessWidget {
+class CAADropdownField<T> extends StatelessWidget {
   final String labelText;
   final String hintText;
   final IconData prefixIcon;
@@ -17,8 +17,8 @@ class SimeDropdownField<T> extends StatelessWidget {
   final FocusNode? focusNode;
   final EdgeInsetsGeometry contentPadding;
 
-  const SimeDropdownField({
-    Key? key,
+  const CAADropdownField({
+    super.key,
     required this.labelText,
     required this.hintText,
     required this.prefixIcon,
@@ -31,7 +31,7 @@ class SimeDropdownField<T> extends StatelessWidget {
     this.focusNode,
     this.contentPadding =
         const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

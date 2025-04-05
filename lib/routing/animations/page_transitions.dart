@@ -1,4 +1,4 @@
-import 'package:cdbkr_boilerplate/core/structures/enums.dart';
+import 'package:clean_architecture/core/structures/enums.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';

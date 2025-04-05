@@ -6,8 +6,8 @@ import 'package:flutter_animate/flutter_animate.dart';
 /// Parameters:
 /// - [child]: The widget to be animated
 /// - [duration]: Duration of the animation in milliseconds
-class SimeFadeInDown extends StatelessWidget {
-  const SimeFadeInDown({
+class CAAFadeInDown extends StatelessWidget {
+  const CAAFadeInDown({
     required this.child,
     required this.duration,
     super.key,
@@ -41,8 +41,8 @@ class SimeFadeInDown extends StatelessWidget {
 /// Parameters:
 /// - [child]: The widget to be animated
 /// - [duration]: Duration of the animation in milliseconds
-class SimeFadeInUp extends StatelessWidget {
-  const SimeFadeInUp({
+class CAAFadeInUp extends StatelessWidget {
+  const CAAFadeInUp({
     required this.child,
     required this.duration,
     super.key,
@@ -76,8 +76,8 @@ class SimeFadeInUp extends StatelessWidget {
 /// Parameters:
 /// - [child]: The widget to be animated
 /// - [duration]: Duration of the animation in milliseconds
-class SimeFadeInLeft extends StatelessWidget {
-  const SimeFadeInLeft({
+class CAAFadeInLeft extends StatelessWidget {
+  const CAAFadeInLeft({
     required this.child,
     required this.duration,
     super.key,
@@ -111,8 +111,8 @@ class SimeFadeInLeft extends StatelessWidget {
 /// Parameters:
 /// - [child]: The widget to be animated
 /// - [duration]: Duration of the animation in milliseconds
-class SimeFadeInRight extends StatelessWidget {
-  const SimeFadeInRight({
+class CAAFadeInRight extends StatelessWidget {
+  const CAAFadeInRight({
     required this.child,
     required this.duration,
     super.key,

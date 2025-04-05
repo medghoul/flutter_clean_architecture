@@ -1,3 +1,4 @@
+import 'package:clean_architecture/core/services/shared_preferences/shared_prefs_service.dart';
 import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
 import 'package:go_router/go_router.dart';

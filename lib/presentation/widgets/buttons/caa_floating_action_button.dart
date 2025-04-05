@@ -1,6 +1,6 @@
+import 'package:clean_architecture/core/constants/app_colors.dart';
+import 'package:clean_architecture/core/constants/global_constants.dart';
 import 'package:flutter/material.dart';
-import 'package:simeprofessional_mobileapp_flutter/cdbkr_lib/core/constants/app_colors.dart';
-import 'package:simeprofessional_mobileapp_flutter/cdbkr_lib/core/constants/global_constants.dart';
 
 /// A customized floating action button widget.
 ///
@@ -10,7 +10,7 @@ import 'package:simeprofessional_mobileapp_flutter/cdbkr_lib/core/constants/glob
 /// - Configurable elevation
 /// - Consistent styling with app theme
 /// - Rounded corners with fixed radius
-class SimeFloatingActionButton extends StatelessWidget {
+class CAAFloatingActionButton extends StatelessWidget {
   /// Callback function when button is pressed
   final VoidCallback onPressed;
 
@@ -29,7 +29,7 @@ class SimeFloatingActionButton extends StatelessWidget {
   /// If not provided, uses 1.0
   final double? elevation;
 
-  /// Creates a [SimeFloatingActionButton].
+  /// Creates a [CAAFloatingActionButton].
   ///
   /// Parameters:
   /// - [onPressed]: Callback function when button is pressed
@@ -37,7 +37,7 @@ class SimeFloatingActionButton extends StatelessWidget {
   /// - [backgroundColor]: Optional custom background color
   /// - [foregroundColor]: Optional custom foreground color
   /// - [elevation]: Optional custom elevation
-  const SimeFloatingActionButton({
+  const CAAFloatingActionButton({
     super.key,
     required this.onPressed,
     required this.icon,

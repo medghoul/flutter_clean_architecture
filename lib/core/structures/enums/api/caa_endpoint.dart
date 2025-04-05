@@ -1,6 +1,6 @@
 part of 'index.dart';
 
-enum CdbkrEndpoint implements ApiEndpoint {
+enum CAAEndpoint implements ApiEndpoint {
   users('/users'),
   posts('/posts'),
   comments('/comments'),
@@ -9,7 +9,7 @@ enum CdbkrEndpoint implements ApiEndpoint {
 
   @override
   final String path;
-  const CdbkrEndpoint(this.path);
+  const CAAEndpoint(this.path);
 
   @override
   String withId(String id) => '$path/$id';

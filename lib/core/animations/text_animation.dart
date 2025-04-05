@@ -1,5 +1,5 @@
+import 'package:clean_architecture/core/constants/app_colors.dart';
 import 'package:clean_architecture/core/enums/text_animation_type.dart';
-import 'package:clean_architecture/core/resources/res.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 

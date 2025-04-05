@@ -1,33 +1,33 @@
+import 'package:clean_architecture/presentation/widgets/stepper/models/caa_step.dart';
 import 'package:equatable/equatable.dart';
-import 'package:simeprofessional_mobileapp_flutter/presentation/widgets/stepper/models/sime_step.dart';
 
-enum SimeStepperStatus { initial, inProgress, completed, error }
+enum CAAStepperStatus { initial, inProgress, completed, error }
 
-enum SimeStepperType { registration }
+enum CAAStepperType { registration }
 
-class SimeStepperState extends Equatable {
-  final List<SimeStep> steps;
+class CAAStepperState extends Equatable {
+  final List<CAAStep> steps;
   final int currentStepIndex;
-  final SimeStepperStatus status;
-  final SimeStepperType type;
+  final CAAStepperStatus status;
+  final CAAStepperType type;
   final String? errorMessage;
 
-  const SimeStepperState({
+  const CAAStepperState({
     required this.steps,
     this.currentStepIndex = 0,
-    this.status = SimeStepperStatus.initial,
+    this.status = CAAStepperStatus.initial,
     required this.type,
     this.errorMessage,
   });
 
-  SimeStepperState copyWith({
-    List<SimeStep>? steps,
+  CAAStepperState copyWith({
+    List<CAAStep>? steps,
     int? currentStepIndex,
-    SimeStepperStatus? status,
-    SimeStepperType? type,
+    CAAStepperStatus? status,
+    CAAStepperType? type,
     String? errorMessage,
   }) {
-    return SimeStepperState(
+    return CAAStepperState(
       steps: steps ?? this.steps,
       currentStepIndex: currentStepIndex ?? this.currentStepIndex,
       status: status ?? this.status,

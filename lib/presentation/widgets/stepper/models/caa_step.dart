@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-class SimeStep {
+class CAAStep {
   final String title;
   final String? subtitle;
   final Widget? content;
@@ -8,7 +8,7 @@ class SimeStep {
   final bool inProgress;
   final bool inError;
 
-  SimeStep({
+  CAAStep({
     required this.title,
     this.subtitle,
     this.content,
@@ -17,7 +17,7 @@ class SimeStep {
     this.inError = false,
   });
 
-  SimeStep copyWith({
+  CAAStep copyWith({
     String? title,
     String? subtitle,
     Widget? subtitleWidget,
@@ -26,7 +26,7 @@ class SimeStep {
     bool? inProgress,
     bool? inError,
   }) {
-    return SimeStep(
+    return CAAStep(
       title: title ?? this.title,
       subtitle: subtitle ?? this.subtitle,
       content: content ?? this.content,

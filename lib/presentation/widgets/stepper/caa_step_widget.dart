@@ -1,19 +1,19 @@
+import 'package:clean_architecture/core/constants/app_colors.dart';
+import 'package:clean_architecture/core/constants/global_constants.dart';
+import 'package:clean_architecture/core/extensions/color_extension.dart';
+import 'package:clean_architecture/presentation/widgets/stepper/cubit/caa_stepper_cubit.dart';
+import 'package:clean_architecture/presentation/widgets/stepper/models/caa_step.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:simeprofessional_mobileapp_flutter/cdbkr_lib/core/constants/app_colors.dart';
-import 'package:simeprofessional_mobileapp_flutter/cdbkr_lib/core/constants/global_constants.dart';
-import 'package:simeprofessional_mobileapp_flutter/cdbkr_lib/core/extensions/color_extension.dart';
-import 'package:simeprofessional_mobileapp_flutter/presentation/widgets/stepper/cubit/sime_stepper_cubit.dart';
-import 'package:simeprofessional_mobileapp_flutter/presentation/widgets/stepper/models/sime_step.dart';
 
-class SimeStepWidget extends StatelessWidget {
-  final SimeStep step;
+class CAAStepWidget extends StatelessWidget {
+  final CAAStep step;
   final bool isActive;
   final bool isLast;
   final int stepNumber;
   final VoidCallback? onNext;
 
-  const SimeStepWidget({
+  const CAAStepWidget({
     super.key,
     required this.step,
     required this.isActive,
@@ -80,7 +80,8 @@ class SimeStepWidget extends StatelessWidget {
       style: theme.textTheme.headlineMedium!.copyWith(
         color: isActive || step.isCompleted
             ? theme.colorScheme.onSurface
-            : theme.colorScheme.onSurface.withOpacityValue(GlobalConstants.opacityMedium),
+            : theme.colorScheme.onSurface
+                .withOpacityValue(GlobalConstants.opacityMedium),
       ),
     );
   }
@@ -92,7 +93,8 @@ class SimeStepWidget extends StatelessWidget {
       child: Text(
         step.subtitle!,
         style: theme.textTheme.bodyMedium!.copyWith(
-          color: theme.colorScheme.onSurface.withOpacityValue(GlobalConstants.opacityHigh),
+          color: theme.colorScheme.onSurface
+              .withOpacityValue(GlobalConstants.opacityHigh),
         ),
       ),
     );
@@ -101,9 +103,7 @@ class SimeStepWidget extends StatelessWidget {
   Widget _buildContent() {
     return Padding(
       padding: const EdgeInsets.only(
-        top: GlobalConstants.marginS, 
-        bottom: GlobalConstants.marginM
-      ),
+          top: GlobalConstants.marginS, bottom: GlobalConstants.marginM),
       child: SizedBox(
         width: double.infinity,
         child: step.content!,
@@ -124,7 +124,7 @@ class SimeStepWidget extends StatelessWidget {
                 onNext!();
               } else {
                 // Use the cubit to navigate to next step
-                final cubit = context.read<SimeStepperCubit>();
+                final cubit = context.read<CAAStepperCubit>();
                 if (isLast) {
                   // Handle last step completion
                   cubit.completeRegistration();
@@ -137,10 +137,10 @@ class SimeStepWidget extends StatelessWidget {
               backgroundColor: AppColors.primary,
               foregroundColor: Colors.white,
               padding: const EdgeInsets.symmetric(
-                horizontal: GlobalConstants.paddingL, 
-                vertical: GlobalConstants.paddingS
-              ),
-              minimumSize: Size(GlobalConstants.buttonMinWidth, GlobalConstants.buttonHeight),
+                  horizontal: GlobalConstants.paddingL,
+                  vertical: GlobalConstants.paddingS),
+              minimumSize: Size(
+                  GlobalConstants.buttonMinWidth, GlobalConstants.buttonHeight),
             ),
             child: Text(
               isLast ? 'Submit' : 'Next',
@@ -164,7 +164,8 @@ class SimeStepWidget extends StatelessWidget {
       return _buildIconContainer(
         color: isActive
             ? AppColors.success
-            : theme.colorScheme.onSurface.withOpacityValue(GlobalConstants.opacityMedium),
+            : theme.colorScheme.onSurface
+                .withOpacityValue(GlobalConstants.opacityMedium),
         icon: Icons.sports_score_outlined,
         context: context,
       );
@@ -208,7 +209,8 @@ class SimeStepWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: isActive
             ? AppColors.primary
-            : theme.colorScheme.onSurface.withOpacityValue(GlobalConstants.opacityMedium),
+            : theme.colorScheme.onSurface
+                .withOpacityValue(GlobalConstants.opacityMedium),
         shape: BoxShape.circle,
       ),
       child: Center(

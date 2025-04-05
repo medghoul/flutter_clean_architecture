@@ -1,19 +1,19 @@
+import 'package:clean_architecture/core/constants/app_colors.dart';
+import 'package:clean_architecture/core/constants/global_constants.dart';
+import 'package:clean_architecture/core/extensions/string_extension.dart';
+import 'package:clean_architecture/core/structures/enums.dart';
 import 'package:flutter/material.dart';
-import 'package:simeprofessional_mobileapp_flutter/cdbkr_lib/core/constants/app_colors.dart';
-import 'package:simeprofessional_mobileapp_flutter/cdbkr_lib/core/constants/global_constants.dart';
-import 'package:simeprofessional_mobileapp_flutter/cdbkr_lib/core/extensions/string_extension.dart';
-import 'package:simeprofessional_mobileapp_flutter/core/structures/enums.dart';
 
-/// A customized elevated button widget with loading state and size variants.
+/// A customized outlined button widget with loading state and size variants.
 ///
-/// This button extends the Material Design elevated button with additional features:
+/// This button extends the Material Design outlined button with additional features:
 /// - Loading state with progress indicator
 /// - Size variants (normal and small)
 /// - Customizable background and text colors
 /// - Optional width expansion
 /// - Auto-capitalization of text
 /// - Consistent styling with app theme
-class SimeElevatedButton extends StatefulWidget {
+class CAAOutlinedButton extends StatefulWidget {
   /// Text to display on the button
   final String text;
 
@@ -35,7 +35,7 @@ class SimeElevatedButton extends StatefulWidget {
   /// Size variant of the button (normal or small)
   final ButtonSize size;
 
-  /// Creates a [SimeElevatedButton].
+  /// Creates a [CAAOutlinedButton].
   ///
   /// Parameters:
   /// - [text]: Text to display on the button
@@ -45,7 +45,7 @@ class SimeElevatedButton extends StatefulWidget {
   /// - [expand]: Whether to expand button to full width
   /// - [isLoading]: Whether to show loading state
   /// - [size]: Size variant of the button
-  const SimeElevatedButton({
+  const CAAOutlinedButton({
     super.key,
     required this.text,
     required this.onPressed,
@@ -57,49 +57,54 @@ class SimeElevatedButton extends StatefulWidget {
   });
 
   @override
-  State<SimeElevatedButton> createState() => _SimeElevatedButtonState();
+  _CAAOutlinedButtonState createState() => _CAAOutlinedButtonState();
 }
 
-class _SimeElevatedButtonState extends State<SimeElevatedButton> {
+class _CAAOutlinedButtonState extends State<CAAOutlinedButton> {
   /// Height of the button based on size variant
-  double get _height => widget.size == ButtonSize.normal 
-      ? GlobalConstants.buttonNormalHeight 
+  double get _height => widget.size == ButtonSize.normal
+      ? GlobalConstants.buttonNormalHeight
       : GlobalConstants.buttonSmallHeight;
 
   /// Size of the progress indicator based on button size
-  double get _progressIndicatorSize => _height * GlobalConstants.buttonProgressIndicatorRatio;
+  double get _progressIndicatorSize =>
+      _height * GlobalConstants.buttonProgressIndicatorRatio;
 
   /// Font size of the button text based on size variant
   double get _textFontSize => widget.size == ButtonSize.normal
-      ? Theme.of(context).textTheme.labelLarge?.fontSize ?? GlobalConstants.fontM
-      : (Theme.of(context).textTheme.labelLarge?.fontSize ?? GlobalConstants.fontM) * 
+      ? Theme.of(context).textTheme.labelLarge?.fontSize ??
+          GlobalConstants.fontM
+      : (Theme.of(context).textTheme.labelLarge?.fontSize ??
+              GlobalConstants.fontM) *
           GlobalConstants.buttonTextSizeRatio;
 
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
       constraints: BoxConstraints(
-        minWidth: widget.size == ButtonSize.normal 
-            ? GlobalConstants.buttonNormalMinWidth 
+        minWidth: widget.size == ButtonSize.normal
+            ? GlobalConstants.buttonNormalMinWidth
             : GlobalConstants.buttonSmallMinWidth,
-        maxWidth: widget.expand ? double.infinity : GlobalConstants.buttonMaxWidth,
+        maxWidth: widget.expand ? double.infinity : double.maxFinite,
       ),
       child: SizedBox(
         height: _height,
-        child: ElevatedButton(
+        child: OutlinedButton(
           onPressed: widget.isLoading ? null : widget.onPressed,
-          style: ElevatedButton.styleFrom(
+          style: OutlinedButton.styleFrom(
             disabledBackgroundColor: AppColors.grey200,
             foregroundColor: widget.textColor ?? AppColors.white,
             backgroundColor: widget.backgroundColor ?? AppColors.primary,
+            side: const BorderSide(style: BorderStyle.none),
             elevation: 0,
             padding: EdgeInsets.symmetric(
-              horizontal: widget.size == ButtonSize.normal 
-                  ? GlobalConstants.paddingL 
+              horizontal: widget.size == ButtonSize.normal
+                  ? GlobalConstants.paddingL
                   : GlobalConstants.paddingM,
             ),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(GlobalConstants.buttonBorderRadius),
+              borderRadius:
+                  BorderRadius.circular(GlobalConstants.buttonBorderRadius),
             ),
           ),
           child: SizedBox(
@@ -110,14 +115,16 @@ class _SimeElevatedButtonState extends State<SimeElevatedButton> {
                       width: _progressIndicatorSize,
                       height: _progressIndicatorSize,
                       child: CircularProgressIndicator(
-                        valueColor: AlwaysStoppedAnimation<Color>(AppColors.grey700),
-                        strokeWidth: GlobalConstants.progressIndicatorStrokeWidth,
+                        valueColor:
+                            AlwaysStoppedAnimation<Color>(AppColors.grey700),
+                        strokeWidth:
+                            GlobalConstants.progressIndicatorStrokeWidth,
                       ),
                     )
                   : Text(
                       widget.text.toCapitalized(),
                       style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                            color: widget.textColor ?? AppColors.white,
+                            color: AppColors.white,
                             fontSize: _textFontSize,
                           ),
                     ),
@@ -127,4 +134,4 @@ class _SimeElevatedButtonState extends State<SimeElevatedButton> {
       ),
     );
   }
-} 
+}

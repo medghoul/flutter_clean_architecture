@@ -1,10 +1,10 @@
+import 'package:clean_architecture/core/constants/global_constants.dart';
+import 'package:clean_architecture/core/responsive/index.dart';
+import 'package:clean_architecture/core/utils/validation/form_validators.dart';
+import 'package:clean_architecture/presentation/widgets/form/index.dart';
 import 'package:flutter/material.dart';
-import 'package:simeprofessional_mobileapp_flutter/cdbkr_lib/core/constants/global_constants.dart';
-import 'package:simeprofessional_mobileapp_flutter/cdbkr_lib/core/utils/validation/form_validators.dart';
-import 'package:simeprofessional_mobileapp_flutter/core/responsive/index.dart';
-import 'package:simeprofessional_mobileapp_flutter/presentation/widgets/form/sime_text_field.dart';
 
-class SimeEmailField extends StatelessWidget {
+class CAAEmailField extends StatelessWidget {
   final TextEditingController? controller;
   final String labelText;
   final String hintText;
@@ -16,8 +16,8 @@ class SimeEmailField extends StatelessWidget {
   final bool enabled;
   final TextInputAction? textInputAction;
 
-  const SimeEmailField({
-    Key? key,
+  const CAAEmailField({
+    super.key,
     this.controller,
     this.labelText = 'Email',
     this.hintText = 'Inserisci la tua email',
@@ -28,11 +28,11 @@ class SimeEmailField extends StatelessWidget {
     this.focusNode,
     this.enabled = true,
     this.textInputAction,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
-    return SimeTextField(
+    return CAATextField(
       controller: controller,
       labelText: labelText,
       hintText: hintText,

@@ -1,6 +1,6 @@
+import 'package:clean_architecture/core/constants/app_colors.dart';
+import 'package:clean_architecture/core/constants/global_constants.dart';
 import 'package:flutter/material.dart';
-import 'package:simeprofessional_mobileapp_flutter/cdbkr_lib/core/constants/app_colors.dart';
-import 'package:simeprofessional_mobileapp_flutter/cdbkr_lib/core/constants/global_constants.dart';
 
 /// A customized icon button widget with loading state.
 ///
@@ -9,7 +9,7 @@ import 'package:simeprofessional_mobileapp_flutter/cdbkr_lib/core/constants/glob
 /// - Customizable icon color
 /// - Consistent styling with app theme
 /// - Automatic color inheritance from IconTheme
-class SimeIconButton extends StatelessWidget {
+class CAATextButton extends StatelessWidget {
   /// Callback function when button is pressed
   final VoidCallback onPressed;
 
@@ -23,14 +23,14 @@ class SimeIconButton extends StatelessWidget {
   /// If not provided, inherits from IconTheme
   final Color? color;
 
-  /// Creates a [SimeIconButton].
+  /// Creates a [CAATextButton].
   ///
   /// Parameters:
   /// - [onPressed]: Callback function when button is pressed
   /// - [icon]: Icon to display in the button
   /// - [isLoading]: Whether to show loading state
   /// - [color]: Optional custom icon color
-  SimeIconButton({
+  const CAATextButton({
     super.key,
     required this.onPressed,
     required this.icon,

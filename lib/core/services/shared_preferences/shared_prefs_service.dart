@@ -1,6 +1,5 @@
-import 'package:cdbkr_boilerplate/localization/i18n/cdbkr_locale.dart';
-import 'package:cdbkr_boilerplate/core/services/logger/logger.dart';
-import 'package:cdbkr_boilerplate/core/structures/enums/prefs_keys.dart';
+import 'package:clean_architecture/core/services/logger/logging.dart';
+import 'package:clean_architecture/core/structures/enums.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// Service for managing application preferences using SharedPreferences.
@@ -33,9 +32,9 @@ class SharedPreferencesService {
 
       // Handle special cases
       if (key == PrefsKeys.locale) {
-        return CdbkrLocale.values.firstWhere(
+        return CAALocale.values.firstWhere(
           (locale) => locale.name == value,
-          orElse: () => CdbkrLocale.enUS,
+          orElse: () => CAALocale.en,
         ) as T;
       }
 
@@ -59,7 +58,7 @@ class SharedPreferencesService {
         return await _sharedPreferences.setBool(key.key, value);
       } else if (value is List<String>) {
         return await _sharedPreferences.setStringList(key.key, value);
-      } else if (value is CdbkrLocale) {
+      } else if (value is CAALocale) {
         return await _sharedPreferences.setString(key.key, value.name);
       }
       throw UnsupportedError('Type ${T.toString()} not supported');

@@ -1,8 +1,8 @@
+import 'package:clean_architecture/core/services/logger/logger.dart';
+import 'package:clean_architecture/core/services/logger/network_error.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:logger/logger.dart';
-import 'package:simeprofessional_mobileapp_flutter/cdbkr_lib/core/services/logger/logger.dart';
-import 'package:simeprofessional_mobileapp_flutter/cdbkr_lib/core/services/logger/network_error.dart';
 
 /// Configuration for the logging system.
 ///

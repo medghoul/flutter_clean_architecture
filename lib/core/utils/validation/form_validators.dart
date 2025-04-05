@@ -1,5 +1,5 @@
-import 'package:simeprofessional_mobileapp_flutter/cdbkr_lib/core/constants/global_constants.dart';
-import 'package:simeprofessional_mobileapp_flutter/cdbkr_lib/core/utils/validation/app_regex.dart';
+import 'package:clean_architecture/core/constants/global_constants.dart';
+import 'package:clean_architecture/core/utils/validation/app_regex.dart';
 
 /// A utility class for form field validation.
 ///

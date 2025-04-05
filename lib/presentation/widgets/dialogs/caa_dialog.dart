@@ -1,10 +1,9 @@
+import 'package:clean_architecture/core/constants/app_colors.dart';
+import 'package:clean_architecture/core/constants/global_constants.dart';
+import 'package:clean_architecture/core/extensions/string_extension.dart';
+import 'package:clean_architecture/core/structures/enums.dart';
+import 'package:clean_architecture/presentation/widgets/buttons/index.dart';
 import 'package:flutter/material.dart';
-import 'package:simeprofessional_mobileapp_flutter/cdbkr_lib/core/constants/app_colors.dart';
-import 'package:simeprofessional_mobileapp_flutter/cdbkr_lib/core/constants/global_constants.dart';
-import 'package:simeprofessional_mobileapp_flutter/cdbkr_lib/core/extensions/string_extension.dart';
-import 'package:simeprofessional_mobileapp_flutter/core/structures/enums.dart';
-import 'package:simeprofessional_mobileapp_flutter/presentation/widgets/buttons/sime_outlined_button.dart';
-import 'package:simeprofessional_mobileapp_flutter/presentation/widgets/buttons/sime_text_button.dart';
 
 /// A customizable dialog widget that provides a consistent look and feel across the app.
 ///
@@ -15,7 +14,7 @@ import 'package:simeprofessional_mobileapp_flutter/presentation/widgets/buttons/
 /// - Customizable action buttons
 /// - Loading state
 /// - Form validation
-class SimeDialog extends StatelessWidget {
+class CAADialog extends StatelessWidget {
   /// The title displayed at the top of the dialog.
   final String title;
 
@@ -55,11 +54,11 @@ class SimeDialog extends StatelessWidget {
   /// Indicates whether the dialog is in a loading state.
   final bool isLoading;
 
-  /// Creates a [SimeDialog].
+  /// Creates a [CAADialog].
   ///
   /// The [title] parameter is required.
   /// All other parameters are optional and will use default values if not provided.
-  SimeDialog({
+  CAADialog({
     super.key,
     required this.title,
     this.subtitle,
@@ -145,14 +144,14 @@ class SimeDialog extends StatelessWidget {
   List<Widget> _buildActionButtons(BuildContext context) {
     return [
       if (closeButtonVisible)
-        SimeOutlinedButton(
+        CAAOutlinedButton(
           onPressed: onClose ?? () => Navigator.pop(context),
           text: closeButtonLabel ?? 'Close'.toCapitalized(),
         ),
       if (customConfirmButton != null)
         customConfirmButton!
       else
-        SimeTextButton(
+        CAATextButton(
           textColor: AppColors.primary,
           isLoading: isLoading,
           onPressed: () {

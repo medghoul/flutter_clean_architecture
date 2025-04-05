@@ -1,13 +1,13 @@
+import 'package:clean_architecture/core/responsive/index.dart';
 import 'package:flutter/material.dart';
-import 'package:simeprofessional_mobileapp_flutter/core/responsive/index.dart';
 
-/// A responsive body widget for the SIME Professional app
+/// A responsive body widget for the Clean Architecture App
 ///
 /// This widget handles:
 /// - Scrollable or fixed content
 /// - Content centering
 /// - Content width constraints for responsiveness
-class SimeBody extends StatelessWidget {
+class CAABody extends StatelessWidget {
   final Widget child;
   final bool useScrollView;
   final bool centerContent;
@@ -16,8 +16,8 @@ class SimeBody extends StatelessWidget {
   final double? tabletMaxWidth;
   final double? desktopMaxWidth;
 
-  const SimeBody({
-    Key? key,
+  const CAABody({
+    super.key,
     required this.child,
     this.useScrollView = false,
     this.centerContent = false,
@@ -25,7 +25,7 @@ class SimeBody extends StatelessWidget {
     this.mobileMaxWidth,
     this.tabletMaxWidth,
     this.desktopMaxWidth,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

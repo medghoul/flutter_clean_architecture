@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:clean_architecture/core/config/app_config.dart';
 import 'package:clean_architecture/core/config/firebase_config.dart';
 import 'package:clean_architecture/core/enums/log_level.dart';
-import 'package:clean_architecture/core/logger/logging.dart';
-import 'package:clean_architecture/core/shared_preferences/shared_pref.dart';
+import 'package:clean_architecture/core/services/logger/logging.dart';
+
 import 'package:clean_architecture/core/theme/app_theme.dart';
 import 'package:clean_architecture/i18n/app_localizations_setup.dart';
 import 'package:flutter/foundation.dart';

@@ -1,6 +1,6 @@
+import 'package:clean_architecture/core/constants/global_constants.dart';
+import 'package:clean_architecture/core/extensions/string_extension.dart';
 import 'package:flutter/material.dart';
-import 'package:simeprofessional_mobileapp_flutter/cdbkr_lib/core/constants/global_constants.dart';
-import 'package:simeprofessional_mobileapp_flutter/cdbkr_lib/core/extensions/string_extension.dart';
 
 /// A customized text button widget with loading state and optional icon.
 ///
@@ -10,7 +10,7 @@ import 'package:simeprofessional_mobileapp_flutter/cdbkr_lib/core/extensions/str
 /// - Customizable text color
 /// - Auto-capitalization of label text
 /// - Consistent styling with app theme
-class SimeTextButton extends StatelessWidget {
+class CAATextButton extends StatelessWidget {
   /// Callback function when button is pressed
   final Function()? onPressed;
 
@@ -26,7 +26,7 @@ class SimeTextButton extends StatelessWidget {
   /// Optional icon to display before the text
   final IconData? icon;
 
-  /// Creates a [SimeTextButton].
+  /// Creates a [CAATextButton].
   ///
   /// Parameters:
   /// - [onPressed]: Callback function when button is pressed
@@ -34,7 +34,7 @@ class SimeTextButton extends StatelessWidget {
   /// - [textColor]: Optional custom text color
   /// - [icon]: Optional leading icon
   /// - [isLoading]: Whether to show loading state
-  const SimeTextButton({
+  const CAATextButton({
     super.key,
     required this.onPressed,
     required this.label,
