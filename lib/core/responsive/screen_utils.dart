@@ -1,8 +1,8 @@
 import 'dart:math';
 
+import 'package:clean_architecture/core/dependency_injection/dependency_injection.dart';
+import 'package:clean_architecture/core/responsive/index.dart';
 import 'package:flutter/material.dart';
-import 'package:simeprofessional_mobileapp_flutter/core/di/dependency_injection.dart';
-import 'package:simeprofessional_mobileapp_flutter/core/responsive/responsive_utils.dart';
 
 /// Singleton class that handles screen dimensions and responsive calculations
 ///
@@ -12,27 +12,26 @@ import 'package:simeprofessional_mobileapp_flutter/core/responsive/responsive_ut
 class AppScreenUtils {
   // Singleton instance
   static final AppScreenUtils _instance = AppScreenUtils._internal();
-  
+
   /// Factory constructor that returns the singleton instance
   factory AppScreenUtils() => _instance;
-  
+
   /// Internal constructor
   AppScreenUtils._internal();
-  
+
   /// Get instance from dependency injection (preferred) or fallback to singleton
-  static AppScreenUtils get instance => di.isRegistered<AppScreenUtils>() 
-      ? di<AppScreenUtils>() 
-      : _instance;
+  static AppScreenUtils get instance =>
+      di.isRegistered<AppScreenUtils>() ? di<AppScreenUtils>() : _instance;
 
   // Default design size
   Size _designSize = const Size(375, 812);
-  
+
   // Screen dimensions
   Size _screenSize = const Size(375, 812);
-  
+
   // Device pixel ratio
   double _pixelRatio = 1.0;
-  
+
   // Safe area paddings
   EdgeInsets _padding = EdgeInsets.zero;
 
@@ -117,7 +116,8 @@ class AppScreenUtils {
   double _getFontScale(num fontSize) {
     switch (deviceType) {
       case DeviceType.desktop:
-        return fontSize * 1.2; // Fixed 1.2x scale for desktop (smaller to avoid huge fonts)
+        return fontSize *
+            1.2; // Fixed 1.2x scale for desktop (smaller to avoid huge fonts)
       case DeviceType.tablet:
         return fontSize * 1.1; // Fixed 1.1x scale for tablet
       case DeviceType.phone:
@@ -145,7 +145,8 @@ class AppScreenUtils {
   double scaleWidth(double widthPercent) => screenWidth * widthPercent / 100;
 
   // Calculate a percentage of screen height (replacement for ScreenUtil screenHeight * %)
-  double scaleHeight(double heightPercent) => screenHeight * heightPercent / 100;
+  double scaleHeight(double heightPercent) =>
+      screenHeight * heightPercent / 100;
 
   // Calculate adaptive value based on device type
   T adaptiveValue<T>({
@@ -174,4 +175,4 @@ class AppScreenUtils {
         return 450; // Width for large phones
     }
   }
-} 
+}

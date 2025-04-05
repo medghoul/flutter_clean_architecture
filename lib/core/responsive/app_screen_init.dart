@@ -1,5 +1,5 @@
+import 'package:clean_architecture/core/responsive/index.dart';
 import 'package:flutter/material.dart';
-import 'package:simeprofessional_mobileapp_flutter/core/responsive/screen_utils.dart';
 
 /// A widget that initializes our responsive system
 ///
@@ -11,11 +11,11 @@ class AppScreenInit extends StatelessWidget {
   final Size designSize;
 
   const AppScreenInit({
-    Key? key,
+    super.key,
     required this.builder,
     this.child,
     this.designSize = const Size(375, 812),
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,17 +23,17 @@ class AppScreenInit extends StatelessWidget {
       builder: (context, constraints) {
         final mediaQuery = MediaQuery.of(context);
         final screenSize = mediaQuery.size;
-        
+
         // Initialize our custom AppScreenUtils with screen dimensions
         AppScreenUtils.instance.init(
           context,
           designSize: designSize,
           screenSize: screenSize,
         );
-        
+
         // Call the builder provided by the user
         return builder(context, child);
       },
     );
   }
-} 
+}

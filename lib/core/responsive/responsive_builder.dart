@@ -1,5 +1,5 @@
+import 'package:clean_architecture/core/responsive/index.dart';
 import 'package:flutter/material.dart';
-import 'package:simeprofessional_mobileapp_flutter/core/responsive/responsive_utils.dart';
 
 /// A widget that builds different UIs based on screen size
 ///
@@ -10,25 +10,25 @@ import 'package:simeprofessional_mobileapp_flutter/core/responsive/responsive_ut
 class ResponsiveBuilder extends StatelessWidget {
   /// Builder function for mobile UI (required)
   final WidgetBuilder mobileBuilder;
-  
+
   /// Builder function for tablet UI (optional)
   final WidgetBuilder? tabletBuilder;
-  
+
   /// Builder function for desktop UI (optional)
   final WidgetBuilder? desktopBuilder;
 
   /// Constructor
   const ResponsiveBuilder({
-    Key? key,
+    super.key,
     required this.mobileBuilder,
     this.tabletBuilder,
     this.desktopBuilder,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     final deviceType = ResponsiveUtils.getDeviceType(context);
-    
+
     switch (deviceType) {
       case DeviceType.phone:
         return mobileBuilder(context);
@@ -44,7 +44,7 @@ class ResponsiveBuilder extends StatelessWidget {
 class OrientationLayout extends StatelessWidget {
   /// Builder function for portrait orientation (required)
   final WidgetBuilder portrait;
-  
+
   /// Builder function for landscape orientation (required)
   final WidgetBuilder landscape;
 
@@ -67,22 +67,22 @@ class OrientationLayout extends StatelessWidget {
 class ResponsiveContainer extends StatelessWidget {
   /// Child widget
   final Widget child;
-  
+
   /// Maximum width for phone screens (default: 420)
   final double? mobileMaxWidth;
-  
+
   /// Maximum width for tablet screens (default: 700)
   final double? tabletMaxWidth;
-  
+
   /// Maximum width for desktop screens (default: 1000)
   final double? desktopMaxWidth;
-  
+
   /// Whether to center the content horizontally
   final bool centerHorizontally;
-  
+
   /// Whether to center the content vertically
   final bool centerVertically;
-  
+
   /// Padding to apply to the container
   final EdgeInsetsGeometry? padding;
 
@@ -101,27 +101,30 @@ class ResponsiveContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final deviceType = ResponsiveUtils.getDeviceType(context);
-    
+
     // Determine max width based on device type
     double maxWidth;
     switch (deviceType) {
       case DeviceType.phone:
-        maxWidth = mobileMaxWidth ?? ResponsiveUtils.maxContentWidth[DeviceType.phone]!;
+        maxWidth = mobileMaxWidth ??
+            ResponsiveUtils.maxContentWidth[DeviceType.phone]!;
         break;
       case DeviceType.tablet:
-        maxWidth = tabletMaxWidth ?? ResponsiveUtils.maxContentWidth[DeviceType.tablet]!;
+        maxWidth = tabletMaxWidth ??
+            ResponsiveUtils.maxContentWidth[DeviceType.tablet]!;
         break;
       case DeviceType.desktop:
-        maxWidth = desktopMaxWidth ?? ResponsiveUtils.maxContentWidth[DeviceType.desktop]!;
+        maxWidth = desktopMaxWidth ??
+            ResponsiveUtils.maxContentWidth[DeviceType.desktop]!;
         break;
     }
-    
+
     // Apply horizontal padding
     final horizontalPadding = padding ??
         EdgeInsets.symmetric(
           horizontal: ResponsiveUtils.getHorizontalPadding(context),
         );
-    
+
     // Apply max width constraint
     Widget content = ConstrainedBox(
       constraints: BoxConstraints(
@@ -132,7 +135,7 @@ class ResponsiveContainer extends StatelessWidget {
         child: child,
       ),
     );
-    
+
     // Apply centering if requested
     if (centerHorizontally || centerVertically) {
       content = Align(
@@ -143,7 +146,7 @@ class ResponsiveContainer extends StatelessWidget {
         child: content,
       );
     }
-    
+
     return content;
   }
 }
@@ -152,37 +155,37 @@ class ResponsiveContainer extends StatelessWidget {
 class ResponsiveVisibility extends StatelessWidget {
   /// Child widget to show or hide
   final Widget child;
-  
+
   /// Whether to show on phone screens
   final bool showOnPhone;
-  
+
   /// Whether to show on tablet screens
   final bool showOnTablet;
-  
+
   /// Whether to show on desktop screens
   final bool showOnDesktop;
-  
+
   /// Space to maintain when widget is hidden
   final bool maintainSize;
-  
+
   /// Replacement widget when hidden
   final Widget? replacement;
 
   /// Constructor
   const ResponsiveVisibility({
-    Key? key,
+    super.key,
     required this.child,
     this.showOnPhone = true,
     this.showOnTablet = true,
     this.showOnDesktop = true,
     this.maintainSize = false,
     this.replacement,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     final deviceType = ResponsiveUtils.getDeviceType(context);
-    
+
     bool isVisible;
     switch (deviceType) {
       case DeviceType.phone:
@@ -195,15 +198,17 @@ class ResponsiveVisibility extends StatelessWidget {
         isVisible = showOnDesktop;
         break;
     }
-    
+
     if (isVisible) {
       return child;
     }
-    
+
     if (replacement != null) {
       return replacement!;
     }
-    
-    return maintainSize ? Opacity(opacity: 0, child: child) : const SizedBox.shrink();
+
+    return maintainSize
+        ? Opacity(opacity: 0, child: child)
+        : const SizedBox.shrink();
   }
-} 
+}

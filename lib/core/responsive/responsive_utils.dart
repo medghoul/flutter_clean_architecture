@@ -1,6 +1,6 @@
+import 'package:clean_architecture/core/constants/global_constants.dart';
+import 'package:clean_architecture/core/responsive/index.dart';
 import 'package:flutter/material.dart';
-import 'package:simeprofessional_mobileapp_flutter/cdbkr_lib/core/constants/global_constants.dart';
-import 'package:simeprofessional_mobileapp_flutter/core/responsive/screen_utils.dart';
 
 /// A utility class that provides responsive design functionality
 ///
@@ -109,19 +109,19 @@ class ResponsiveUtils {
     // Use our custom AppScreenUtils implementation
     return AppScreenUtils.instance.setWidth(width);
   }
-  
+
   /// Responsive height value that adapts to screen height
   static double responsiveHeight(double height, {BuildContext? context}) {
     // Use our custom AppScreenUtils implementation
     return AppScreenUtils.instance.setHeight(height);
   }
-  
+
   /// Responsive font size value
   static double responsiveFontSize(double size, {BuildContext? context}) {
     // Use our custom AppScreenUtils implementation
     return AppScreenUtils.instance.setSp(size);
   }
-  
+
   /// Responsive radius value
   static double responsiveRadius(double radius, {BuildContext? context}) {
     // Use our custom AppScreenUtils implementation
