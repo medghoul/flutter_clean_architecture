@@ -4,7 +4,7 @@ import 'package:clean_architecture/core/responsive/index.dart';
 import 'package:clean_architecture/presentation/widgets/form/index.dart';
 import 'package:flutter/material.dart';
 
-class CAAPasswordField extends StatefulWidget {
+class FCAPasswordField extends StatefulWidget {
   final TextEditingController? controller;
   final String labelText;
   final String hintText;
@@ -16,7 +16,7 @@ class CAAPasswordField extends StatefulWidget {
   final bool enabled;
   final TextInputAction? textInputAction;
 
-  const CAAPasswordField({
+  const FCAPasswordField({
     super.key,
     this.controller,
     this.labelText = 'Password',
@@ -31,15 +31,15 @@ class CAAPasswordField extends StatefulWidget {
   });
 
   @override
-  State<CAAPasswordField> createState() => _CAAPasswordFieldState();
+  State<FCAPasswordField> createState() => _FCAPasswordFieldState();
 }
 
-class _CAAPasswordFieldState extends State<CAAPasswordField> {
+class _FCAPasswordFieldState extends State<FCAPasswordField> {
   bool _obscurePassword = true;
 
   @override
   Widget build(BuildContext context) {
-    return CAATextField(
+    return FCATextField(
       controller: widget.controller,
       labelText: widget.labelText,
       hintText: widget.hintText,

@@ -14,7 +14,7 @@ import 'package:flutter/material.dart';
 /// - Customizable action buttons
 /// - Loading state
 /// - Form validation
-class CAADialog extends StatelessWidget {
+class FCADialog extends StatelessWidget {
   /// The title displayed at the top of the dialog.
   final String title;
 
@@ -54,11 +54,11 @@ class CAADialog extends StatelessWidget {
   /// Indicates whether the dialog is in a loading state.
   final bool isLoading;
 
-  /// Creates a [CAADialog].
+  /// Creates a [FCADialog].
   ///
   /// The [title] parameter is required.
   /// All other parameters are optional and will use default values if not provided.
-  CAADialog({
+  FCADialog({
     super.key,
     required this.title,
     this.subtitle,
@@ -144,14 +144,14 @@ class CAADialog extends StatelessWidget {
   List<Widget> _buildActionButtons(BuildContext context) {
     return [
       if (closeButtonVisible)
-        CAAOutlinedButton(
+        FCAOutlinedButton(
           onPressed: onClose ?? () => Navigator.pop(context),
           text: closeButtonLabel ?? 'Close'.toCapitalized(),
         ),
       if (customConfirmButton != null)
         customConfirmButton!
       else
-        CAATextButton(
+        FCATextButton(
           textColor: AppColors.primary,
           isLoading: isLoading,
           onPressed: () {

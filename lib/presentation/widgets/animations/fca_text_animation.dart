@@ -3,13 +3,13 @@ import 'package:clean_architecture/core/enums/text_animation_type.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
-class CAATextAnimation extends StatelessWidget {
+class FCATextAnimation extends StatelessWidget {
   final Text text;
   final TextAnimationType animationType;
   final int duration;
   final int delay;
 
-  const CAATextAnimation({
+  const FCATextAnimation({
     super.key,
     required this.text,
     this.animationType = TextAnimationType.fadeIn,

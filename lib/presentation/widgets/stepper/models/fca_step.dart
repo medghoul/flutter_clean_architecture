@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-class CAAStep {
+class FCAStep {
   final String title;
   final String? subtitle;
   final Widget? content;
@@ -8,7 +8,7 @@ class CAAStep {
   final bool inProgress;
   final bool inError;
 
-  CAAStep({
+  FCAStep({
     required this.title,
     this.subtitle,
     this.content,
@@ -17,7 +17,7 @@ class CAAStep {
     this.inError = false,
   });
 
-  CAAStep copyWith({
+  FCAStep copyWith({
     String? title,
     String? subtitle,
     Widget? subtitleWidget,
@@ -26,7 +26,7 @@ class CAAStep {
     bool? inProgress,
     bool? inError,
   }) {
-    return CAAStep(
+    return FCAStep(
       title: title ?? this.title,
       subtitle: subtitle ?? this.subtitle,
       content: content ?? this.content,

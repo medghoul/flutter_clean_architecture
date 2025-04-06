@@ -2,8 +2,8 @@ import 'package:clean_architecture/core/enums/slide_direction.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
-class ImageFadeIn extends StatelessWidget {
-  const ImageFadeIn({
+class FCAImageFadeIn extends StatelessWidget {
+  const FCAImageFadeIn({
     required this.child,
     this.duration = 500,
     this.delay = 300,
@@ -28,8 +28,8 @@ class ImageFadeIn extends StatelessWidget {
   }
 }
 
-class ImageZoomIn extends StatelessWidget {
-  const ImageZoomIn({
+class FCAImageZoomIn extends StatelessWidget {
+  const FCAImageZoomIn({
     required this.child,
     this.duration = 500,
     this.delay = 300,
@@ -60,8 +60,8 @@ class ImageZoomIn extends StatelessWidget {
   }
 }
 
-class ImageSlideIn extends StatelessWidget {
-  const ImageSlideIn({
+class FCAImageSlideIn extends StatelessWidget {
+  const FCAImageSlideIn({
     required this.child,
     this.duration = 500,
     this.delay = 300,

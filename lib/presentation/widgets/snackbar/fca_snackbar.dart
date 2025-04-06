@@ -21,7 +21,7 @@ import 'package:flutter/material.dart';
 /// - [message]: Optional secondary text
 /// - [type]: Type of snackbar (success, error, warning, info)
 /// - [duration]: How long the snackbar should be displayed
-void CAASnackbar({
+void FCASnackbar({
   required BuildContext context,
   required String title,
   String? message,

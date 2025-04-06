@@ -1,38 +1,37 @@
 import 'dart:io';
-
-import 'package:clean_architecture/core/config/app_config.dart';
+import 'package:clean_architecture/core/app/bloc_observer.dart';
 import 'package:clean_architecture/core/config/firebase_config.dart';
-import 'package:clean_architecture/core/enums/log_level.dart';
+import 'package:clean_architecture/core/dependency_injection/dependency_injection.dart';
+import 'package:clean_architecture/core/responsive/index.dart';
 import 'package:clean_architecture/core/services/logger/logging.dart';
-
 import 'package:clean_architecture/core/theme/app_theme.dart';
-import 'package:clean_architecture/i18n/app_localizations_setup.dart';
+import 'package:clean_architecture/routing/app_router.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:clean_architecture/features/home_page/domain/usecases/home_page_usecase.dart';
-import 'package:clean_architecture/features/home_page/presentation/cubits/home_page_cubit.dart';
-import 'package:clean_architecture/routing/app_router.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await SharedPref().instantiatePreferences();
-   
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+
+  // Preserve splash screen only for mobile platforms
+  if (!kIsWeb) {
+    FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  }
+
+  // Set up bloc observer
+  Bloc.observer = AppBlocObserver();
+
   // Initialize Firebase
   await FirebaseConfig.initialize();
 
-  // Initialize AppConfig
-  AppConfig.initialize();
+  // Set up dependencies
+  await setupDependencies();
 
-  // Inizializza il logger
-  LoggingFactory.configure(
-      LoggingConfiguration(
-        isEnabled: !kReleaseMode,
-        loggingLevel: LogLevel.debug,
-        printTime: !kReleaseMode,
-      ),
-    );
-
+  // Remove the splash screen only for mobile platforms
+  if (!kIsWeb) {
+    FlutterNativeSplash.remove();
+  }
 
   runApp(const MyApp());
 }
@@ -42,24 +41,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AppRouter appRouter = AppRouter();
     logger.i('App started');
 
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => HomePageCubit({} as HomePageUseCase)),
-      ],
-      child: MaterialApp.router(
-        routerConfig: appRouter.router,
-        localizationsDelegates: AppLocalizationsSetup.localizationsDelegates,
-        supportedLocales: AppLocalizationsSetup.supportedLocales,
-        localeResolutionCallback:
-            AppLocalizationsSetup.localeResolutionCallback,
-        title: 'Ideal Architecture',
-        theme: AppTheme.lightTheme,
-        darkTheme: AppTheme.darkTheme,
-        themeMode: ThemeMode.system,
-      ),
+    return AppScreenInit(
+      designSize: const Size(375, 812), // Base design size (iPhone X)
+      builder: (context, child) {
+        return MaterialApp.router(
+          title: 'Flutter Clean Architecture APP',
+          debugShowCheckedModeBanner: false,
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          themeMode: ThemeMode.system,
+          routerConfig: di<AppRouter>().router,
+        );
+      },
     );
   }
 }

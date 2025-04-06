@@ -1,14 +1,14 @@
-import 'package:clean_architecture/presentation/widgets/stepper/cubit/caa_stepper_state.dart';
-import 'package:clean_architecture/presentation/widgets/stepper/models/caa_step.dart';
+import 'package:clean_architecture/presentation/widgets/stepper/cubit/fca_stepper_state.dart';
+import 'package:clean_architecture/presentation/widgets/stepper/models/fca_step.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CAAStepperCubit extends Cubit<CAAStepperState> {
-  CAAStepperCubit({required CAAStepperType type, required List<CAAStep> steps})
-      : super(CAAStepperState(type: type, steps: steps));
+class FCAStepperCubit extends Cubit<FCAStepperState> {
+  FCAStepperCubit({required FCAStepperType type, required List<FCAStep> steps})
+      : super(FCAStepperState(type: type, steps: steps));
 
   /// Inizializza lo stepper in stato iniziale senza avviare il processo
   void initStepper() {
-    final steps = List<CAAStep>.from(state.steps);
+    final steps = List<FCAStep>.from(state.steps);
 
     // Reset all steps to initial state
     for (int i = 0; i < steps.length; i++) {
@@ -22,14 +22,14 @@ class CAAStepperCubit extends Cubit<CAAStepperState> {
     emit(state.copyWith(
       steps: steps,
       currentStepIndex: 0,
-      status: CAAStepperStatus.initial,
+      status: FCAStepperStatus.initial,
     ));
   }
 
   /// Passa allo step successivo
   bool goToNextStep() {
     if (state.currentStepIndex < state.steps.length - 1) {
-      final steps = List<CAAStep>.from(state.steps);
+      final steps = List<FCAStep>.from(state.steps);
 
       // Marca lo step corrente come completato
       steps[state.currentStepIndex] = steps[state.currentStepIndex].copyWith(
@@ -48,7 +48,7 @@ class CAAStepperCubit extends Cubit<CAAStepperState> {
       emit(state.copyWith(
         steps: steps,
         currentStepIndex: nextIndex,
-        status: CAAStepperStatus.inProgress,
+        status: FCAStepperStatus.inProgress,
       ));
 
       return true;
@@ -59,7 +59,7 @@ class CAAStepperCubit extends Cubit<CAAStepperState> {
   /// Torna allo step precedente
   bool goToPreviousStep() {
     if (state.currentStepIndex > 0) {
-      final steps = List<CAAStep>.from(state.steps);
+      final steps = List<FCAStep>.from(state.steps);
 
       // Marca lo step corrente come non completato e non in progress
       steps[state.currentStepIndex] = steps[state.currentStepIndex].copyWith(
@@ -77,7 +77,7 @@ class CAAStepperCubit extends Cubit<CAAStepperState> {
       emit(state.copyWith(
         steps: steps,
         currentStepIndex: prevIndex,
-        status: CAAStepperStatus.inProgress,
+        status: FCAStepperStatus.inProgress,
       ));
 
       return true;
@@ -103,7 +103,7 @@ class CAAStepperCubit extends Cubit<CAAStepperState> {
   /// Completa il processo di registrazione
   void completeRegistration() {
     if (state.currentStepIndex == state.steps.length - 1) {
-      final steps = List<CAAStep>.from(state.steps);
+      final steps = List<FCAStep>.from(state.steps);
 
       // Marca l'ultimo step come completato
       steps[state.currentStepIndex] = steps[state.currentStepIndex].copyWith(
@@ -113,7 +113,7 @@ class CAAStepperCubit extends Cubit<CAAStepperState> {
 
       emit(state.copyWith(
         steps: steps,
-        status: CAAStepperStatus.completed,
+        status: FCAStepperStatus.completed,
       ));
     }
   }
@@ -121,14 +121,14 @@ class CAAStepperCubit extends Cubit<CAAStepperState> {
   /// Imposta lo step corrente come "in error"
   void setStepError([String? errorMessage]) {
     if (state.currentStepIndex < state.steps.length) {
-      final steps = List<CAAStep>.from(state.steps);
+      final steps = List<FCAStep>.from(state.steps);
       steps[state.currentStepIndex] = steps[state.currentStepIndex].copyWith(
         inError: true,
         inProgress: false,
       );
       emit(state.copyWith(
         steps: steps,
-        status: CAAStepperStatus.error,
+        status: FCAStepperStatus.error,
         errorMessage: errorMessage,
       ));
     }
@@ -138,7 +138,7 @@ class CAAStepperCubit extends Cubit<CAAStepperState> {
   void reset() {
     emit(state.copyWith(
       currentStepIndex: 0,
-      status: CAAStepperStatus.initial,
+      status: FCAStepperStatus.initial,
       errorMessage: null,
       steps: state.steps
           .map((step) => step.copyWith(

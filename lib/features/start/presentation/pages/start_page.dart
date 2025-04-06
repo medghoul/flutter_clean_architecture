@@ -1,6 +1,6 @@
 
 import 'package:clean_architecture/core/animations/fade_animations.dart';
-import 'package:clean_architecture/core/animations/image_animations.dart';
+import 'package:clean_architecture/presentation/widgets/animations/fca_image_animations.dart';
 import 'package:clean_architecture/core/animations/text_animation.dart';
 import 'package:clean_architecture/core/enums/text_animation_type.dart';
 import 'package:clean_architecture/core/extensions/context_extension.dart';

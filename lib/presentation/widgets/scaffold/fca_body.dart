@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 /// - Scrollable or fixed content
 /// - Content centering
 /// - Content width constraints for responsiveness
-class CAABody extends StatelessWidget {
+class FCABody extends StatelessWidget {
   final Widget child;
   final bool useScrollView;
   final bool centerContent;
@@ -16,7 +16,7 @@ class CAABody extends StatelessWidget {
   final double? tabletMaxWidth;
   final double? desktopMaxWidth;
 
-  const CAABody({
+  const FCABody({
     super.key,
     required this.child,
     this.useScrollView = false,

@@ -12,7 +12,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 /// - Optional footer
 /// - Progress indicators
 /// - Navigation controls
-class CAAScaffold extends StatelessWidget {
+class FCAScaffold extends StatelessWidget {
   final Widget body;
   final PreferredSizeWidget? appBar;
   final List<Widget>? appBarActions;
@@ -35,7 +35,7 @@ class CAAScaffold extends StatelessWidget {
   final Function(bool, dynamic)? onPopInvokedWithResult;
 
   /// Main constructor for CAAScaffold
-  const CAAScaffold({
+  const FCAScaffold({
     super.key,
     required this.body,
     this.appBar,
@@ -125,8 +125,8 @@ class CAAScaffold extends StatelessWidget {
 }
 
 /// Specialized scaffold for standard screens
-class CAAScreenScaffold extends CAAScaffold {
-  const CAAScreenScaffold({
+class FCAScreenScaffold extends FCAScaffold {
+  const FCAScreenScaffold({
     super.key,
     required super.body,
     super.appBarActions,
@@ -144,8 +144,8 @@ class CAAScreenScaffold extends CAAScaffold {
 }
 
 /// Specialized scaffold for dialog screens
-class CAADialogScaffold<B extends Cubit<S>, S> extends CAAScaffold {
-  CAADialogScaffold({
+class FCADialogScaffold<B extends Cubit<S>, S> extends FCAScaffold {
+  FCADialogScaffold({
     super.key,
     required super.body,
     required String title,
@@ -183,8 +183,8 @@ class CAADialogScaffold<B extends Cubit<S>, S> extends CAAScaffold {
 }
 
 /// Specialized scaffold for loading screens
-class CAALoadingScreenScaffold extends CAAScaffold {
-  const CAALoadingScreenScaffold({
+class FCALoadingScreenScaffold extends FCAScaffold {
+  const FCALoadingScreenScaffold({
     super.key,
     required super.body,
     super.showProgress = true,

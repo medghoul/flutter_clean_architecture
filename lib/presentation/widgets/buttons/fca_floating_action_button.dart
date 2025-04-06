@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 /// - Configurable elevation
 /// - Consistent styling with app theme
 /// - Rounded corners with fixed radius
-class CAAFloatingActionButton extends StatelessWidget {
+class FCAFloatingActionButton extends StatelessWidget {
   /// Callback function when button is pressed
   final VoidCallback onPressed;
 
@@ -29,7 +29,7 @@ class CAAFloatingActionButton extends StatelessWidget {
   /// If not provided, uses 1.0
   final double? elevation;
 
-  /// Creates a [CAAFloatingActionButton].
+  /// Creates a [FCAFloatingActionButton].
   ///
   /// Parameters:
   /// - [onPressed]: Callback function when button is pressed
@@ -37,7 +37,7 @@ class CAAFloatingActionButton extends StatelessWidget {
   /// - [backgroundColor]: Optional custom background color
   /// - [foregroundColor]: Optional custom foreground color
   /// - [elevation]: Optional custom elevation
-  const CAAFloatingActionButton({
+  const FCAFloatingActionButton({
     super.key,
     required this.onPressed,
     required this.icon,

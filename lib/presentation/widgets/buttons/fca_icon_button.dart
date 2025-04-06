@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 /// - Customizable icon color
 /// - Consistent styling with app theme
 /// - Automatic color inheritance from IconTheme
-class CAATextButton extends StatelessWidget {
+class FCAIconButton extends StatelessWidget {
   /// Callback function when button is pressed
   final VoidCallback onPressed;
 
@@ -23,14 +23,14 @@ class CAATextButton extends StatelessWidget {
   /// If not provided, inherits from IconTheme
   final Color? color;
 
-  /// Creates a [CAATextButton].
+  /// Creates a [FCAIconButton].
   ///
   /// Parameters:
   /// - [onPressed]: Callback function when button is pressed
   /// - [icon]: Icon to display in the button
   /// - [isLoading]: Whether to show loading state
   /// - [color]: Optional custom icon color
-  const CAATextButton({
+  const FCAIconButton({
     super.key,
     required this.onPressed,
     required this.icon,

@@ -1,33 +1,33 @@
-import 'package:clean_architecture/presentation/widgets/stepper/models/caa_step.dart';
+import 'package:clean_architecture/presentation/widgets/stepper/models/fca_step.dart';
 import 'package:equatable/equatable.dart';
 
-enum CAAStepperStatus { initial, inProgress, completed, error }
+enum FCAStepperStatus { initial, inProgress, completed, error }
 
-enum CAAStepperType { registration }
+enum FCAStepperType { registration }
 
-class CAAStepperState extends Equatable {
-  final List<CAAStep> steps;
+class FCAStepperState extends Equatable {
+  final List<FCAStep> steps;
   final int currentStepIndex;
-  final CAAStepperStatus status;
-  final CAAStepperType type;
+  final FCAStepperStatus status;
+  final FCAStepperType type;
   final String? errorMessage;
 
-  const CAAStepperState({
+  const FCAStepperState({
     required this.steps,
     this.currentStepIndex = 0,
-    this.status = CAAStepperStatus.initial,
+    this.status = FCAStepperStatus.initial,
     required this.type,
     this.errorMessage,
   });
 
-  CAAStepperState copyWith({
-    List<CAAStep>? steps,
+  FCAStepperState copyWith({
+    List<FCAStep>? steps,
     int? currentStepIndex,
-    CAAStepperStatus? status,
-    CAAStepperType? type,
+    FCAStepperStatus? status,
+    FCAStepperType? type,
     String? errorMessage,
   }) {
-    return CAAStepperState(
+    return FCAStepperState(
       steps: steps ?? this.steps,
       currentStepIndex: currentStepIndex ?? this.currentStepIndex,
       status: status ?? this.status,

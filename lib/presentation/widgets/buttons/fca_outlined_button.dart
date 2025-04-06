@@ -4,16 +4,16 @@ import 'package:clean_architecture/core/extensions/string_extension.dart';
 import 'package:clean_architecture/core/structures/enums.dart';
 import 'package:flutter/material.dart';
 
-/// A customized elevated button widget with loading state and size variants.
+/// A customized outlined button widget with loading state and size variants.
 ///
-/// This button extends the Material Design elevated button with additional features:
+/// This button extends the Material Design outlined button with additional features:
 /// - Loading state with progress indicator
 /// - Size variants (normal and small)
 /// - Customizable background and text colors
 /// - Optional width expansion
 /// - Auto-capitalization of text
 /// - Consistent styling with app theme
-class CAAElevatedButton extends StatefulWidget {
+class FCAOutlinedButton extends StatefulWidget {
   /// Text to display on the button
   final String text;
 
@@ -35,7 +35,7 @@ class CAAElevatedButton extends StatefulWidget {
   /// Size variant of the button (normal or small)
   final ButtonSize size;
 
-  /// Creates a [SimeElevatedButton].
+  /// Creates a [FCAOutlinedButton].
   ///
   /// Parameters:
   /// - [text]: Text to display on the button
@@ -45,7 +45,7 @@ class CAAElevatedButton extends StatefulWidget {
   /// - [expand]: Whether to expand button to full width
   /// - [isLoading]: Whether to show loading state
   /// - [size]: Size variant of the button
-  const CAAElevatedButton({
+  const FCAOutlinedButton({
     super.key,
     required this.text,
     required this.onPressed,
@@ -57,10 +57,10 @@ class CAAElevatedButton extends StatefulWidget {
   });
 
   @override
-  State<CAAElevatedButton> createState() => _CAAElevatedButtonState();
+  _FCAOutlinedButtonState createState() => _FCAOutlinedButtonState();
 }
 
-class _CAAElevatedButtonState extends State<CAAElevatedButton> {
+class _FCAOutlinedButtonState extends State<FCAOutlinedButton> {
   /// Height of the button based on size variant
   double get _height => widget.size == ButtonSize.normal
       ? GlobalConstants.buttonNormalHeight
@@ -85,17 +85,17 @@ class _CAAElevatedButtonState extends State<CAAElevatedButton> {
         minWidth: widget.size == ButtonSize.normal
             ? GlobalConstants.buttonNormalMinWidth
             : GlobalConstants.buttonSmallMinWidth,
-        maxWidth:
-            widget.expand ? double.infinity : GlobalConstants.buttonMaxWidth,
+        maxWidth: widget.expand ? double.infinity : double.maxFinite,
       ),
       child: SizedBox(
         height: _height,
-        child: ElevatedButton(
+        child: OutlinedButton(
           onPressed: widget.isLoading ? null : widget.onPressed,
-          style: ElevatedButton.styleFrom(
+          style: OutlinedButton.styleFrom(
             disabledBackgroundColor: AppColors.grey200,
             foregroundColor: widget.textColor ?? AppColors.white,
             backgroundColor: widget.backgroundColor ?? AppColors.primary,
+            side: const BorderSide(style: BorderStyle.none),
             elevation: 0,
             padding: EdgeInsets.symmetric(
               horizontal: widget.size == ButtonSize.normal
@@ -124,7 +124,7 @@ class _CAAElevatedButtonState extends State<CAAElevatedButton> {
                   : Text(
                       widget.text.toCapitalized(),
                       style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                            color: widget.textColor ?? AppColors.white,
+                            color: AppColors.white,
                             fontSize: _textFontSize,
                           ),
                     ),

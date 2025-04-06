@@ -1,22 +1,22 @@
 import 'package:clean_architecture/core/constants/app_colors.dart';
 import 'package:clean_architecture/core/constants/global_constants.dart';
 import 'package:clean_architecture/core/extensions/color_extension.dart';
-import 'package:clean_architecture/presentation/widgets/stepper/cubit/caa_stepper_cubit.dart';
-import 'package:clean_architecture/presentation/widgets/stepper/cubit/caa_stepper_state.dart';
+import 'package:clean_architecture/presentation/widgets/stepper/cubit/fca_stepper_cubit.dart';
+import 'package:clean_architecture/presentation/widgets/stepper/cubit/fca_stepper_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CAAStepper extends StatelessWidget {
+class FCAStepper extends StatelessWidget {
   final bool showStepContent;
 
-  const CAAStepper({
+  const FCAStepper({
     super.key,
     this.showStepContent = true,
   });
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CAAStepperCubit, CAAStepperState>(
+    return BlocBuilder<FCAStepperCubit, FCAStepperState>(
       builder: (context, state) {
         return Column(
           children: [
@@ -40,7 +40,7 @@ class CAAStepper extends StatelessWidget {
     );
   }
 
-  Widget _buildStepIndicators(BuildContext context, CAAStepperState state) {
+  Widget _buildStepIndicators(BuildContext context, FCAStepperState state) {
     return LayoutBuilder(builder: (context, constraints) {
       return Column(
         children: [

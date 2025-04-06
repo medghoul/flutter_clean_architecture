@@ -2,56 +2,91 @@ import 'package:clean_architecture/core/constants/app_colors.dart';
 import 'package:clean_architecture/core/constants/global_constants.dart';
 import 'package:clean_architecture/core/extensions/color_extension.dart';
 import 'package:clean_architecture/core/responsive/index.dart';
+import 'package:clean_architecture/core/services/logger/logging.dart';
 import 'package:flutter/material.dart';
 
-class CAADropdownField<T> extends StatelessWidget {
+class FCATextField extends StatelessWidget {
+  final TextEditingController? controller;
   final String labelText;
   final String hintText;
   final IconData prefixIcon;
-  final List<DropdownMenuItem<T>> items;
-  final T? value;
-  final void Function(T?)? onChanged;
-  final String? Function(T?)? validator;
+  final Widget? suffixIcon;
+  final TextInputType keyboardType;
+  final bool obscureText;
+  final String? Function(String?)? validator;
   final AutovalidateMode autovalidateMode;
-  final bool enabled;
+  final TextStyle? textStyle;
+  final void Function(String)? onChanged;
+  final void Function(String)? onSubmitted;
   final FocusNode? focusNode;
+  final bool enabled;
+  final int? maxLines;
+  final int? minLines;
+  final TextInputAction? textInputAction;
   final EdgeInsetsGeometry contentPadding;
+  final double? maxWidth;
 
-  const CAADropdownField({
+  const FCATextField({
     super.key,
+    this.controller,
     required this.labelText,
     required this.hintText,
     required this.prefixIcon,
-    required this.items,
-    this.value,
-    this.onChanged,
+    this.suffixIcon,
+    this.keyboardType = TextInputType.text,
+    this.obscureText = false,
     this.validator,
     this.autovalidateMode = AutovalidateMode.onUserInteraction,
-    this.enabled = true,
+    this.textStyle,
+    this.onChanged,
+    this.onSubmitted,
     this.focusNode,
+    this.enabled = true,
+    this.maxLines = 1,
+    this.minLines,
+    this.textInputAction,
     this.contentPadding =
-        const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+        const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+    this.maxWidth,
   });
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButtonFormField<T>(
-      value: value,
-      items: items,
-      onChanged: enabled ? onChanged : null,
+    // Log responsive values for debugging
+    final deviceType = ResponsiveUtils.getDeviceType(context);
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    // Log values for debugging
+    logger.d('SimeTextField - deviceType: $deviceType');
+    logger.d('SimeTextField - screenWidth: $screenWidth');
+
+    final defaultTextStyle = TextStyle(color: AppColors.white);
+
+    // Define our default maximum width based on screen size
+    final defaultMaxWidth = context.adaptiveValue(
+      mobile: double.infinity,
+      tablet: 400.0,
+      desktop: 500.0,
+    );
+
+    logger.d('SimeTextField - defaultMaxWidth: $defaultMaxWidth');
+
+    // Create the text field with the appropriate decoration
+    Widget textField = TextFormField(
+      controller: controller,
+      keyboardType: keyboardType,
+      obscureText: obscureText,
       validator: validator,
       autovalidateMode: autovalidateMode,
+      onChanged: onChanged,
+      onFieldSubmitted: onSubmitted,
       focusNode: focusNode,
-      icon: Icon(
-        Icons.arrow_drop_down,
-        color: AppColors.grey400,
-        size: GlobalConstants.iconM.w,
-      ),
-      dropdownColor: AppColors.grey700,
-      style: TextStyle(
-        color: AppColors.white,
-        fontSize: GlobalConstants.fontM.sp,
-      ),
+      enabled: enabled,
+      maxLines: maxLines,
+      minLines: minLines,
+      textInputAction: textInputAction,
+      style: textStyle ??
+          defaultTextStyle.copyWith(fontSize: GlobalConstants.fontM.sp),
       decoration: InputDecoration(
         labelText: labelText,
         hintText: hintText,
@@ -60,6 +95,7 @@ class CAADropdownField<T> extends StatelessWidget {
           color: AppColors.grey400,
           size: GlobalConstants.iconM.w,
         ),
+        suffixIcon: suffixIcon,
         filled: true,
         fillColor: AppColors.white.withOpacityValue(GlobalConstants.opacityLow),
         labelStyle: TextStyle(
@@ -69,7 +105,7 @@ class CAADropdownField<T> extends StatelessWidget {
         contentPadding: contentPadding is EdgeInsets
             ? EdgeInsets.symmetric(
                 horizontal: GlobalConstants.paddingM.w,
-                vertical: GlobalConstants.paddingXS.h,
+                vertical: GlobalConstants.paddingM.h,
               )
             : contentPadding,
         border: OutlineInputBorder(
@@ -84,10 +120,6 @@ class CAADropdownField<T> extends StatelessWidget {
           borderRadius: BorderRadius.circular(GlobalConstants.radiusL.r),
           borderSide: BorderSide(color: AppColors.primary, width: 2.w),
         ),
-        disabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(GlobalConstants.radiusL.r),
-          borderSide: BorderSide.none,
-        ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(GlobalConstants.radiusL.r),
           borderSide: BorderSide(color: AppColors.error, width: 1.w),
@@ -99,6 +131,14 @@ class CAADropdownField<T> extends StatelessWidget {
         errorStyle: TextStyle(
             color: AppColors.error, fontSize: GlobalConstants.fontXS.sp),
       ),
+    );
+
+    // Apply maximum width constraint
+    return Container(
+      constraints: BoxConstraints(
+        maxWidth: maxWidth ?? defaultMaxWidth,
+      ),
+      child: textField,
     );
   }
 }

@@ -2,6 +2,8 @@ import 'package:clean_architecture/core/services/navigation/navigation.dart';
 import 'package:clean_architecture/core/services/shared_preferences/shared_prefs_service.dart';
 import 'package:clean_architecture/core/structures/enums.dart';
 import 'package:clean_architecture/i18n/app_localizations.dart';
+import 'package:clean_architecture/routing/app_router.dart';
+import 'package:clean_architecture/routing/guards/route_guard.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
@@ -85,9 +87,15 @@ Future<void> _initConfig() async {
 }
 
 Future<void> _initRouter() async {
-  di.registerLazySingleton<RouteGuard>(
-      () => RouteGuard(di<SharedPreferencesService>()));
+  // Registra RouteGuard prima di usarlo
+  di.registerLazySingleton<RouteGuard>(() => RouteGuard(
+        di<SharedPreferencesService>(),
+      ));
 
-  di.registerLazySingleton<GoRouter>(
-      () => RouterFactory(di<RouteGuard>()).create());
+  final GoRouter goRouter = AppRouter.createRouter(
+    routeGuard: di<RouteGuard>(),
+  );
+  di.registerLazySingleton<GoRouter>(() => goRouter);
+  
+  di.registerLazySingleton<AppRouter>(() => AppRouter(router: goRouter));
 }

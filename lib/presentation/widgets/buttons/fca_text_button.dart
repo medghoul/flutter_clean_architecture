@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 /// - Customizable text color
 /// - Auto-capitalization of label text
 /// - Consistent styling with app theme
-class CAATextButton extends StatelessWidget {
+class FCATextButton extends StatelessWidget {
   /// Callback function when button is pressed
   final Function()? onPressed;
 
@@ -26,7 +26,7 @@ class CAATextButton extends StatelessWidget {
   /// Optional icon to display before the text
   final IconData? icon;
 
-  /// Creates a [CAATextButton].
+  /// Creates a [FCATextButton].
   ///
   /// Parameters:
   /// - [onPressed]: Callback function when button is pressed
@@ -34,7 +34,7 @@ class CAATextButton extends StatelessWidget {
   /// - [textColor]: Optional custom text color
   /// - [icon]: Optional leading icon
   /// - [isLoading]: Whether to show loading state
-  const CAATextButton({
+  const FCATextButton({
     super.key,
     required this.onPressed,
     required this.label,

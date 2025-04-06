@@ -1,20 +1,21 @@
+import 'package:clean_architecture/features/home_page/presentation/pages/home_page.dart';
 import 'package:clean_architecture/features/login/presentation/pages/login_page.dart';
 import 'package:clean_architecture/features/start/presentation/pages/access_page.dart';
 import 'package:clean_architecture/features/start/presentation/pages/onboarding_page.dart';
-import 'package:clean_architecture/presentation/widgets/scaffold/caa_scaffold.dart';
+import 'package:clean_architecture/features/start/presentation/pages/start_page.dart';
+import 'package:clean_architecture/presentation/widgets/scaffold/fca_scaffold.dart';
+import 'package:clean_architecture/routing/app_routes.dart';
+import 'package:clean_architecture/routing/guards/route_guard.dart';
+import 'package:clean_architecture/routing/ui/not_found_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:clean_architecture/features/home_page/presentation/pages/home_page.dart';
-import 'package:clean_architecture/features/start/presentation/pages/start_page.dart';
-import 'package:clean_architecture/routing/app_routes.dart';
-import 'package:clean_architecture/routing/ui/not_found_screen.dart';
 
 class AppRouter {
   final GoRouter router;
 
-  AppRouter() : router = _createRouter();
-
-  static GoRouter _createRouter() {
+  AppRouter({required this.router});
+  
+  static GoRouter createRouter({RouteGuard? routeGuard}) {
     final GlobalKey<NavigatorState> rootNavigatorKey =
         GlobalKey<NavigatorState>(debugLabel: 'root');
     final GlobalKey<NavigatorState> shellNavigatorKey =
@@ -106,7 +107,7 @@ class AppRouter {
         ShellRoute(
           navigatorKey: shellNavigatorKey,
           builder: (BuildContext context, GoRouterState state, Widget child) {
-            return CAAScaffold(
+            return FCAScaffold(
               body: child,
               //TODO to create a custom app bar
             );
@@ -220,20 +221,23 @@ class AppRouter {
         ),*/
       ],
       // observers: [GoRouterObserver(analytics: FirebaseAnalytics.instance)],
-      redirect: (context, state) {
-        const isAuthenticated = false; // Implement your authentication logic
-        final isOnAccess = state.uri.toString().startsWith(AppRoute.intro.path);
-        if (isAuthenticated && isOnAccess) {
-          if (state.uri.toString().contains(AppRoute.signUpConfirmation.name)) {
-            return null;
-          }
-          return AppRoute.home.path;
-        }
-        if (!isAuthenticated && !isOnAccess) {
-          return AppRoute.intro.path;
-        }
-        return null;
-      },
+      redirect: routeGuard != null 
+          ? routeGuard.redirect
+          : (context, state) {
+              // Fallback redirect logic if no RouteGuard is provided
+              const isAuthenticated = false;
+              final isOnAccess = state.uri.toString().startsWith(AppRoute.intro.path);
+              if (isAuthenticated && isOnAccess) {
+                if (state.uri.toString().contains(AppRoute.signUpConfirmation.name)) {
+                  return null;
+                }
+                return AppRoute.home.path;
+              }
+              if (!isAuthenticated && !isOnAccess) {
+                return AppRoute.intro.path;
+              }
+              return null;
+            },
     );
   }
 }

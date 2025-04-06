@@ -6,8 +6,8 @@ import 'package:flutter_animate/flutter_animate.dart';
 /// Parameters:
 /// - [child]: The widget to be animated
 /// - [duration]: Duration of the animation in milliseconds
-class CAAFadeInDown extends StatelessWidget {
-  const CAAFadeInDown({
+class FCAFadeInDown extends StatelessWidget {
+  const FCAFadeInDown({
     required this.child,
     required this.duration,
     super.key,
@@ -41,8 +41,8 @@ class CAAFadeInDown extends StatelessWidget {
 /// Parameters:
 /// - [child]: The widget to be animated
 /// - [duration]: Duration of the animation in milliseconds
-class CAAFadeInUp extends StatelessWidget {
-  const CAAFadeInUp({
+class FCAFadeInUp extends StatelessWidget {
+  const FCAFadeInUp({
     required this.child,
     required this.duration,
     super.key,
@@ -76,8 +76,8 @@ class CAAFadeInUp extends StatelessWidget {
 /// Parameters:
 /// - [child]: The widget to be animated
 /// - [duration]: Duration of the animation in milliseconds
-class CAAFadeInLeft extends StatelessWidget {
-  const CAAFadeInLeft({
+class FCAFadeInLeft extends StatelessWidget {
+  const FCAFadeInLeft({
     required this.child,
     required this.duration,
     super.key,
@@ -111,8 +111,8 @@ class CAAFadeInLeft extends StatelessWidget {
 /// Parameters:
 /// - [child]: The widget to be animated
 /// - [duration]: Duration of the animation in milliseconds
-class CAAFadeInRight extends StatelessWidget {
-  const CAAFadeInRight({
+class FCAFadeInRight extends StatelessWidget {
+  const FCAFadeInRight({
     required this.child,
     required this.duration,
     super.key,

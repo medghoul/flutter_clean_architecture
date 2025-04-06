@@ -1,19 +1,19 @@
 import 'package:clean_architecture/core/constants/app_colors.dart';
 import 'package:clean_architecture/core/constants/global_constants.dart';
 import 'package:clean_architecture/core/extensions/color_extension.dart';
-import 'package:clean_architecture/presentation/widgets/stepper/cubit/caa_stepper_cubit.dart';
-import 'package:clean_architecture/presentation/widgets/stepper/models/caa_step.dart';
+import 'package:clean_architecture/presentation/widgets/stepper/cubit/fca_stepper_cubit.dart';
+import 'package:clean_architecture/presentation/widgets/stepper/models/fca_step.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CAAStepWidget extends StatelessWidget {
-  final CAAStep step;
+class FCAStepWidget extends StatelessWidget {
+  final FCAStep step;
   final bool isActive;
   final bool isLast;
   final int stepNumber;
   final VoidCallback? onNext;
 
-  const CAAStepWidget({
+  const FCAStepWidget({
     super.key,
     required this.step,
     required this.isActive,
@@ -124,7 +124,7 @@ class CAAStepWidget extends StatelessWidget {
                 onNext!();
               } else {
                 // Use the cubit to navigate to next step
-                final cubit = context.read<CAAStepperCubit>();
+                final cubit = context.read<FCAStepperCubit>();
                 if (isLast) {
                   // Handle last step completion
                   cubit.completeRegistration();
