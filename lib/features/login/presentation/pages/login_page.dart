@@ -1,12 +1,9 @@
 import 'package:clean_architecture/core/extensions/context_extension.dart';
-import 'package:clean_architecture/core/resources/utils/validators.dart';
 import 'package:clean_architecture/features/login/presentation/cubits/login_cubit.dart';
 import 'package:clean_architecture/features/login/presentation/cubits/login_state.dart';
-import 'package:clean_architecture/core/resources/res.dart';
 import 'package:clean_architecture/i18n/lang_keys.dart';
 import 'package:clean_architecture/routing/app_routes.dart';
-import 'package:clean_architecture/widgets/ui/custom_circular_progress_indicator.dart';
-import 'package:clean_architecture/widgets/ui/text_form_fields/custom_text_field.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
