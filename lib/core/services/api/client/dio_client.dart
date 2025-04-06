@@ -1,16 +1,19 @@
-import 'package:clean_architecture/core/services/shared_pref/pref_keys.dart';
+import 'package:clean_architecture/core/dependency_injection/dependency_injection.dart';
+import 'package:clean_architecture/core/services/shared_preferences/shared_prefs_service.dart';
+import 'package:clean_architecture/core/structures/enums.dart';
 import 'package:dio/dio.dart';
-import 'package:clean_architecture/core/services/api/api_consumer.dart';
+import 'package:clean_architecture/core/services/api/client/api_client.dart';
 import 'package:clean_architecture/core/errors/exceptions.dart';
 import 'package:clean_architecture/core/config/app_config.dart';
 
-class DioConsumer extends ApiConsumer {
+class DioClient extends ApiClient {
   final Dio dio;
 
-  DioConsumer({required this.dio}) {
+  DioClient({required this.dio}) {
     dio.options.baseUrl = AppConfig.apiBaseUrl;
     dio.options.headers = {
-      'Authorization': 'Bearer ${PrefKeys.accessToken}',
+      'Authorization':
+          'Bearer ${di<SharedPreferencesService>().getValue(PrefsKeys.token)}',
       'Content-Type': 'application/json',
     };
   }

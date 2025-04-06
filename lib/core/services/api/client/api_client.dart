@@ -1,4 +1,4 @@
-abstract class ApiConsumer {
+abstract class ApiClient {
   Future<dynamic> get(
     String path, {
     Object? data,
