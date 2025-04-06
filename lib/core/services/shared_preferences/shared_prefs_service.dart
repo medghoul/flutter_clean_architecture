@@ -9,7 +9,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// - [PrefsGroups.session]: Session data (token, refresh token)
 /// - [PrefsGroups.user]: User data (email, password)
 class SharedPreferencesService {
-  static final SharedPreferencesService _instance = SharedPreferencesService._internal();
+  static final SharedPreferencesService _instance =
+      SharedPreferencesService._internal();
   late SharedPreferences _sharedPreferences;
 
   factory SharedPreferencesService() {
@@ -32,10 +33,7 @@ class SharedPreferencesService {
 
       // Handle special cases
       if (key == PrefsKeys.locale) {
-        return CAALocale.values.firstWhere(
-          (locale) => locale.name == value,
-          orElse: () => CAALocale.en,
-        ) as T;
+        return value as T;
       }
 
       return value as T;
@@ -58,8 +56,6 @@ class SharedPreferencesService {
         return await _sharedPreferences.setBool(key.key, value);
       } else if (value is List<String>) {
         return await _sharedPreferences.setStringList(key.key, value);
-      } else if (value is CAALocale) {
-        return await _sharedPreferences.setString(key.key, value.name);
       }
       throw UnsupportedError('Type ${T.toString()} not supported');
     } catch (e) {
@@ -94,7 +90,7 @@ class SharedPreferencesService {
       final keysToRemove = PrefsKeys.values
           .where((key) => key.group == group)
           .map((key) => key.key);
-      
+
       for (final key in keysToRemove) {
         await _sharedPreferences.remove(key);
       }
