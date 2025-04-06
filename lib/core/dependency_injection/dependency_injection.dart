@@ -1,7 +1,11 @@
+import 'package:clean_architecture/core/services/navigation/navigation.dart';
 import 'package:clean_architecture/core/services/shared_preferences/shared_prefs_service.dart';
+import 'package:clean_architecture/core/structures/enums.dart';
+import 'package:clean_architecture/i18n/app_localizations.dart';
+import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:logger/logger.dart';
 import 'package:go_router/go_router.dart';
+import 'package:logger/logger.dart';
 
 final di = GetIt.instance;
 
@@ -31,8 +35,6 @@ Future<void> _initServices() async {
 }
 
 Future<void> _initProviders() async {
-  di.registerSingleton<LocaleProvider>(LocaleProvider(di<SharedPreferencesService>()));
-
   // TODO: Implement API client and provider
   // String baseUrl = const String.fromEnvironment('API_URL');
   // String apiVersion = const String.fromEnvironment('API_VERSION');
@@ -48,11 +50,20 @@ Future<void> _initRepositories() async {
   //     () => ApiRepositoryImpl(di<ApiProvider>()));
 }
 
-
 Future<void> _initLocalization() async {
-  // Locale Configuration
-  final locale = await di<LocaleProvider>().getCurrentLocale();
-  LocaleSettings.setLocale(locale.toAppLocale());
+  // Register AppLocalizations
+  di.registerLazySingleton<AppLocalizations>(() {
+    // Get current locale from SharedPreferences or default to English
+    final String langCode = di<SharedPreferencesService>().getValue<String>(
+          PrefsKeys.locale,
+        ) ??
+        'en';
+
+    final appLocalizations = AppLocalizations(Locale(langCode));
+    // Load the translations
+    appLocalizations.load();
+    return appLocalizations;
+  });
 }
 
 Future<void> _initBusinessLogic() async {
@@ -75,10 +86,8 @@ Future<void> _initConfig() async {
 
 Future<void> _initRouter() async {
   di.registerLazySingleton<RouteGuard>(
-    () => RouteGuard(di<SharedPreferencesService>())
-  );
-  
+      () => RouteGuard(di<SharedPreferencesService>()));
+
   di.registerLazySingleton<GoRouter>(
-    () => RouterFactory(di<RouteGuard>()).create()
-  );
+      () => RouterFactory(di<RouteGuard>()).create());
 }
