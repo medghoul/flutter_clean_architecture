@@ -4,7 +4,7 @@ import 'package:clean_architecture/core/utils/validation/form_validators.dart';
 import 'package:clean_architecture/presentation/widgets/form/index.dart';
 import 'package:flutter/material.dart';
 
-class CAAEmailField extends StatelessWidget {
+class FCAEmailField extends StatelessWidget {
   final TextEditingController? controller;
   final String labelText;
   final String hintText;
@@ -16,7 +16,7 @@ class CAAEmailField extends StatelessWidget {
   final bool enabled;
   final TextInputAction? textInputAction;
 
-  const CAAEmailField({
+  const FCAEmailField({
     super.key,
     this.controller,
     this.labelText = 'Email',
@@ -32,7 +32,7 @@ class CAAEmailField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CAATextField(
+    return FCATextField(
       controller: controller,
       labelText: labelText,
       hintText: hintText,
