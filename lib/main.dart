@@ -10,6 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:clean_architecture/features/home_page/domain/usecases/home_page_usecase.dart';
 import 'package:clean_architecture/features/home_page/presentation/cubits/home_page_cubit.dart';
 import 'package:clean_architecture/routing/app_router.dart';
+import 'package:responsive_layout_kit/responsive_layout_kit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,20 +28,23 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final AppRouter appRouter = AppRouter();
 
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => HomePageCubit({} as HomePageUseCase)),
-      ],
-      child: MaterialApp.router(
-        routerConfig: appRouter.router,
-        localizationsDelegates: AppLocalizationsSetup.localizationsDelegates,
-        supportedLocales: AppLocalizationsSetup.supportedLocales,
-        localeResolutionCallback:
-            AppLocalizationsSetup.localeResolutionCallback,
-        title: 'Ideal Architecture',
-        theme: AppTheme.lightTheme,
-        darkTheme: AppTheme.darkTheme,
-        themeMode: ThemeMode.system,
+    return AppScreenInit(
+      designSize: const Size(375, 812),
+      builder: (context, child) => MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => HomePageCubit({} as HomePageUseCase)),
+        ],
+        child: MaterialApp.router(
+          routerConfig: appRouter.router,
+          localizationsDelegates: AppLocalizationsSetup.localizationsDelegates,
+          supportedLocales: AppLocalizationsSetup.supportedLocales,
+          localeResolutionCallback:
+              AppLocalizationsSetup.localeResolutionCallback,
+          title: 'Ideal Architecture',
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          themeMode: ThemeMode.system,
+        ),
       ),
     );
   }

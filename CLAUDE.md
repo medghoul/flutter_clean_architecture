@@ -73,7 +73,7 @@ Dio exceptions are mapped to typed exception classes (e.g., `UnauthorizedExcepti
 - **`AppColors`**, **`AppDimensions`** — all design tokens; import via `package:clean_architecture/core/resources/res.dart` (barrel export).
 - **`ContextExtension`** — adds `.translate()`, `.theme`, `.textTheme`, `.colorScheme`, `.router`, `.navigator` to `BuildContext`.
 - **`Validators`** — form validators that require a `BuildContext` for localized error messages.
-- **`ResponsiveLayout`** — breakpoints: mobile < 600px, tablet < 1200px, desktop ≥ 1200px.
+- **`responsive_layout_kit`** — adaptive scaling and device-type utilities. `AppScreenInit` (design size: 375×812) wraps the app root in `main.dart`. Use `ResponsiveBuilder` for per-device layouts, `.w`/`.h`/`.sp`/`.r` extensions for scaled sizes, `context.isPhone`/`context.isTablet`/`context.isDesktop` for device checks, and `context.adaptiveValue(mobile:, tablet:, desktop:)` for inline value switching. `ResponsiveSpacing` provides named spacing constants with `.allPadding`, `.verticalPadding`, `.horizontalPadding`, `.vGap`, `.hGap`, and `.radius` helpers. `lib/core/resources/utils/responsive_layout.dart` and `responsive_value.dart` re-export the package symbols.
 
 ## Theme
 
